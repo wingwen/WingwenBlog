@@ -1,0 +1,116 @@
+---
+import PlaceholderBadge from './PlaceholderBadge.astro';
+
+interface Props {
+  index: string;
+  href?: string;
+  title: string;
+  period: string;
+  role: string;
+  summary: string;
+  stack: string[];
+  isPlaceholder: boolean;
+  headingLevel?: 2 | 3;
+}
+
+const {
+  index,
+  href,
+  title,
+  period,
+  role,
+  summary,
+  stack,
+  isPlaceholder,
+  headingLevel = 3,
+} = Astro.props;
+
+// 首页的条目位于「代表项目」<h2> 之下，项目列表页的条目则直接挂在页面 <h1> 之下，
+// 所以标题层级由调用方决定，避免出现 h1 直接接 h3 的跳级。
+const HeadingTag = `h${headingLevel}` as 'h2' | 'h3';
+---
+
+<li class="entry project-entry">
+  <span class="entry__index">{index}</span>
+  <div class="project-entry__body">
+    <HeadingTag class="project-entry__title">
+      {href ? <a class="project-entry__link" href={href}>{title}</a> : title}
+    </HeadingTag>
+    <p class="project-entry__meta">
+      <span class="project-entry__period">{period}</span>
+      <span class="project-entry__role">{role}</span>
+      <PlaceholderBadge isPlaceholder={isPlaceholder} />
+    </p>
+    <p class="project-entry__summary">{summary}</p>
+    {
+      stack.length > 0 && (
+        <ul class="meta-list project-entry__stack" role="list">
+          {stack.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</li>
+
+<style>
+  .project-entry {
+    padding-block: var(--space-3);
+  }
+
+  .project-entry:first-child {
+    padding-block-start: 0;
+  }
+
+  .project-entry + .project-entry {
+    border-block-start: 1px solid var(--rule);
+  }
+
+  .project-entry__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+
+  .project-entry__title {
+    font-size: var(--step-1);
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .project-entry__link {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+  }
+
+  /* Scope hashes are attribute selectors, so they outrank the global `a:hover`. */
+  .project-entry__link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .project-entry__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+  }
+
+  .project-entry__period::after {
+    content: '·';
+    margin-inline: var(--space-1);
+  }
+
+  /* PlaceholderBadge owns the span, so matching it needs :global(). */
+  .project-entry__meta :global(.badge-placeholder) {
+    margin-inline-start: var(--space-1);
+  }
+
+  .project-entry__summary {
+    max-width: var(--measure);
+  }
+</style>

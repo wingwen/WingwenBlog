@@ -1,0 +1,22 @@
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+.astro/
+
+# 环境变量与密钥（.env.example 需要提交，故单独排除）
+.env
+.env.*
+!.env.example
+
+# 部署平台与系统文件
+.vercel
+.wrangler
+.DS_Store
+*.log
+
+# AI 工具工作区：个人记录与运行时状态，不纳入公开仓库。
+# 对外展示的过程记录统一整理到 docs/。
+.cursor
+.trellis

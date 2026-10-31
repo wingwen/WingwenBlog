@@ -1,0 +1,9 @@
+---
+interface Props {
+  isPlaceholder: boolean;
+}
+
+const { isPlaceholder } = Astro.props;
+---
+
+{isPlaceholder && <span class="badge-placeholder">示例内容</span>}

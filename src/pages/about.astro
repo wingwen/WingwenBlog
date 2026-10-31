@@ -1,0 +1,280 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlaceholderBadge from '../components/PlaceholderBadge.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import TimelineEntry from '../components/TimelineEntry.astro';
+import { profile } from '../data/profile';
+import type { EducationItem } from '../data/profile';
+
+const resumeDownload = profile.resume;
+const portrait = profile.portrait;
+
+function educationMeta(item: EducationItem): string[] {
+  const parts = [item.major, item.degree];
+  if (item.gpa) {
+    parts.push(`GPA ${item.gpa}`);
+  }
+  return parts;
+}
+
+// 与首页摘要区分开：首页用简介首句，关于页用所在地与状态。
+const aboutDescription = `关于${profile.name}：${profile.tagline}。现居${profile.location}，${profile.status}。`;
+---
+
+<BaseLayout title="关于" description={aboutDescription}>
+  <header class="about-intro">
+    {
+      portrait && (
+        <Image
+          class="about-intro__portrait"
+          src={portrait.src}
+          alt={portrait.alt}
+          width={360}
+          loading="eager"
+        />
+      )
+    }
+    <div class="about-intro__text">
+      <h1 class="about-intro__title">关于</h1>
+      <p class="about-intro__tagline">{profile.tagline}</p>
+      <p class="about-intro__body">{profile.intro}</p>
+      <PlaceholderBadge isPlaceholder={profile.isPlaceholder} />
+    </div>
+  </header>
+
+  <section class="about-section">
+    <SectionHeader title="教育经历" />
+    <ol class="about-list" role="list">
+      {
+        profile.education.map((item) => (
+          <TimelineEntry heading={item.school} subheading={educationMeta(item)} period={item.period} />
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="about-section">
+    <SectionHeader title="实习与工作" />
+    <ol class="about-list" role="list">
+      {
+        profile.experience.map((item) => (
+          <TimelineEntry
+            heading={item.org}
+            subheading={item.role}
+            period={item.period}
+            points={item.points}
+          />
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="about-section">
+    <SectionHeader title="技能" />
+    <dl class="about-skills">
+      {
+        profile.skills.map((group) => (
+          <div class="about-skills__group">
+            <dt class="about-skills__label">{group.group}</dt>
+            <dd class="about-skills__items">
+              {group.items.map((item) => (
+                <span>{item}</span>
+              ))}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  {
+    profile.publications.length > 0 && (
+      <section class="about-section">
+        <SectionHeader title="论文" />
+        <ul class="about-publications" role="list">
+          {profile.publications.map((publication) => (
+            <li class="about-publication">
+              <cite class="about-publication__title">{publication.title}</cite>
+              <span class="about-publication__venue">{publication.venue}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="about-section">
+    <SectionHeader title="联系方式" />
+    <div class="about-contact">
+      <p>
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      </p>
+      {
+        profile.links.length > 0 && (
+          <ul class="about-contact__links" role="list">
+            {profile.links.map((link) => (
+              <li>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    resumeDownload && (
+      <section class="about-section">
+        <SectionHeader title="简历下载" />
+        <p class="about-resume">
+          <a href={resumeDownload.href} download>
+            {resumeDownload.label}
+          </a>
+        </p>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .about-intro {
+    display: grid;
+    gap: var(--space-3);
+    max-width: var(--measure);
+  }
+
+  .about-intro__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .about-intro__portrait {
+    width: 8rem;
+    height: auto;
+    /* 证件照是蓝底，在纸色底上是一块偏冷的色块。
+       如需弱化，可在此加 filter: grayscale(1) sepia(0.12)（暖调单色）
+       或 filter: saturate(0.65)（保留色彩、降低饱和度）。当前用原色。 */
+  }
+
+  .about-intro__title {
+    font-size: var(--step-3);
+    font-weight: 400;
+  }
+
+  .about-intro__tagline {
+    color: var(--ink-muted);
+  }
+
+  .about-section {
+    max-width: var(--measure);
+    margin-block-start: var(--space-5);
+  }
+
+  .about-list {
+    display: grid;
+    padding: 0;
+    margin-block-start: var(--space-3);
+    list-style: none;
+  }
+
+  .about-skills {
+    display: grid;
+    gap: var(--space-2);
+    margin-block-start: var(--space-3);
+  }
+
+  .about-skills__group {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .about-skills__label {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+
+  .about-skills__items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .about-skills__items > span:not(:last-child)::after {
+    content: '·';
+    margin-inline: var(--space-1);
+    color: var(--ink-muted);
+  }
+
+  .about-publications {
+    display: grid;
+    gap: var(--space-2);
+    margin-block-start: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .about-publication {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-2);
+  }
+
+  .about-publication__title {
+    font-style: italic;
+  }
+
+  .about-publication__venue {
+    padding-block: 0.05em;
+    padding-inline: 0.5em;
+    border: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+  }
+
+  .about-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-3);
+    margin-block-start: var(--space-3);
+  }
+
+  .about-contact__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .about-resume {
+    margin-block-start: var(--space-3);
+  }
+
+  @media (min-width: 40em) {
+    .about-intro {
+      grid-template-columns: 9rem minmax(0, 1fr);
+      align-items: start;
+      gap: var(--space-4);
+    }
+
+    .about-intro__portrait {
+      width: 100%;
+    }
+
+    .about-skills__group {
+      grid-template-columns: 7rem minmax(0, 1fr);
+      gap: var(--space-2);
+      align-items: baseline;
+    }
+  }
+</style>

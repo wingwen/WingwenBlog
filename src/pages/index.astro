@@ -1,0 +1,128 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlaceholderBadge from '../components/PlaceholderBadge.astro';
+import PostEntry from '../components/PostEntry.astro';
+import ProjectEntry from '../components/ProjectEntry.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { profile } from '../data/profile';
+import { formatEntryIndex } from '../lib/format';
+import { postHref } from '../lib/posts';
+import { displayPeriod, projectHref, sortProjectsNewestFirst } from '../lib/projects';
+
+// 首页只展示前三个，但顺序必须与项目列表页一致，所以复用同一个排序函数。
+const featuredProjects = sortProjectsNewestFirst(await getCollection('projects')).slice(0, 3);
+
+const recentPosts = (await getCollection('posts'))
+  .filter((post) => !post.data.draft)
+  .sort((left, right) => right.data.pubDate.getTime() - left.data.pubDate.getTime());
+
+// 首页摘要只由已有数据拼成：姓名、标语、简介的第一句，不另外撰写自我描述。
+const introOpeningSentence = profile.intro.split('。')[0];
+const homeDescription = `${profile.name} · ${profile.tagline}。${introOpeningSentence}。`;
+---
+
+<BaseLayout description={homeDescription}>
+  <section class="hero">
+    <h1 class="hero__name">{profile.name}</h1>
+    <p class="hero__tagline">{profile.tagline}</p>
+    <p class="hero__intro">{profile.intro}</p>
+    <PlaceholderBadge isPlaceholder={profile.isPlaceholder} />
+  </section>
+
+  {
+    featuredProjects.length > 0 && (
+      <section class="home-section">
+        <SectionHeader index="I" title="代表项目" />
+        <ol class="entry-list" role="list">
+          {featuredProjects.map((project, position) => (
+            <ProjectEntry
+              index={formatEntryIndex(position)}
+              href={projectHref(project.id)}
+              title={project.data.title}
+              period={displayPeriod(project)}
+              role={project.data.role}
+              summary={project.data.summary}
+              stack={project.data.stack}
+              isPlaceholder={project.data.isPlaceholder}
+            />
+          ))}
+        </ol>
+        <p class="home-section__more">
+          <a href="/projects">全部项目 →</a>
+        </p>
+      </section>
+    )
+  }
+
+  {
+    recentPosts.length > 0 && (
+      <section class="home-section">
+        <SectionHeader index="II" title="近期文章" />
+        <ol class="entry-list" role="list">
+          {recentPosts.map((post, position) => (
+            <PostEntry
+              index={formatEntryIndex(position)}
+              href={postHref(post.id)}
+              pubDate={post.data.pubDate}
+              title={post.data.title}
+              description={post.data.description}
+              tags={post.data.tags}
+              isPlaceholder={post.data.isPlaceholder}
+            />
+          ))}
+        </ol>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    max-width: var(--measure);
+  }
+
+  .hero__name {
+    font-size: var(--step-4);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__tagline {
+    font-size: var(--step-1);
+    line-height: 1.5;
+  }
+
+  .home-section {
+    max-width: var(--measure);
+    margin-block-start: var(--space-5);
+  }
+
+  .entry-list {
+    display: grid;
+    padding: 0;
+    margin-block-start: var(--space-3);
+    list-style: none;
+  }
+
+  .home-section__more {
+    margin-block-start: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+  }
+
+  .home-section__more a {
+    text-decoration: none;
+  }
+
+  .home-section__more a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+</style>

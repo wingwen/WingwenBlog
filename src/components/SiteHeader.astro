@@ -1,0 +1,44 @@
+---
+import { profile } from '../data/profile';
+
+const navItems = [
+  { label: '首页', href: '/' },
+  { label: '关于', href: '/about' },
+  { label: '项目', href: '/projects' },
+  { label: '文章', href: '/posts' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+function isCurrentPage(href: string): boolean {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+}
+---
+
+<header class="site-header">
+  <p class="wrap info-bar">
+    <span class="info-bar__item">{profile.name}</span>
+    <span class="info-bar__item">{profile.location}</span>
+    <span class="info-bar__item">{profile.status}</span>
+  </p>
+  <nav class="site-nav wrap" aria-label="主导航">
+    <ul class="site-nav__list" role="list">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              class="site-nav__link"
+              href={item.href}
+              aria-current={isCurrentPage(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

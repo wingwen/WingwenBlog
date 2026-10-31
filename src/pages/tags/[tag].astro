@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostEntry from '../../components/PostEntry.astro';
+import { formatEntryIndex } from '../../lib/format';
+import {
+  collectTags,
+  filterPostsByTag,
+  postHref,
+  sortPostsNewestFirst,
+  visiblePosts,
+} from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = sortPostsNewestFirst(visiblePosts(await getCollection('posts')));
+
+  return collectTags(posts).map(({ tag }) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: filterPostsByTag(posts, tag),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+
+// 标签页的摘要点名标签与篇数，保证每个标签页的摘要互不相同。
+const tagDescription = `标签「${tag}」下共有 ${posts.length} 篇文章，按发布时间从新到旧排列。`;
+---
+
+<BaseLayout title={`标签：${tag}`} description={tagDescription}>
+  <section class="tag-page">
+    <p class="tag-page__back">
+      <a href="/posts">← 全部文章</a>
+    </p>
+
+    <header class="tag-page__header">
+      <h1 class="tag-page__title">标签：{tag}</h1>
+      <p class="tag-page__lede">共 {posts.length} 篇，按发布时间从新到旧排列。</p>
+    </header>
+
+    {
+      posts.length > 0 ? (
+        <ol class="entry-list" role="list">
+          {posts.map((post, position) => (
+            <PostEntry
+              index={formatEntryIndex(position)}
+              href={postHref(post.id)}
+              pubDate={post.data.pubDate}
+              title={post.data.title}
+              description={post.data.description}
+              tags={post.data.tags}
+              isPlaceholder={post.data.isPlaceholder}
+              headingLevel={2}
+            />
+          ))}
+        </ol>
+      ) : (
+        <p class="tag-page__empty">这个标签下暂时没有文章。</p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .tag-page {
+    max-width: var(--measure);
+  }
+
+  .tag-page__back {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+  }
+
+  .tag-page__back a {
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+
+  .tag-page__back a:hover {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .tag-page__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-block-start: var(--space-3);
+    padding-block-end: var(--space-3);
+    border-block-end: 1px solid var(--rule);
+  }
+
+  .tag-page__title {
+    font-size: var(--step-3);
+    font-weight: 400;
+  }
+
+  .tag-page__lede {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+  }
+
+  .tag-page__empty {
+    margin-block-start: var(--space-3);
+    color: var(--ink-muted);
+  }
+</style>

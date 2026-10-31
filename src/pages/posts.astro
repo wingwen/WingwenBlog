@@ -1,0 +1,132 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostEntry from '../components/PostEntry.astro';
+import { formatEntryIndex } from '../lib/format';
+import {
+  collectTags,
+  postHref,
+  sortPostsNewestFirst,
+  tagHref,
+  visiblePosts,
+} from '../lib/posts';
+
+const publishedPosts = visiblePosts(await getCollection('posts'));
+const posts = sortPostsNewestFirst(publishedPosts);
+const tags = collectTags(publishedPosts);
+
+// 文章入口的摘要只描述这个栏目本身，不涉及任何个人经历。
+const postsDescription = '文章列表：按发布时间从新到旧排列，同一主题下的条目可以在标签页里找到。';
+---
+
+<BaseLayout title="文章" description={postsDescription}>
+  <section class="posts-index">
+    <header class="posts-index__header">
+      <h1 class="posts-index__title">文章</h1>
+      <p class="posts-index__lede">按发布时间从新到旧排列，同一主题下的条目可以在标签页里找到。</p>
+    </header>
+
+    {
+      tags.length > 0 && (
+        <nav class="tag-index" aria-label="全部标签">
+          <ul class="tag-index__list" role="list">
+            {tags.map(({ tag, count }) => (
+              <li class="tag-index__item">
+                <a class="tag-index__link" href={tagHref(tag)}>
+                  {tag}
+                </a>
+                <span class="tag-index__count">{count}</span>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
+
+    {
+      posts.length > 0 ? (
+        <ol class="entry-list" role="list">
+          {posts.map((post, position) => (
+            <PostEntry
+              index={formatEntryIndex(position)}
+              href={postHref(post.id)}
+              pubDate={post.data.pubDate}
+              title={post.data.title}
+              description={post.data.description}
+              tags={post.data.tags}
+              isPlaceholder={post.data.isPlaceholder}
+              headingLevel={2}
+            />
+          ))}
+        </ol>
+      ) : (
+        <p class="posts-index__empty">暂时还没有发布文章。</p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .posts-index {
+    max-width: var(--measure);
+  }
+
+  .posts-index__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding-block-end: var(--space-3);
+    border-block-end: 1px solid var(--rule);
+  }
+
+  .posts-index__title {
+    font-size: var(--step-3);
+    font-weight: 400;
+  }
+
+  .posts-index__lede {
+    color: var(--ink-muted);
+  }
+
+  .tag-index {
+    margin-block-start: var(--space-3);
+  }
+
+  .tag-index__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .tag-index__item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-1);
+    font-size: var(--step--1);
+  }
+
+  .tag-index__link {
+    text-decoration: none;
+  }
+
+  .tag-index__link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .tag-index__count {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+  }
+
+  .posts-index__empty {
+    margin-block-start: var(--space-3);
+    color: var(--ink-muted);
+  }
+</style>

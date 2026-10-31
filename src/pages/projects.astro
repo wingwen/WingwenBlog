@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectEntry from '../components/ProjectEntry.astro';
+import { formatEntryIndex } from '../lib/format';
+import { displayPeriod, projectHref, sortProjectsNewestFirst } from '../lib/projects';
+
+const projects = sortProjectsNewestFirst(await getCollection('projects'));
+
+// 摘要只引用条目数量，不拼接各项目的 summary：拼接结果会随项目增加无限变长，
+// 三个项目时已经 169 字，超过搜索结果约 160 字的截断长度，且每加一个项目就改写一次本页摘要。
+const projectsDescription = `项目：共 ${projects.length} 个条目，记录背景、职责与结果，按年份从新到旧排列。`;
+---
+
+<BaseLayout title="项目" description={projectsDescription}>
+  <section class="projects-index">
+    <header class="projects-index__header">
+      <h1 class="projects-index__title">项目</h1>
+      <p class="projects-index__lede">每个条目记录背景、职责与结果，按年份从新到旧排列。</p>
+    </header>
+
+    {
+      projects.length > 0 ? (
+        <ol class="entry-list" role="list">
+          {projects.map((project, position) => (
+            <ProjectEntry
+              index={formatEntryIndex(position)}
+              href={projectHref(project.id)}
+              title={project.data.title}
+              period={displayPeriod(project)}
+              role={project.data.role}
+              summary={project.data.summary}
+              stack={project.data.stack}
+              isPlaceholder={project.data.isPlaceholder}
+              headingLevel={2}
+            />
+          ))}
+        </ol>
+      ) : (
+        <p class="projects-index__empty">暂时还没有整理好的项目。</p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .projects-index {
+    max-width: var(--measure);
+  }
+
+  .projects-index__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    padding-block-end: var(--space-3);
+    border-block-end: 1px solid var(--rule);
+  }
+
+  .projects-index__title {
+    font-size: var(--step-3);
+    font-weight: 400;
+  }
+
+  .projects-index__lede {
+    color: var(--ink-muted);
+  }
+
+  .projects-index__empty {
+    margin-block-start: var(--space-3);
+    color: var(--ink-muted);
+  }
+</style>

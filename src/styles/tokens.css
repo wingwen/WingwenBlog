@@ -1,0 +1,32 @@
+:root {
+  --paper: #FAF8F4;
+  --ink: #1A1A18;
+  --ink-muted: #6B675E;
+  --rule: #DED8CC;
+  --accent: #9B3D2E;
+
+  /* 自托管的 Newsreader 只含拉丁字形；中文由后面的系统衬线体接手。 */
+  --font-serif: "Newsreader", Georgia, "Times New Roman", "Songti SC", STSong, "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Fluid type scale interpolated between a 375px and a 1400px viewport. */
+  --step--1: clamp(0.8rem, 0.7634rem + 0.1561vw, 0.9rem);
+  --step-0: clamp(1rem, 0.9561rem + 0.1873vw, 1.12rem);
+  --step-1: clamp(1.25rem, 1.1585rem + 0.3902vw, 1.5rem);
+  --step-2: clamp(1.5625rem, 1.4024rem + 0.6829vw, 2rem);
+  --step-3: clamp(1.953rem, 1.6834rem + 1.1504vw, 2.69rem);
+  --step-4: clamp(2.441rem, 2.017rem + 1.8092vw, 3.6rem);
+
+  --measure: 62ch;
+  --gutter: clamp(1.25rem, 5vw, 2.5rem);
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4rem;
+
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur: 120ms;
+}

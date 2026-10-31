@@ -1,0 +1,70 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { site } from '../data/site';
+import { profile } from '../data/profile';
+import '../styles/fonts.css';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+import '../styles/components.css';
+
+interface Props {
+  title?: string;
+  /** 每页自己组装的摘要；缺省时退回由 profile.tagline 组成的站点级兜底。 */
+  description?: string;
+  ogType?: 'website' | 'article';
+}
+
+const { title, description, ogType = 'website' } = Astro.props;
+
+// 兜底只描述站点本身，不引入任何新的个人信息。
+const siteDescription = `${profile.name} · ${profile.tagline}`;
+const metaDescription = description?.trim() || siteDescription;
+const documentTitle = title ? `${title} · ${site.name}` : site.name;
+
+// 绝对地址全部从 astro.config.mjs 的 site 推导，P7 换域名时不需要改任何页面。
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const shareImageUrl = new URL('/og-default.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonicalUrl.href} />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:image" content={shareImageUrl.href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${profile.name} · ${profile.tagline}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link
+      rel="preload"
+      href="/fonts/newsreader-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+    <SiteHeader />
+    <main id="main" class="wrap page-main" tabindex="-1">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

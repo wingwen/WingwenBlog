@@ -1,0 +1,112 @@
+---
+import PlaceholderBadge from './PlaceholderBadge.astro';
+
+interface Props {
+  index: string;
+  href?: string;
+  pubDate: Date;
+  title: string;
+  description: string;
+  tags: string[];
+  isPlaceholder: boolean;
+  headingLevel?: 2 | 3;
+}
+
+const {
+  index,
+  href,
+  pubDate,
+  title,
+  description,
+  tags,
+  isPlaceholder,
+  headingLevel = 3,
+} = Astro.props;
+
+// 首页的条目位于「近期文章」<h2> 之下，文章列表页与标签页的条目则直接挂在页面 <h1> 之下，
+// 所以标题层级由调用方决定，避免出现 h1 直接接 h3 的跳级。
+const HeadingTag = `h${headingLevel}` as 'h2' | 'h3';
+
+// Frontmatter dates are parsed at UTC midnight; UTC formatting keeps the month stable.
+const yearMonth = `${pubDate.getUTCFullYear()}.${String(pubDate.getUTCMonth() + 1).padStart(2, '0')}`;
+const dateTime = pubDate.toISOString().slice(0, 10);
+---
+
+<li class="entry post-entry">
+  <span class="entry__index">{index}</span>
+  <div class="post-entry__body">
+    <p class="post-entry__meta">
+      <time class="post-entry__date" datetime={dateTime}>{yearMonth}</time>
+      <PlaceholderBadge isPlaceholder={isPlaceholder} />
+    </p>
+    <HeadingTag class="post-entry__title">
+      {href ? <a class="post-entry__link" href={href}>{title}</a> : title}
+    </HeadingTag>
+    <p class="post-entry__description">{description}</p>
+    {
+      tags.length > 0 && (
+        <ul class="meta-list post-entry__tags" role="list">
+          {tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</li>
+
+<style>
+  .post-entry {
+    padding-block: var(--space-3);
+  }
+
+  .post-entry:first-child {
+    padding-block-start: 0;
+  }
+
+  .post-entry + .post-entry {
+    border-block-start: 1px solid var(--rule);
+  }
+
+  .post-entry__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+
+  .post-entry__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1);
+  }
+
+  .post-entry__date {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-muted);
+  }
+
+  .post-entry__title {
+    font-size: var(--step-1);
+    font-weight: 400;
+    line-height: 1.35;
+  }
+
+  .post-entry__link {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+  }
+
+  /* Scope hashes are attribute selectors, so they outrank the global `a:hover`. */
+  .post-entry__link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .post-entry__description {
+    max-width: var(--measure);
+  }
+</style>

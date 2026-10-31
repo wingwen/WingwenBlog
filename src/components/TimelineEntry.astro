@@ -1,0 +1,100 @@
+---
+interface Props {
+  heading: string;
+  // Multiple parts are separated visually by CSS so the separator never enters the accessible text.
+  subheading: string | string[];
+  period: string;
+  points?: string[];
+}
+
+const { heading, subheading, period, points } = Astro.props;
+const subheadingParts = (Array.isArray(subheading) ? subheading : [subheading]).filter(Boolean);
+---
+
+<li class="timeline-entry">
+  <div class="timeline-entry__row">
+    <h3 class="timeline-entry__heading">{heading}</h3>
+    <span class="timeline-entry__period">{period}</span>
+  </div>
+  <p class="timeline-entry__subheading">
+    {subheadingParts.map((part) => <span>{part}</span>)}
+  </p>
+  {
+    points && points.length > 0 && (
+      <ul class="timeline-entry__points" role="list">
+        {points.map((point) => (
+          <li>{point}</li>
+        ))}
+      </ul>
+    )
+  }
+</li>
+
+<style>
+  .timeline-entry {
+    padding-block: var(--space-3);
+  }
+
+  .timeline-entry:first-child {
+    padding-block-start: 0;
+  }
+
+  .timeline-entry + .timeline-entry {
+    border-block-start: 1px solid var(--rule);
+  }
+
+  .timeline-entry__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-2);
+  }
+
+  .timeline-entry__heading {
+    font-size: var(--step-0);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .timeline-entry__period {
+    margin-inline-start: auto;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--ink-muted);
+  }
+
+  .timeline-entry__subheading {
+    margin-block-start: var(--space-1);
+    font-size: var(--step--1);
+    color: var(--ink-muted);
+  }
+
+  .timeline-entry__subheading > span:not(:last-child)::after {
+    content: '·';
+    margin-inline: var(--space-1);
+  }
+
+  .timeline-entry__points {
+    display: grid;
+    gap: var(--space-1);
+    max-width: var(--measure);
+    margin-block-start: var(--space-2);
+    padding: 0;
+    list-style: none;
+  }
+
+  .timeline-entry__points > li {
+    position: relative;
+    padding-inline-start: 1.1em;
+  }
+
+  .timeline-entry__points > li::before {
+    content: '–';
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--ink-muted);
+  }
+</style>

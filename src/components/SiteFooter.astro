@@ -1,0 +1,14 @@
+---
+import { profile } from '../data/profile';
+import { site } from '../data/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <p>{site.name}</p>
+    <p>© {currentYear}</p>
+    <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+  </div>
+</footer>
