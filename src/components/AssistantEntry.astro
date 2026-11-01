@@ -1,0 +1,36 @@
+---
+import { assistant, features } from '../data/site';
+import { profile } from '../data/profile';
+
+const entryName = `问问 ${profile.alias}`;
+const isReady = features.aiAssistant;
+const CardTag = isReady ? 'a' : 'div';
+---
+
+<CardTag
+  class:list={['assistant-card', isReady ? 'assistant-card--ready' : 'assistant-card--pending']}
+  href={isReady ? assistant.href : undefined}
+  aria-label={isReady ? `${entryName}：用自然语言提问` : undefined}
+>
+  <figure class="assistant-card__mascot">
+    <img
+      src="/images/home/sticker-icecream-cat.webp"
+      alt=""
+      width="240"
+      height="240"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
+
+  <p class="assistant-card__title">
+    {entryName}
+    <span class="assistant-card__dots" aria-hidden="true">
+      <i></i><i></i><i></i>
+    </span>
+  </p>
+
+  <p class="assistant-card__hint">{isReady ? assistant.hint : assistant.pendingHint}</p>
+
+  <span class="assistant-card__state">{isReady ? assistant.readyLabel : '未接通'}</span>
+</CardTag>

@@ -14,7 +14,7 @@
   vertical-align: middle;
 }
 
-/* Indexed archive row shared by ProjectEntry and PostEntry. */
+/* Indexed archive row used by ProjectEntry. */
 .entry-list {
   display: grid;
   padding: 0;
@@ -58,7 +58,7 @@
   }
 }
 
-/* Inline metadata list: project stacks and post tags. */
+/* Inline metadata list: project stacks. */
 .meta-list {
   display: flex;
   flex-wrap: wrap;

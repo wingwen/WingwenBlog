@@ -15,18 +15,6 @@ const screenshotSchema = z.object({
   caption: z.string().optional(),
 });
 
-const posts = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    tags: z.array(z.string()),
-    draft: z.boolean().default(false),
-    isPlaceholder: z.boolean(),
-  }),
-});
-
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
@@ -47,4 +35,4 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { posts, projects };
+export const collections = { projects };

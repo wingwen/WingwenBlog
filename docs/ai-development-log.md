@@ -207,6 +207,9 @@
 
 ## 阶段 P4 · 文章列表、详情与标签筛选
 
+> **2026-11-01 更新：本阶段已整体撤销。** 3 篇示例文章、`/posts` 列表与详情、`/tags/{tag}` 标签页、`posts` 内容集合、`lib/posts.ts` 及其 15 条测试、`PostEntry` 组件全部删除，AC-4 作废，详见 v4.13。
+> 下面这段保留原样，作为当时的过程记录，不再代表站点现状。
+
 **目标**：把文章从占位页做成可读、可筛选、可分享的完整链路。
 
 **做法**
@@ -726,3 +729,74 @@
 - `docs/screenshots/projects-header-black-cat.png`
 - `docs/screenshots/projects-desktop.png` 与 `projects-mobile.png`
 - `docs/screenshots/home-desktop.png`、`about-desktop.png` 与手机版已更新
+
+### v4.12：侧栏 AI 助手入口卡
+
+**改动**
+- 新增 `src/components/AssistantEntry.astro`：资料栏「个人标签」下方加一张对话框造型的入口卡，圆角卡面加一只朝上的小尾巴，标题后面跟打字省略号，配色沿用窗口的粉线、奶油底与偏移阴影
+- 组件挂在 `ProfileSidebar` 末尾，桌面左栏和手机抽屉共用同一份，不各写一套
+- 卡片名字取 `问问 ${profile.alias}`，与导航右侧入口同源，站点改昵称后不会留下旧名字
+- `src/data/site.ts` 新增 `assistant` 配置，`href`、引导语、未接通文案与动作文字集中在一处
+- `features.aiAssistant` 仍为 `false`：卡片渲染成不可点击的 `div` 并写明「未接通」，全站不会出现指向 `/assistant` 的链接；接通模型后改成 `true`，同一个组件自动换成 `a` 标签
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm test`：15 通过；`npm run build`：16 页
+- `dist/index.html` 中 `href="/assistant"` 出现 0 次，卡片标记各出现 2 次（左栏与手机抽屉各一份）
+- 桌面 1440 截图可见卡片在侧栏底部；手机 390 打开抽屉滚到底可见同一张卡
+
+**截图**
+- `docs/screenshots/home-desktop.png` 与 `home-mobile.png`（换新卡后更新）
+- `docs/screenshots/assistant-card-mobile.png`（抽屉滚到底）
+
+### v4.13：移除文章栏目
+
+**改动**
+- 删除 3 篇示例文章 `example-post` / `layout-demo` / `short-demo`，以及整个 `src/content/posts/` 目录
+- 删除文章页面：`pages/posts.astro`、`pages/posts/[slug].astro`、`pages/tags/[tag].astro`（含 5 个标签页）
+- 删除只为文章服务的代码：`lib/posts.ts`、`lib/posts.test.ts`、`components/PostEntry.astro`
+- `content.config.ts` 去掉 `posts` 集合，`collections` 只剩 `projects`
+- 首页欢迎横幅去掉「文章」胶囊，引导语改为「记录项目和最近在做的事」
+- 404 页去掉「文章归档」入口，描述同步收窄
+- 项目数不变，页数从 16 降到 7
+
+**关键决策**
+- **连 schema 和工具函数一起删**。只删页面会留下一个没人用的集合定义和一套死函数，下次改 schema 还要为它做决定
+- **不留「文章即将上线」之类的占位**。栏目整个去掉，导航与入口一处不剩，将来要恢复直接从 Git 取回这批文件
+- `npm test` 改为 `vitest run --passWithNoTests`。原来的 15 条测试全部是文章工具函数的，随代码一起删掉了，脚本不能因此报失败
+
+**验证**
+- `npm run check`：0 错误 0 警告 0 提示
+- `npm run build`：7 个页面（首页、关于、项目列表、3 个项目详情、404）
+- `npm test`：无测试文件，退出码 0
+- `dist` 中 `href="/posts*"` 与 `href="/tags*"` 均为 0 条；sitemap 6 条，无 posts / tags
+- `astro preview` 下 `/posts` 返回 404，首页 200
+
+**截图**
+- `docs/screenshots/home-desktop.png` 与 `home-mobile.png`（去掉文章入口后更新）
+
+### v4.14：文档收口与项目测试补齐
+
+**改动**
+- 删除两张过时截图 `posts-empty-desktop.png`、`posts-empty-mobile.png`（文章空态，功能已不存在）
+- 新建 `README.md`。仓库此前没有 README，这次按当前实现写：页面清单、技术栈、命令、改内容的入口、部署变量、已知限制
+- 需求文档 `prd.md`：首页区块与 R1 改为两区块；R4 与 AC-4 标记作废；AC-1 / AC-6 / AC-8 改为只针对项目；新增 §7 变更记录，写明移除范围与恢复方式
+- 技术设计 `design.md`：目录结构删去 `posts/`；4.2 标记集合已移除；排序规则补全为「年份倒序 → order 升序 → id 兜底」；占位策略与布局描述去掉文章；6.4 补上与侧栏说明卡一致的表述
+- 执行计划 `implement.md`：P2 改两区块，P4 整节划掉并注明撤销原因与现状，回滚点与测试范围同步更新
+- 内容清单 `content-checklist.md`：文章一节改为「已取消」；占位写法约定与加分项里的文章配图删掉
+- 技术决策 `decisions.md`：D1 去掉「文章」、D6 的规模例子改为条目数、D7 重写为「项目排序 + AI 检索 + schema」并记录中间曾无单元测试
+- 开发日志：P4 段首加撤销说明，正文作为历史记录原样保留，不篡改当时的过程
+
+**关于测试**
+- 文章栏目删除后，原本的 15 条测试随 `lib/posts.ts` 一起消失，仓库**一度没有单元测试**，当时把 `npm test` 临时改成带 `--passWithNoTests` 才不报错
+- 现在补了 `src/lib/projects.test.ts`，8 条用例覆盖：年份倒序、同年按 `order` 升序、缺省 `order` 排最后、并列时按 `id` 稳定、输入数组不被修改、`displayPeriod` 两个分支、`projectHref`
+- `test` 脚本恢复为 `vitest run`，没有测试文件时会直接失败，不允许沉默通过
+- 变异测试确认不是空断言：把 `PROJECTS_WITHOUT_EXPLICIT_ORDER` 从 `Number.MAX_SAFE_INTEGER` 改成 `0`，对应用例立即失败；改回后 8 条全绿
+
+**验证**
+- `npm run check`：0 错误 0 警告 0 提示
+- `npm test`：8 条通过（1 个文件）
+- `npm run build`：7 页
+- `README.md`、`docs/`、`.trellis/tasks/10-29-portfolio-site/` 中剩余的「文章」字样全部出现在「已移除」的说明或变更记录里，不再是当前功能描述
+
+
+
