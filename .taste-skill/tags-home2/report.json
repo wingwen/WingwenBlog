@@ -1,0 +1,1339 @@
+{
+ "url": "http://localhost:4322/",
+ "at": "2026-11-01T06:44:13.543Z",
+ "allow": [
+  "emoji",
+  "eyebrow",
+  "mono",
+  "shadow",
+  "hairline",
+  "dashed",
+  "palette-cream",
+  "font-count",
+  "pill-nav",
+  "no-footage",
+  "icon-cards"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.86,
+    0.78,
+    0.78
+   ],
+   "motion": {
+    "elements": 23,
+    "css": 23,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 1859,
+     "screens": 2.1,
+     "words": 195,
+     "img": 43,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "welcome-miku.webp",
+      "project-lazetrade.webp",
+      "project-mail.webp",
+      "project-lisa.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "🐱",
+      "🐶",
+      "🏊",
+      "👀",
+      "🎵",
+      "💦",
+      "🚶",
+      "🍚"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "chars": 19,
+     "lines": 2,
+     "size": 65.6,
+     "vw": 4.6,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.25,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.34,
+     "top": 150,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "lines": 2,
+     "size": 65.6,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "words": 3,
+      "chars": 19,
+      "lines": 2,
+      "size": 65.6,
+      "vw": 4.6,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.34,
+      "top": 150,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.53,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.35,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.12,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      16,
+      18,
+      19,
+      22,
+      66
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.8,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 34,
+     "max": {
+      "size": 65.6,
+      "vw": 4.6,
+      "font": "Newsreader",
+      "text": "欢迎来到"
+     },
+     "monoShare": 0.35,
+     "monoProseShare": 0.35,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "深圳",
+      "2027 届 · 在读硕士 · 求职中",
+      "WELCOME",
+      "计算机技术硕士在读 · 做全栈开发与 LLM 应用落地",
+      "查看全部 →",
+      "2026.05 – 至今"
+     ],
+     "microLabels": 1,
+     "microLabelShare": 0.006,
+     "microSamples": [
+      "WELCOME"
+     ],
+     "upperShare": 0.11,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "WELCOME",
+      "above": "欢迎来到 Wingwen’s Blog",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 13.1,
+      "top": 119
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 96,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.49
+      },
+      {
+       "color": "#574f48",
+       "share": 0.19
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.15
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.14
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "博客",
+      "近期文章"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 14,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.welcome → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "figure.project-item__thumb → rgba(169, 217, 204, 0.5) 0px 3px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 5,
+     "hairlineSamples": [
+      "article.project-item 996px",
+      "article.project-item 996px",
+      "article.post-item 996px",
+      "article.post-item 996px",
+      "dl.profile-meta 270px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 5,
+     "blurred": 0,
+     "roundedBoxes": 9,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 96
+      },
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 96
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.22
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 66,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 1859,
+    "margins": {
+     "left": 61,
+     "right": 99
+    },
+    "sections": [
+     {
+      "sel": "section.welcome",
+      "tag": "section",
+      "top": 96,
+      "height": 423,
+      "words": 13,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "欢迎来到",
+       "size": 66,
+       "tag": "h1"
+      },
+      "left": 387,
+      "right": 576,
+      "textLeft": 387,
+      "textRight": 576,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 535,
+      "height": 653,
+      "words": 85,
+      "media": 3,
+      "middle": 18,
+      "heading": {
+       "text": "Lazetrade · 外贸 CRM 智能客服",
+       "size": 19,
+       "tag": "h3"
+      },
+      "left": 385,
+      "right": 99,
+      "textLeft": 404,
+      "textRight": 99,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 1204,
+      "height": 519,
+      "words": 18,
+      "media": 0,
+      "middle": 310,
+      "heading": {
+       "text": "近期文章",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 404,
+      "right": 64,
+      "textLeft": 404,
+      "textRight": 99,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "size": 66,
+      "top": 150,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 404,
+      "n": 5
+     },
+     {
+      "x": 671,
+      "n": 4
+     },
+     {
+      "x": 83,
+      "n": 3
+     },
+     {
+      "x": 387,
+      "n": 2
+     },
+     {
+      "x": 61,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 15,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.04,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 60,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.86,
+    0.92,
+    0.86
+   ],
+   "motion": {
+    "elements": 11,
+    "css": 11,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 2211,
+     "screens": 2.2,
+     "words": 128,
+     "img": 43,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "welcome-miku.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "chars": 19,
+     "lines": 1,
+     "size": 35.3,
+     "vw": 4.6,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.25,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.89,
+     "top": 195,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "lines": 1,
+     "size": 35.3,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 35.3,
+      "vw": 4.6,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 195,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.56,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.41,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.03,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      16,
+      18,
+      19,
+      35
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.8,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 60,
+     "max": {
+      "size": 35.3,
+      "vw": 4.6,
+      "font": "Newsreader",
+      "text": "欢迎来到"
+     },
+     "monoShare": 0.41,
+     "monoProseShare": 0.41,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "WELCOME",
+      "计算机技术硕士在读 · 做全栈开发与 LLM 应用落地",
+      "查看全部 →",
+      "2026.05 – 至今",
+      "全栈开发",
+      "TypeScript"
+     ],
+     "microLabels": 1,
+     "microLabelShare": 0.009,
+     "microSamples": [
+      "WELCOME"
+     ],
+     "upperShare": 0.11,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "WELCOME",
+      "above": "欢迎来到 Wingwen’s Blog",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 13.1,
+      "top": 164
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 141,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.58
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.16
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.15
+      },
+      {
+       "color": "#574f48",
+       "share": 0.1
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 41,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "博客",
+      "近期文章"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 10,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.welcome → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "figure.project-item__thumb → rgba(169, 217, 204, 0.5) 0px 3px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 4,
+     "hairlineSamples": [
+      "article.project-item 695px",
+      "article.project-item 695px",
+      "article.post-item 695px",
+      "article.post-item 695px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 4,
+     "blurred": 0,
+     "roundedBoxes": 7,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.39
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 111,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 2211,
+    "margins": {
+     "left": 33,
+     "right": 43
+    },
+    "sections": [
+     {
+      "sel": "section.welcome",
+      "tag": "section",
+      "top": 141,
+      "height": 700,
+      "words": 13,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "欢迎来到",
+       "size": 35,
+       "tag": "h1"
+      },
+      "left": 40,
+      "right": 331,
+      "textLeft": 40,
+      "textRight": 331,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 857,
+      "height": 683,
+      "words": 85,
+      "media": 0,
+      "middle": 18,
+      "heading": {
+       "text": "Lazetrade · 外贸 CRM 智能客服",
+       "size": 19,
+       "tag": "h3"
+      },
+      "left": 38,
+      "right": 43,
+      "textLeft": 58,
+      "textRight": 43,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 1556,
+      "height": 519,
+      "words": 18,
+      "media": 0,
+      "middle": 10,
+      "heading": {
+       "text": "近期文章",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 58,
+      "right": 39,
+      "textLeft": 58,
+      "textRight": 74,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "size": 35,
+      "top": 195,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 58,
+      "n": 5
+     },
+     {
+      "x": 252,
+      "n": 4
+     },
+     {
+      "x": 40,
+      "n": 1
+     },
+     {
+      "x": 194,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.91,
+    0.92,
+    0.92,
+    0.86
+   ],
+   "motion": {
+    "elements": 11,
+    "css": 11,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 2819,
+     "screens": 3.3,
+     "words": 128,
+     "img": 43,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "welcome-miku.webp",
+      "project-lazetrade.webp",
+      "project-mail.webp",
+      "project-lisa.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "chars": 19,
+     "lines": 2,
+     "size": 35.2,
+     "vw": 9,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.25,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.81,
+     "top": 194,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "lines": 2,
+     "size": 35.2,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "words": 3,
+      "chars": 19,
+      "lines": 2,
+      "size": 35.2,
+      "vw": 9,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.81,
+      "top": 194,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.56,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.41,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.03,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      16,
+      18,
+      19,
+      35
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.8,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 40,
+     "max": {
+      "size": 35.2,
+      "vw": 9,
+      "font": "Newsreader",
+      "text": "欢迎来到"
+     },
+     "monoShare": 0.41,
+     "monoProseShare": 0.41,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "WELCOME",
+      "计算机技术硕士在读 · 做全栈开发与 LLM 应用落地",
+      "查看全部 →",
+      "2026.05 – 至今",
+      "全栈开发",
+      "TypeScript"
+     ],
+     "microLabels": 1,
+     "microLabelShare": 0.009,
+     "microSamples": [
+      "WELCOME"
+     ],
+     "upperShare": 0.11,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "WELCOME",
+      "above": "欢迎来到 Wingwen’s Blog",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 13.1,
+      "top": 163
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 140,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.58
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.16
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.15
+      },
+      {
+       "color": "#574f48",
+       "share": 0.1
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "博客",
+      "近期文章"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 10,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.welcome → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "figure.project-item__thumb → rgba(169, 217, 204, 0.5) 0px 3px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 4,
+     "hairlineSamples": [
+      "article.project-item 324px",
+      "article.project-item 324px",
+      "article.post-item 324px",
+      "article.post-item 324px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 4,
+     "blurred": 0,
+     "roundedBoxes": 8,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 4,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.22
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 110,
+     "floatingPill": true,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 2819,
+    "margins": {
+     "left": 28,
+     "right": 35
+    },
+    "sections": [
+     {
+      "sel": "main#main.page-main",
+      "tag": "main",
+      "top": 124,
+      "height": 2524,
+      "words": 116,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "欢迎来到",
+       "size": 35,
+       "tag": "h1"
+      },
+      "left": 11,
+      "right": 13,
+      "textLeft": 33,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer",
+      "tag": "footer",
+      "top": 2665,
+      "height": 131,
+      "words": 8,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 40,
+      "right": 89,
+      "textLeft": 40,
+      "textRight": 89,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "size": 35,
+      "top": 194,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 33,
+      "n": 6
+     },
+     {
+      "x": 55,
+      "n": 5
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "1 tiny uppercase letter-spaced label(s): \"WELCOME\"",
+   "fix": "Prefer sentence case at body size.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "off-centre",
+   "width": 1440,
+   "message": "The margins differ: 61px on the left, 99px on the right, at 1440px.",
+   "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/tags-home2/desktop-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/tags-home2/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/tags-home2/tablet-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/tags-home2/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/tags-home2/mobile-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/tags-home2/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

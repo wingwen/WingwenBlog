@@ -4,25 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogShell from '../components/BlogShell.astro';
 import Window from '../components/Window.astro';
 import { profile } from '../data/profile';
-import { postHref } from '../lib/posts';
 import { displayPeriod, projectHref, sortProjectsNewestFirst } from '../lib/projects';
 
 const featuredProjects = sortProjectsNewestFirst(await getCollection('projects')).slice(0, 3);
 
-const recentPosts = (await getCollection('posts'))
-  .filter((post) => !post.data.draft)
-  .sort((left, right) => right.data.pubDate.getTime() - left.data.pubDate.getTime())
-  .slice(0, 3);
-
 const introOpeningSentence = profile.intro.split('。')[0];
-const homeDescription = `${profile.name}（${profile.alias}）· ${profile.tagline}。${introOpeningSentence}。`;
+const homeDescription = `${profile.alias} · ${profile.tagline}。${introOpeningSentence}。`;
 
-function formatPostDate(pubDate: Date): string {
-  const year = String(pubDate.getUTCFullYear());
-  const month = String(pubDate.getUTCMonth() + 1).padStart(2, '0');
-  const day = String(pubDate.getUTCDate()).padStart(2, '0');
-  return `${year}.${month}.${day}`;
-}
 ---
 
 <BaseLayout description={homeDescription}>
@@ -31,12 +19,12 @@ function formatPostDate(pubDate: Date): string {
       <div class="welcome__body">
         <p class="welcome__eyebrow">WELCOME</p>
         <h1 class="welcome__title">欢迎来到 <em>Wingwen’s Blog</em></h1>
-        <p class="welcome__lead">这里是{profile.name}（{profile.alias}）的个人博客，记录项目、文章和最近在做的事，欢迎随便看看。</p>
-        <p class="welcome__alias">{profile.tagline}</p>
+        <p class="welcome__lead">这里是{profile.alias}的个人博客，记录项目、文章和最近在做的事，欢迎随便看看。</p>
+        <p class="welcome__alias">{profile.tagline.replaceAll(' · ', ' ')}</p>
         <ul class="welcome__chips" role="list">
           <li><a href="/projects">项目</a></li>
           <li><a href="/about">关于</a></li>
-          <li><a href="#recent-posts">近期文章</a></li>
+          <li><a href="/posts">文章</a></li>
         </ul>
       </div>
       <figure class="welcome__art">
@@ -91,54 +79,6 @@ function formatPostDate(pubDate: Date): string {
       )
     }
 
-    {
-      recentPosts.length > 0 && (
-        <Window title="近期文章" icon="/images/home/sticker-cat-calico.webp" tone="mint">
-          <a class="window__more" slot="action" href="/posts">
-            查看全部 →
-          </a>
-          <div id="recent-posts">
-            {recentPosts.map((post) => (
-              <article class="post-item">
-                <span class="post-item__mark" aria-hidden="true"><img src="/images/home/icon-doc.webp" alt="" width="24" height="24" loading="lazy" decoding="async" /></span>
-                <h3 class="post-item__title">
-                  <a href={postHref(post.id)}>{post.data.title}</a>
-                </h3>
-                <p class="post-item__date">{formatPostDate(post.data.pubDate)}</p>
-                <p class="post-item__text">{post.data.description}</p>
-              </article>
-            ))}
-          </div>
-          <figure class="sticker sticker--post">
-            <img
-              src="/images/home/sticker-icecream-cat.webp"
-              alt=""
-              width="520"
-              height="533"
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-        </Window>
-      )
-    }
   </BlogShell>
 
-  <Fragment slot="footer-decoration">
-    <div class="footer-deco" aria-hidden="true">
-      <img src="/images/home/icon-flower.webp" alt="" width="131" height="136" loading="lazy" decoding="async" />
-      <img src="/images/home/sticker-sakura.webp" alt="" width="186" height="199" loading="lazy" decoding="async" />
-      <img src="/images/home/sticker-star.webp" alt="" width="258" height="205" loading="lazy" decoding="async" />
-    </div>
-    <figure class="sticker sticker--footer">
-      <img
-        src="/images/home/sticker-slime.webp"
-        alt=""
-        width="520"
-        height="520"
-        loading="lazy"
-        decoding="async"
-      />
-    </figure>
-  </Fragment>
 </BaseLayout>

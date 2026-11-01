@@ -16,6 +16,13 @@ outcomes:
   - '产品检索 Top-3 命中率 86%，Top-1 准确率 78%'
   - '核心 CRM 操作在桌面端与移动端保持一致'
 links: []
+screenshots:
+  - src: '/images/projects/lazetrade-app.jpg'
+    alt: 'Lazetrade 产品管理页面截图'
+    width: 1024
+    height: 580
+    caption: '产品管理 · 商品列表'
+liveUrl: 'https://wachater.com/products'
 isPlaceholder: false
 ---
 

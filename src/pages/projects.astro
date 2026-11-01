@@ -5,16 +5,64 @@ import BlogShell from '../components/BlogShell.astro';
 import PageHead from '../components/PageHead.astro';
 import Window from '../components/Window.astro';
 import { profile } from '../data/profile';
+import contributions from '../data/contributions.json';
+import repositories from '../data/repositories.json';
 import { displayPeriod, projectHref, sortProjectsNewestFirst } from '../lib/projects';
 
 const projects = sortProjectsNewestFirst(await getCollection('projects'));
-const githubProfile = profile.links.find((link) => link.label === 'GitHub');
+const githubProfile =
+  profile.links.find((link) => link.label === 'GitHub') ?? {
+    label: 'GitHub',
+    href: contributions.profileUrl,
+  };
+
+const firstContributionWeekday = new Date(`${contributions.rangeStart}T00:00:00Z`).getUTCDay();
+const trailingContributionBlanks =
+  (7 - ((firstContributionWeekday + contributions.days.length) % 7)) % 7;
+
+const contributionCells = [
+  ...Array.from({ length: firstContributionWeekday }, () => null),
+  ...contributions.days,
+  ...Array.from({ length: trailingContributionBlanks }, () => null),
+];
+
+const countedContributionTotal = contributions.days.reduce((sum, day) => sum + day.count, 0);
+if (countedContributionTotal !== contributions.total) {
+  throw new Error('GitHub 贡献快照总数与逐日数据不一致，请重新运行 npm run contributions');
+}
+
+const countedActiveDays = contributions.days.filter((day) => day.count > 0).length;
+if (countedActiveDays !== contributions.activeDays) {
+  throw new Error('GitHub 贡献快照的活跃天数与逐日数据不一致，请重新运行 npm run contributions');
+}
+
+if (repositories.repos.length === 0) {
+  throw new Error('GitHub 仓库快照为空，请运行 npm run repositories');
+}
+
+for (const repository of repositories.repos) {
+  if (!repository.url.startsWith(`https://github.com/${repositories.username}/`)) {
+    throw new Error(`仓库链接不属于 ${repositories.username}：${repository.url}`);
+  }
+}
+
+function contributionLevel(count: number): number {
+  if (count === 0) return 0;
+  if (count <= 2) return 1;
+  if (count <= 5) return 2;
+  if (count <= 9) return 3;
+  return 4;
+}
+
+function formatContributionDate(isoDate: string): string {
+  return isoDate.replaceAll('-', '.');
+}
 
 // 摘要只引用条目数量，不拼接各项目的 summary：拼接结果会随项目增加无限变长，
 // 三个项目时已经 169 字，超过搜索结果约 160 字的截断长度，且每加一个项目就改写一次本页摘要。
-const projectsDescription = `项目：共 ${projects.length} 个条目，记录背景、职责与结果，按年份从新到旧排列。`;
+const projectsDescription = `项目：${projects.length} 个精选条目与 ${repositories.repos.length} 个 GitHub 公开仓库，记录背景、职责与结果。`;
 
-const projectsLede = `共 ${projects.length} 个真实项目，按年份从新到旧排列。卡片展示技术栈与简述，详情页是背景、职责与结果。`;
+const projectsLede = `共 ${projects.length} 个精选项目，按年份从新到旧排列。卡片展示技术栈与简述，详情页是背景、职责与结果；下方是从 GitHub 自动同步的公开仓库。`;
 
 // 奇数个项目时最后一张跨两列，避免两列栅格末尾留一个空格。
 const hasWideLastCard = projects.length % 2 === 1;
@@ -25,9 +73,71 @@ const hasWideLastCard = projects.length % 2 === 1;
     <PageHead
       title="项目"
       lede={projectsLede}
-      meta={`共 ${projects.length} 个条目 · 按年份从新到旧`}
-      sticker="/images/home/sticker-star.webp"
+      meta={`${projects.length} 个精选项目 · ${repositories.repos.length} 个公开仓库`}
+      sticker="/images/home/sticker-cat-black.webp"
+      stickerWidth={300}
+      stickerHeight={274}
     />
+
+    <Window title="GitHub 贡献" icon="/images/home/icon-sparkle.webp" tone="mint">
+      <a class="window__more" slot="action" href={githubProfile.href}>
+        {githubProfile.label} 主页 →
+      </a>
+
+      <div class="contributions">
+        <div class="contributions__head">
+          <p class="contributions__summary">
+            过去一年共 <strong>{contributions.total}</strong> 次贡献，<strong>{contributions.activeDays}</strong> 天有记录。
+          </p>
+          <p class="contributions__asof">数据截至 {contributions.rangeEnd}</p>
+        </div>
+
+        <div
+          class="contributions__scroll"
+          role="img"
+          aria-label={`GitHub 贡献日历，${contributions.rangeStart} 至 ${contributions.rangeEnd}，共 ${contributions.total} 次贡献，${contributions.activeDays} 天有记录`}
+        >
+          <div class="contribution-grid" aria-hidden="true">
+            {
+              contributionCells.map((day) =>
+                day ? (
+                  <span
+                    class:list={[
+                      'contribution-cell',
+                      `contribution-cell--level-${contributionLevel(day.count)}`,
+                    ]}
+                    title={`${day.date} · ${day.count === 0 ? '没有贡献' : `${day.count} 次贡献`}`}
+                  />
+                ) : (
+                  <span class="contribution-cell contribution-cell--empty" />
+                ),
+              )
+            }
+          </div>
+        </div>
+
+        <p class="contributions__hint">左右滑动查看完整日历</p>
+
+        <div class="contributions__foot">
+          <div class="contributions__legend" aria-hidden="true">
+            <span>少</span>
+            <span class="contribution-cell contribution-cell--level-0" />
+            <span class="contribution-cell contribution-cell--level-1" />
+            <span class="contribution-cell contribution-cell--level-2" />
+            <span class="contribution-cell contribution-cell--level-3" />
+            <span class="contribution-cell contribution-cell--level-4" />
+            <span>多</span>
+          </div>
+          <p class="contributions__range">
+            {formatContributionDate(contributions.rangeStart)} – {formatContributionDate(contributions.rangeEnd)} · 仅统计公开贡献
+          </p>
+        </div>
+
+        <a class="contributions__link" href={contributions.profileUrl}>
+          在 GitHub 查看完整记录 →
+        </a>
+      </div>
+    </Window>
 
     <section class="project-grid" aria-label="项目列表">
       {
@@ -76,22 +186,47 @@ const hasWideLastCard = projects.length % 2 === 1;
       }
     </section>
 
-    <Window title="GitHub 贡献" icon="/images/home/icon-sparkle.webp" tone="mint">
-      <div class="github-slot">
-        <p class="github-slot__tag">待接入真实数据</p>
-        <p class="github-slot__text">
-          贡献日历还没有接上 GitHub 数据。接入之后，这里会显示{githubProfile ? ` ${githubProfile.href.replace(/^https?:\/\//, '')} ` : ' GitHub '}的真实提交记录。
-          数据到位之前，这一块保持为空状态，不渲染占位格子，也不编造提交。
-        </p>
-        {
-          githubProfile && (
-            <a class="github-slot__link" href={githubProfile.href}>
-              查看 {githubProfile.label} 主页 →
-            </a>
-          )
-        }
-      </div>
-    </Window>
+    {
+      repositories.repos.length > 0 && (
+        <Window title="GitHub 仓库" icon="/images/home/icon-folder.webp" tone="pink">
+          <a class="window__more" slot="action" href={repositories.profileUrl}>
+            GitHub 主页 →
+          </a>
+
+          <p class="repos__meta">
+            共 {repositories.repos.length} 个公开仓库 · 数据截至 {formatContributionDate(repositories.fetchedAt.slice(0, 10))} · 来自 GitHub 公开 API
+          </p>
+
+          <div class="repo-grid">
+            {repositories.repos.map((repository) => (
+              <article class="repo-card">
+                <div class="repo-card__head">
+                  <h3 class="repo-card__name">
+                    <a href={repository.url}>{repository.name}</a>
+                  </h3>
+                  {repository.fork && <span class="repo-card__badge">Fork</span>}
+                  {repository.archived && <span class="repo-card__badge">Archived</span>}
+                </div>
+                <p class:list={['repo-card__desc', !repository.description && 'repo-card__desc--empty']}>
+                  {repository.description || '仓库未填写简介。'}
+                </p>
+                {repository.tags.length > 0 && (
+                  <ul class="repo-card__tags" role="list" aria-label="技术标签">
+                    {repository.tags.map((tag) => <li>{tag}</li>)}
+                  </ul>
+                )}
+                <div class="repo-card__foot">
+                  <span>{formatContributionDate(repository.updatedAt.slice(0, 10))} 更新</span>
+                  <a href={repository.url}>查看仓库 →</a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Window>
+      )
+    }
+
+
   </BlogShell>
 </BaseLayout>
 
@@ -206,36 +341,269 @@ const hasWideLastCard = projects.length % 2 === 1;
     text-decoration-thickness: 2px;
   }
 
-  .github-slot {
-    display: grid;
-    gap: 0.5rem;
-    justify-items: start;
-    padding: 1.1rem 1rem;
-    border: 2px dashed var(--blog-mint-line);
-    border-radius: 12px;
-    background-color: #f2faf7;
-  }
-
-  .github-slot__tag {
-    margin: 0;
-    padding: 0.1rem 0.6rem;
-    border-radius: 999px;
-    background-color: var(--blog-mint);
+  .repos__meta {
+    margin: 0 0 0.15rem;
     font-family: var(--font-mono);
-    font-size: 0.84rem;
-    letter-spacing: 0.04em;
-    color: var(--blog-mint-text);
-  }
-
-  .github-slot__text {
-    margin: 0;
-    max-width: 60ch;
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 0.82rem;
+    line-height: 1.7;
     color: var(--blog-ink-soft);
   }
 
-  .github-slot__link {
+  .repo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .repo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    min-width: 0;
+    padding: 0.8rem 0.85rem;
+    border: 2px solid var(--blog-mint-line);
+    border-radius: 12px;
+    background-color: #fffdf8;
+  }
+
+  .repo-card__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .repo-card__name {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .repo-card__name a {
+    color: var(--blog-ink);
+    text-decoration: none;
+  }
+
+  .repo-card__name a:hover {
+    color: var(--blog-pink-text);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .repo-card__badge {
+    padding: 0.02rem 0.45rem;
+    border-radius: 999px;
+    background-color: var(--blog-pink);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--blog-pink-text);
+  }
+
+  .repo-card__desc {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--blog-ink);
+    overflow-wrap: anywhere;
+  }
+
+  .repo-card__desc--empty {
+    color: var(--blog-ink-soft);
+  }
+
+  .repo-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.28rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .repo-card__tags li {
+    padding: 0.04rem 0.48rem;
+    border-radius: 999px;
+    background-color: var(--blog-mint);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--blog-mint-text);
+  }
+
+  .repo-card__tags li:nth-child(even) {
+    background-color: var(--blog-pink);
+    color: var(--blog-pink-text);
+  }
+
+  .repo-card__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.3rem 0.8rem;
+    margin-block-start: auto;
+    padding-block-start: 0.35rem;
+    border-block-start: 1px dashed var(--blog-mint-line);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--blog-ink-soft);
+  }
+
+  .repo-card__foot a {
+    color: var(--blog-pink-text);
+    text-decoration: none;
+  }
+
+  .repo-card__foot a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  @media (min-width: 48em) {
+    .repo-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 64em) {
+    .repo-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .contributions {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .contributions__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.3rem 1rem;
+  }
+
+  .contributions__summary {
+    margin: 0;
+    max-width: 52ch;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--blog-ink);
+  }
+
+  .contributions__summary strong {
+    font-family: var(--font-mono);
+    font-size: 1.1em;
+    color: var(--blog-pink-text);
+  }
+
+  .contributions__asof {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--blog-ink-soft);
+    white-space: nowrap;
+  }
+
+  .contributions__scroll {
+    max-width: 100%;
+    padding-block: 0.2rem 0.35rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--blog-pink-line) transparent;
+  }
+
+  .contribution-grid {
+    --cell: 11px;
+    --gap: 3px;
+    display: grid;
+    grid-template-rows: repeat(7, var(--cell));
+    grid-auto-flow: column;
+    grid-auto-columns: var(--cell);
+    gap: var(--gap);
+    width: max-content;
+  }
+
+  .contribution-cell {
+    display: block;
+    width: var(--cell);
+    height: var(--cell);
+    border-radius: 2px;
+    background-color: #f4e7ec;
+  }
+
+  .contribution-cell--empty {
+    background-color: transparent;
+  }
+
+  .contribution-cell--level-0 {
+    background-color: #f4e7ec;
+  }
+
+  .contribution-cell--level-1 {
+    background-color: var(--blog-pink);
+  }
+
+  .contribution-cell--level-2 {
+    background-color: #f0b0c5;
+  }
+
+  .contribution-cell--level-3 {
+    background-color: #dc7c9d;
+  }
+
+  .contribution-cell--level-4 {
+    background-color: #b9476f;
+  }
+
+  .contribution-cell[title]:hover {
+    outline: 1px solid var(--blog-pink-text);
+    outline-offset: 1px;
+  }
+
+  .contributions__hint {
+    display: none;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--blog-ink-soft);
+  }
+
+  .contributions__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem 1rem;
+  }
+
+  .contributions__legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--blog-ink-soft);
+  }
+
+  .contributions__legend .contribution-cell {
+    width: 10px;
+    height: 10px;
+  }
+
+  .contributions__range {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    color: var(--blog-ink-soft);
+  }
+
+  .contributions__link {
+    justify-self: start;
     font-family: var(--font-mono);
     font-size: 0.84rem;
     letter-spacing: 0.03em;
@@ -243,9 +611,22 @@ const hasWideLastCard = projects.length % 2 === 1;
     text-decoration: none;
   }
 
-  .github-slot__link:hover {
+  .contributions__link:hover {
     text-decoration: underline;
     text-decoration-thickness: 2px;
+  }
+
+  @media (max-width: 63.99em) {
+    .contribution-grid {
+      --cell: 9px;
+      --gap: 2px;
+    }
+  }
+
+  @media (max-width: 40em) {
+    .contributions__hint {
+      display: block;
+    }
   }
 
   @media (min-width: 48em) {

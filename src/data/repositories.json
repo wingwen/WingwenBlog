@@ -1,0 +1,54 @@
+{
+  "username": "wingwen",
+  "profileUrl": "https://github.com/wingwen",
+  "sourceUrl": "https://api.github.com/users/wingwen/repos",
+  "fetchedAt": "2026-11-01T05:52:08.598Z",
+  "repos": [
+    {
+      "name": "WingwenBlog",
+      "description": "这里是Wingwen的个人博客，记录项目、文章和最近在做的事，欢迎随便看看。",
+      "url": "https://github.com/wingwen/WingwenBlog",
+      "homepage": "",
+      "language": "Astro",
+      "tags": [
+        "Astro",
+        "CSS",
+        "TypeScript",
+        "JavaScript"
+      ],
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-11-01T03:35:03Z",
+      "pushedAt": "2026-11-01T03:34:58Z"
+    },
+    {
+      "name": "Mem-RAG",
+      "description": "",
+      "url": "https://github.com/wingwen/Mem-RAG",
+      "homepage": "",
+      "language": "Python",
+      "tags": [
+        "Python",
+        "HTML"
+      ],
+      "fork": false,
+      "archived": false,
+      "updatedAt": "2026-06-04T12:05:23Z",
+      "pushedAt": "2026-06-04T12:05:12Z"
+    },
+    {
+      "name": "CoreCoder-Agent",
+      "description": "扩展 Fork — 基于 he-yufeng/CoreCoder（Claude Code 最小复现，~1,400 行 Python），扩展为完整 Autonomous Coding Agent，新增 Planner、RAG、Memory、Multi-Agent、Reflection、MCP、Browser、AST 编辑与 SWE-bench 评测。",
+      "url": "https://github.com/wingwen/CoreCoder-Agent",
+      "homepage": "https://pypi.org/project/corecoder/",
+      "language": "Python",
+      "tags": [
+        "Python"
+      ],
+      "fork": true,
+      "archived": false,
+      "updatedAt": "2026-05-30T10:12:47Z",
+      "pushedAt": "2026-05-30T10:12:42Z"
+    }
+  ]
+}

@@ -20,7 +20,7 @@ interface Props {
 const { title, description, ogType = 'website' } = Astro.props;
 
 // 兜底只描述站点本身，不引入任何新的个人信息。
-const siteDescription = `${profile.name} · ${profile.tagline}`;
+const siteDescription = `${profile.alias} · ${profile.tagline}`;
 const metaDescription = description?.trim() || siteDescription;
 const documentTitle = title ? `${title} · ${site.name}` : site.name;
 
@@ -47,7 +47,7 @@ const shareImageUrl = new URL('/og-default.png', Astro.site);
     <meta property="og:image" content={shareImageUrl.href} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={`${profile.name}（${profile.alias}）· ${profile.tagline}`} />
+    <meta property="og:image:alt" content={`${profile.alias} · ${profile.tagline}`} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -66,8 +66,6 @@ const shareImageUrl = new URL('/og-default.png', Astro.site);
     <main id="main" class="page-main" tabindex="-1">
       <slot />
     </main>
-    <SiteFooter>
-      <slot name="footer-decoration" />
-    </SiteFooter>
+    <SiteFooter />
   </body>
 </html>

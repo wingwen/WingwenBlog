@@ -9,6 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "contributions": "node scripts/fetch-contributions.mjs",
+    "repositories": "node scripts/fetch-repositories.mjs",
+    "github": "npm run contributions && npm run repositories",
     "check": "astro check",
     "test": "vitest run",
     "astro": "astro"

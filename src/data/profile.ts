@@ -42,10 +42,13 @@ export interface Portrait {
 }
 
 export interface Profile {
+  /** 对外统一显示名。 */
   name: string;
-  /** 对外使用的英文昵称，与站名一起出现，不替代正式姓名。 */
+  /** 与站名一起出现的名字，目前与 name 相同。 */
   alias: string;
   tagline: string;
+  /** 侧栏顶部的一句话介绍，和关于页的长简介分开。 */
+  siteIntro: string;
   intro: string;
   location: string;
   status: string;
@@ -57,15 +60,18 @@ export interface Profile {
   experience: ExperienceItem[];
   skills: SkillGroup[];
   publications: Publication[];
+  /** 侧栏「个人标签」的短标签，顺序按给定内容展示。 */
+  tags: string[];
   /** 个人喜好，只以文字形式出现，不使用任何角色形象。 */
   interests: string[];
   isPlaceholder: boolean;
 }
 
 export const profile: Profile = {
-  name: '庞楚雯',
+  name: 'Wingwen',
   alias: 'Wingwen',
-  tagline: '计算机技术硕士在读 · 做全栈开发与 LLM 应用落地',
+  tagline: '计算机技术专业 · 全栈开发实习生',
+  siteIntro: '这里是我的个人网站，记录热爱与成长。喜欢动漫编程，乐享生活，期待相遇✨',
   intro:
     '2027 届计算机技术硕士，求职方向是开发与 AI Agent。做过外贸 B2B 客服系统的邮件全链路、Agent 行为评测体系，以及基于 pgvector 的产品检索。我关心的不是模型能不能答出来，而是把模型能力接进真实业务之后，怎么让它可控、可验证、能兜底。',
   location: '深圳',
@@ -73,12 +79,14 @@ export const profile: Profile = {
   email: '2592959544@qq.com',
   portrait: {
     src: portraitImage,
-    alt: '庞楚雯的证件照',
+    alt: 'Wingwen 的证件照',
   },
   links: [{ label: 'GitHub', href: 'https://github.com/wingwen' }],
-  // 简历 PDF 的公开版本尚未确认。填入 { href: '/resume.pdf', label: '下载简历（PDF）' }
-  // 并把文件放到 public/resume.pdf，下载入口会自动出现在关于页。
-  resume: null,
+  // 公开版简历放在 public/profile.resume.pdf，构建后由站点同源提供。
+  resume: {
+    href: '/profile.resume.pdf',
+    label: '下载简历（PDF）',
+  },
   education: [
     {
       school: '广州大学',
@@ -150,6 +158,32 @@ export const profile: Profile = {
       title: 'Backdoor Watermarking for Continuous Prompt Learning Models in Industrial Systems',
       venue: 'CCF-B',
     },
+  ],
+  tags: [
+    '猫猫🐱',
+    '狗狗🐶',
+    'coding',
+    '初音未来miku',
+    'YOYO酱',
+    '游泳🏊',
+    '载酒寻歌',
+    '罗小黑',
+    '利姆鲁',
+    '动漫',
+    'JOJO',
+    '平和',
+    '游戏',
+    'steam',
+    '👀玄学',
+    '音乐🎵',
+    '喝水💦',
+    'bilibili',
+    '鹅肝',
+    '散步🚶',
+    '成长型',
+    '爱好和平',
+    '榴莲',
+    '米饭🍚',
   ],
   interests: ['初音未来', '猫猫', '罗小黑', '利姆鲁'],
   isPlaceholder: false,

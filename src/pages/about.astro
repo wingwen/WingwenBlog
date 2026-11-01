@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogShell from '../components/BlogShell.astro';
 import PageHead from '../components/PageHead.astro';
@@ -7,9 +6,7 @@ import Window from '../components/Window.astro';
 import { profile } from '../data/profile';
 import type { EducationItem } from '../data/profile';
 
-const portrait = profile.portrait;
 const resumeDownload = profile.resume;
-const primaryEducation = profile.education[0];
 
 function educationMeta(item: EducationItem): string[] {
   const parts = [item.major, item.degree];
@@ -19,58 +16,23 @@ function educationMeta(item: EducationItem): string[] {
   return parts;
 }
 
-const resumeRequestHref = `mailto:${profile.email}?subject=${encodeURIComponent('简历索取：庞楚雯')}`;
+const resumeRequestHref = `mailto:${profile.email}?subject=${encodeURIComponent('简历索取：Wingwen')}`;
 
 // 与首页摘要区分开：首页用简介首句，关于页用所在地与状态。
-const aboutDescription = `关于${profile.name}（${profile.alias}）：${profile.tagline}。现居${profile.location}，${profile.status}。`;
+const aboutDescription = `关于${profile.alias}：${profile.tagline}。现居${profile.location}，${profile.status}。`;
 
-const profileFacts = [
-  { label: '坐标', value: profile.location },
-  { label: '状态', value: profile.status },
-  {
-    label: '在读',
-    value: primaryEducation ? `${primaryEducation.school} · ${primaryEducation.major}` : '',
-  },
-].filter((fact) => fact.value);
 ---
 
 <BaseLayout title="关于" description={aboutDescription}>
   <BlogShell>
     <PageHead
-      title="关于"
-      lede={`${profile.name}，网上常用 ${profile.alias}。${profile.tagline}。`}
+      title="About"
+      lede="你好👋，我是Wingwen，广州大学计算机专业硕士在读。"
       meta={`${profile.location} · ${profile.status}`}
-      sticker="/images/home/sticker-sakura.webp"
+      sticker="/images/home/3a7a6391394a68bf88f44d7baa0087a5aa57c20c.jpg@240w_240h_1c_1s_!web-avatar-nav.webp"
+      stickerWidth={240}
+      stickerHeight={240}
     />
-
-    <Window title="自我介绍" icon="/images/home/icon-user.webp" tone="pink">
-      <div class="about-intro">
-        {
-          portrait && (
-            <Image
-              class="about-portrait"
-              src={portrait.src}
-              alt={portrait.alt}
-              width={320}
-              loading="eager"
-            />
-          )
-        }
-        <div class="about-intro__text">
-          <p class="about-intro__body">{profile.intro}</p>
-          <dl class="about-facts">
-            {
-              profileFacts.map((fact) => (
-                <div>
-                  <dt>{fact.label}</dt>
-                  <dd>{fact.value}</dd>
-                </div>
-              ))
-            }
-          </dl>
-        </div>
-      </div>
-    </Window>
 
     <Window title="教育与经历" icon="/images/home/icon-cap.webp" tone="mint">
       <h3 class="about-subtitle">教育</h3>
@@ -89,6 +51,19 @@ const profileFacts = [
           ))
         }
       </ol>
+
+      <h3 class="about-subtitle">毕设 / 论文：数据定价</h3>
+      <div class="thesis">
+        <p class="thesis__lede">
+          「训练样本对模型性能的贡献如何量化」展开研究，分别针对时序非平稳数据与通用表格/文本噪声数据设计两套估值方法，并搭建统一实验评估框架，支撑高价值样本筛选与噪声样本发现两类下游任务。
+        </p>
+        <p class="thesis__label">主要工作</p>
+        <ul class="cv-item__points" role="list">
+          <li>设计并实现 Temporal-Decay Shapley（TDS）方法族：基础指数时间衰减、幂次改进版、多尺度融合 MS-TDS，在 Shapley 边际贡献框架中显式引入样本时效性。</li>
+          <li>提出 SUCV 估值框架：InfoNCE 对比预训练 + 监督梯度 proxy + LoRA 集成降方差，在 Google DVRL 代码库上完成端到端实现与严格消融（w/o InfoNCE、w/o LoRA）。</li>
+          <li>构建统一评估协议：Remove-High（高分样本移除曲线）与 Corrupted Discovery（低分噪声发现），对比 LOO、Shapley、TMC-Shapley、Random 等基线。</li>
+        </ul>
+      </div>
 
       <h3 class="about-subtitle">实习与工作</h3>
       <ol class="cv-list" role="list">
@@ -144,35 +119,13 @@ const profileFacts = [
       }
     </Window>
 
-    <Window title="个人兴趣" icon="/images/home/icon-sparkle.webp" tone="mint">
-      <ul class="about-interests" role="list">
-        {profile.interests.map((interest) => <li>{interest}</li>)}
-      </ul>
-    </Window>
-
-    <Window title="联系方式" icon="/images/home/icon-heart.webp" tone="pink">
-      <div class="about-contact">
-        <a class="about-action" href={`mailto:${profile.email}`}>
-          <span class="about-action__label">邮箱</span>
-          <span class="about-action__value">{profile.email}</span>
-        </a>
-        {
-          profile.links.map((link) => (
-            <a class="about-action" href={link.href}>
-              <span class="about-action__label">{link.label}</span>
-              <span class="about-action__value">{link.href.replace(/^https?:\/\//, '')}</span>
-            </a>
-          ))
-        }
-      </div>
-    </Window>
-
     <Window title="简历" icon="/images/home/icon-doc.webp" tone="mint">
       {
         resumeDownload ? (
           <p class="about-resume">
-            <a href={resumeDownload.href} download>
-              {resumeDownload.label}
+            <a class="about-action about-action--inline" href={resumeDownload.href} download>
+              <span class="about-action__label">PDF 简历</span>
+              <span class="about-action__value">{resumeDownload.label} ↓</span>
             </a>
           </p>
         ) : (
@@ -194,58 +147,19 @@ const profileFacts = [
 </BaseLayout>
 
 <style>
-  .about-intro {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .about-portrait {
-    width: 7.5rem;
-    height: auto;
-    border: 2px solid var(--blog-pink-line);
-    border-radius: 12px;
-    background-color: var(--blog-pink);
-    object-fit: cover;
-  }
-
-  .about-intro__text {
-    display: grid;
-    gap: 0.8rem;
-  }
-
-  .about-intro__body {
-    margin: 0;
+  .thesis__lede {
+    margin: 0.6rem 0 0;
     font-size: 1rem;
-    line-height: 1.9;
+    line-height: 1.85;
     color: var(--blog-ink);
   }
 
-  .about-facts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem 1.4rem;
-    margin: 0;
-    padding-block-start: 0.7rem;
-    border-block-start: 1px dashed var(--blog-pink-line);
-  }
-
-  .about-facts > div {
-    display: flex;
-    align-items: baseline;
-    gap: 0.4rem;
-  }
-
-  .about-facts dt {
+  .thesis__label {
+    margin: 0.7rem 0 0;
     font-family: var(--font-mono);
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     letter-spacing: 0.05em;
     color: var(--blog-pink-text);
-  }
-
-  .about-facts dd {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--blog-ink);
   }
 
   .about-subtitle {
@@ -315,11 +229,12 @@ const profileFacts = [
 
   .cv-item__points {
     display: grid;
+    max-width: 60ch;
     gap: 0.35rem;
     margin: 0.5rem 0 0;
     padding: 0;
     list-style: none;
-    font-size: 0.92rem;
+    font-size: 1rem;
     line-height: 1.8;
   }
 
@@ -395,7 +310,7 @@ const profileFacts = [
 
   .about-publication__title {
     font-style: italic;
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .about-publication__venue {
@@ -405,40 +320,6 @@ const profileFacts = [
     font-family: var(--font-mono);
     font-size: 0.82rem;
     color: var(--blog-mint-text);
-  }
-
-  .about-interests {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .about-interests li {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.2rem 0.7rem;
-    border-radius: 999px;
-    background-color: var(--blog-cream);
-    border: 1px solid var(--blog-mint-line);
-    font-size: 0.92rem;
-  }
-
-  .about-interests li::before {
-    content: '';
-    width: 0.36rem;
-    height: 0.36rem;
-    border-radius: 50%;
-    background-color: var(--blog-pink-line);
-  }
-
-  .about-contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
   }
 
   .about-action {
@@ -508,15 +389,4 @@ const profileFacts = [
     font-size: 0.9rem;
   }
 
-  @media (min-width: 40em) {
-    .about-intro {
-      grid-template-columns: 8.5rem minmax(0, 1fr);
-      align-items: start;
-      gap: 1.1rem;
-    }
-
-    .about-portrait {
-      width: 100%;
-    }
-  }
 </style>

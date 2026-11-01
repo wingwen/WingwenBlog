@@ -34,7 +34,21 @@ const hasLinks = Boolean(data.links && data.links.length > 0);
 
     <header class="project__header">
       <div class="project__title-row">
-        <h1 class="project__title">{data.title}</h1>
+        <h1 class="project__title">
+        {data.liveUrl ? (
+          <a
+            class="project__title-link"
+            href={data.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${data.title}（在新标签页打开）`}
+          >
+            {data.title}
+          </a>
+        ) : (
+          data.title
+        )}
+      </h1>
         <PlaceholderBadge isPlaceholder={data.isPlaceholder} />
       </div>
       <p class="project__meta">
@@ -46,6 +60,27 @@ const hasLinks = Boolean(data.links && data.links.length > 0);
       </ul>
       <p class="project__lede">{data.summary}</p>
     </header>
+
+    {
+      data.screenshots && data.screenshots.length > 0 && (
+        <section class="project__section project__shots" aria-label="系统截图">
+          <SectionHeader title="系统截图" />
+          {data.screenshots.map((screenshot) => (
+            <figure class="project-shot">
+              <img
+                src={screenshot.src}
+                alt={screenshot.alt}
+                width={screenshot.width}
+                height={screenshot.height}
+                loading="lazy"
+                decoding="async"
+              />
+              {screenshot.caption && <figcaption>{screenshot.caption}</figcaption>}
+            </figure>
+          ))}
+        </section>
+      )
+    }
 
     <section class="project__section">
       <SectionHeader title="背景" />
@@ -148,6 +183,23 @@ const hasLinks = Boolean(data.links && data.links.length > 0);
     font-weight: 400;
   }
 
+  .project__title-link {
+    color: inherit;
+    text-decoration: none;
+    padding: 0.02em 0.1em;
+    margin-inline: -0.1em;
+    border-radius: 4px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    transition: background-color 0.18s var(--ease), color 0.18s var(--ease);
+  }
+
+  .project__title-link:hover,
+  .project__title-link:focus-visible {
+    background-color: var(--blog-pink);
+    color: var(--blog-pink-text);
+  }
+
   .project__meta {
     display: flex;
     flex-wrap: wrap;
@@ -166,6 +218,32 @@ const hasLinks = Boolean(data.links && data.links.length > 0);
 
   .project__stack {
     margin-block-start: var(--space-1);
+  }
+
+  .project__shots {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .project-shot {
+    margin: 0;
+  }
+
+  .project-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background-color: #fff;
+  }
+
+  .project-shot figcaption {
+    margin-block-start: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
   }
 
   .project__lede {

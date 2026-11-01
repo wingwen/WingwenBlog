@@ -8,9 +8,13 @@ const currentYear = new Date().getFullYear();
 <footer class="site-footer">
   <div class="wrap site-footer__inner">
     <p class="site-footer__brand">{site.name}</p>
-    <p class="site-footer__owner">{profile.name} · {profile.alias}</p>
+    <p class="site-footer__owner">{profile.alias}</p>
     <p>© {currentYear}</p>
     <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
-    <slot />
+    <div class="footer-deco" aria-hidden="true">
+      <img src="/images/home/icon-flower.webp" alt="" width="131" height="136" loading="lazy" decoding="async" />
+      <img src="/images/home/sticker-sakura.webp" alt="" width="186" height="199" loading="lazy" decoding="async" />
+      <img src="/images/home/sticker-star.webp" alt="" width="258" height="205" loading="lazy" decoding="async" />
+    </div>
   </div>
 </footer>

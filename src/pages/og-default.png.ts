@@ -28,7 +28,7 @@ export const GET: APIRoute = async () => {
   <text x="64" y="292" font-family="${serifStack}" font-size="120" fill="#2B2624">${escapeXml(profile.name)}</text>
   <text x="64" y="356" font-family="${serifStack}" font-size="34" fill="#6B6159">${escapeXml(profile.tagline)}</text>
   <rect x="64" y="398" width="72" height="2" fill="#9C3255"/>
-  <text x="64" y="500" font-family="${monoStack}" font-size="22" letter-spacing="2" fill="#1E6B61">${escapeXml(profile.alias)} · ${escapeXml(profile.location)} · ${escapeXml(profile.status)}</text>
+  <text x="64" y="500" font-family="${monoStack}" font-size="22" letter-spacing="2" fill="#1E6B61">${escapeXml(profile.location)} · ${escapeXml(profile.status)}</text>
 </svg>`;
 
   const png = await sharp(Buffer.from(svg)).png({ compressionLevel: 9 }).toBuffer();

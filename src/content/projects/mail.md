@@ -15,6 +15,13 @@ outcomes:
   - '覆盖从收信到群发的完整业务闭环'
   - '内容风险与投递异常各有确定性的拦截路径，而不是靠人工盯'
 links: []
+liveUrl: 'https://wachater.com/email'
+screenshots:
+  - src: '/images/projects/mail-app.png'
+    alt: 'Mail 邮件系统收件箱界面截图'
+    width: 2618
+    height: 1482
+    caption: '邮箱 · 收件箱'
 isPlaceholder: false
 ---
 

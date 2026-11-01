@@ -6,8 +6,7 @@ import { profile } from '../data/profile';
 const portrait = profile.portrait;
 const primaryEducation = profile.education[0];
 
-// 侧栏正文取简介的前两句，避免把整段塞进窄栏。
-const sidebarIntro = `${profile.intro.split('。').slice(0, 2).join('。')}。`;
+const taglineParts = profile.tagline.split(' · ');
 
 const profileFacts = [
   { label: '坐标', value: profile.location, icon: 'icon-house' },
@@ -35,13 +34,18 @@ const profileFacts = [
       )
     }
     <div>
-      <p class="profile-name">{profile.name}</p>
       <span class="profile-alias">{profile.alias}</span>
-      <span class="profile-role">{profile.tagline}</span>
+      <span class="profile-role">
+        {taglineParts.map((part) => (
+          <>
+            <span class="profile-role__part">{part}</span>{' '}
+          </>
+        ))}
+      </span>
     </div>
   </div>
 
-  <p class="profile-intro">{sidebarIntro}</p>
+  <p class="profile-intro">{profile.siteIntro}</p>
 
   <dl class="profile-meta">
     {
@@ -103,35 +107,39 @@ const profileFacts = [
   </dl>
 </Window>
 
-<Window title="喜欢的东西" icon="/images/home/icon-sparkle.webp" tone="pink">
-  <ul class="interests" role="list">
-    {profile.interests.map((interest) => <li>{interest}</li>)}
-  </ul>
-  <figure class="sticker sticker--side">
-    <img
-      src="/images/home/sticker-black-cat.webp"
-      alt=""
-      width="520"
-      height="438"
-      loading="lazy"
-      decoding="async"
-    />
-  </figure>
+<Window title="个人标签" icon="/images/home/icon-sparkle.webp" tone="pink">
+  <div class="tags-layout">
+    <figure class="sticker sticker--side">
+      <img
+        src="/images/home/sticker-slime.webp"
+        alt=""
+        width="520"
+        height="520"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+    <ul class="tag-cloud" role="list">
+      {profile.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+  </div>
+
+  <div class="notice-note-wrap">
+    <span class="notice-note__tape" aria-hidden="true"></span>
+    <aside class="notice-note">
+      <p class="notice-note__text">
+        本网站图片素材均来源于网络，有任何问题请<a href={`mailto:${profile.email}`}>联系我</a>删除
+      </p>
+      <img
+        class="notice-note__miku"
+        src="/images/home/sticker-miku.webp"
+        alt=""
+        width="200"
+        height="200"
+        loading="lazy"
+        decoding="async"
+      />
+    </aside>
+  </div>
 </Window>
 
-<Window title="技能" icon="/images/home/icon-book.webp" tone="mint">
-  <dl class="skill-groups">
-    {
-      profile.skills.slice(0, 3).map((group) => (
-        <div>
-          <dt>{group.group}</dt>
-          <dd>
-            {group.items.map((item) => (
-              <span>{item}</span>
-            ))}
-          </dd>
-        </div>
-      ))
-    }
-  </dl>
-</Window>

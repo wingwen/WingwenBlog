@@ -1,0 +1,1318 @@
+{
+ "url": "http://localhost:4322/projects",
+ "at": "2026-11-01T03:57:57.892Z",
+ "allow": [
+  "mono",
+  "shadow",
+  "hairline",
+  "dashed",
+  "palette-cream",
+  "font-count",
+  "pill-nav",
+  "no-footage",
+  "icon-cards"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.81,
+    0.86
+   ],
+   "motion": {
+    "elements": 34,
+    "css": 34,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 1621,
+     "screens": 1.8,
+     "words": 217,
+     "img": 36,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 13,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "project-lazetrade.webp",
+      "project-mail.webp",
+      "project-lisa.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "项目",
+     "words": 1,
+     "chars": 2,
+     "lines": 1,
+     "size": 72,
+     "vw": 5,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.47,
+     "top": 117,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "项目",
+     "words": 1,
+     "lines": 1,
+     "size": 72,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "项目",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 72,
+      "vw": 5,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.47,
+      "top": 117,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "ui-monospace",
+       "share": 0.56,
+       "mono": false
+      },
+      {
+       "family": "Newsreader",
+       "share": 0.36,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.08,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      22,
+      72
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.8,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 34,
+     "max": {
+      "size": 72,
+      "vw": 5,
+      "font": "Newsreader",
+      "text": "项目"
+     },
+     "monoShare": 0.56,
+     "monoProseShare": 0.56,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "深圳",
+      "2027 届 · 在读硕士 · 求职中",
+      "共 3 个条目 · 按年份从新到旧",
+      "2026.05 – 至今",
+      "全栈开发",
+      "TypeScript"
+     ],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.09,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.3
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.23
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.22
+      },
+      {
+       "color": "#574f48",
+       "share": 0.22
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 0,
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "项目"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 11,
+     "shadowOverlay": 5,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "header.page-head → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "figure.sticker.page-head__sticker → rgba(214, 170, 182, 0.45) 0px 3px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 1,
+     "hairlineSamples": [
+      "dl.profile-meta 270px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 1,
+     "blurred": 0,
+     "roundedBoxes": 12,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 3,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 96
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.1
+     },
+     {
+      "type": "img",
+      "ratio": 0.1
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 66,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 1621,
+    "margins": {
+     "left": 61,
+     "right": 63
+    },
+    "sections": [
+     {
+      "sel": "header.page-head",
+      "tag": "header",
+      "top": 96,
+      "height": 231,
+      "words": 9,
+      "media": 0,
+      "middle": 255,
+      "heading": {
+       "text": "项目",
+       "size": 72,
+       "tag": "h1"
+      },
+      "left": 388,
+      "right": 70,
+      "textLeft": 388,
+      "textRight": 389,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project-grid",
+      "tag": "section",
+      "top": 343,
+      "height": 862,
+      "words": 88,
+      "media": 3,
+      "middle": 0,
+      "heading": {
+       "text": "Lazetrade · 外贸 CRM 智能客服",
+       "size": 16,
+       "tag": "h3"
+      },
+      "left": 383,
+      "right": 63,
+      "textLeft": 383,
+      "textRight": 64,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 1221,
+      "height": 280,
+      "words": 21,
+      "media": 0,
+      "middle": 416,
+      "heading": {
+       "text": "GitHub 贡献",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 383,
+      "right": 61,
+      "textLeft": 383,
+      "textRight": 61,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "项目",
+      "size": 72,
+      "top": 117,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 83,
+      "n": 4
+     },
+     {
+      "x": 404,
+      "n": 3
+     },
+     {
+      "x": 61,
+      "n": 1
+     },
+     {
+      "x": 388,
+      "n": 1
+     },
+     {
+      "x": 815,
+      "n": 1
+     },
+     {
+      "x": 928,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.04,
+    "voidBox": {
+     "x": 480,
+     "y": 840,
+     "w": 960,
+     "h": 60
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.92,
+    0.79
+   ],
+   "motion": {
+    "elements": 18,
+    "css": 18,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1583,
+     "screens": 1.5,
+     "words": 132,
+     "img": 36,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 13,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "project-lazetrade.webp",
+      "project-mail.webp",
+      "project-lisa.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "项目",
+     "words": 1,
+     "chars": 2,
+     "lines": 1,
+     "size": 38.4,
+     "vw": 5,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.78,
+     "top": 162,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "项目",
+     "words": 1,
+     "lines": 1,
+     "size": 38.4,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "项目",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 38.4,
+      "vw": 5,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 162,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "ui-monospace",
+       "share": 0.54,
+       "mono": false
+      },
+      {
+       "family": "Newsreader",
+       "share": 0.35,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.11,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      38
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.8,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 49,
+     "max": {
+      "size": 38.4,
+      "vw": 5,
+      "font": "Newsreader",
+      "text": "项目"
+     },
+     "monoShare": 0.54,
+     "monoProseShare": 0.54,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "共 3 个条目 · 按年份从新到旧",
+      "2026.05 – 至今",
+      "全栈开发",
+      "TypeScript",
+      "Nuxt 3",
+      "Vue 3"
+     ],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.08,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.4
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.21
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.2
+      },
+      {
+       "color": "#574f48",
+       "share": 0.18
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 0,
+     "height": 41,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "项目"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 11,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "header.page-head → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "figure.sticker.page-head__sticker → rgba(214, 170, 182, 0.45) 0px 3px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 9,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 3,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 111,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 1583,
+    "margins": {
+     "left": 33,
+     "right": 36
+    },
+    "sections": [
+     {
+      "sel": "header.page-head",
+      "tag": "header",
+      "top": 141,
+      "height": 191,
+      "words": 9,
+      "media": 0,
+      "middle": 28,
+      "heading": {
+       "text": "项目",
+       "size": 38,
+       "tag": "h1"
+      },
+      "left": 42,
+      "right": 45,
+      "textLeft": 42,
+      "textRight": 137,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project-grid",
+      "tag": "section",
+      "top": 348,
+      "height": 814,
+      "words": 88,
+      "media": 3,
+      "middle": 0,
+      "heading": {
+       "text": "Lazetrade · 外贸 CRM 智能客服",
+       "size": 16,
+       "tag": "h3"
+      },
+      "left": 36,
+      "right": 38,
+      "textLeft": 36,
+      "textRight": 38,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 1178,
+      "height": 292,
+      "words": 22,
+      "media": 0,
+      "middle": 116,
+      "heading": {
+       "text": "GitHub 贡献",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 36,
+      "right": 36,
+      "textLeft": 36,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "项目",
+      "size": 38,
+      "top": 162,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 58,
+      "n": 3
+     },
+     {
+      "x": 42,
+      "n": 1
+     },
+     {
+      "x": 341,
+      "n": 1
+     },
+     {
+      "x": 431,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 6,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.85,
+    0.92,
+    0.86
+   ],
+   "motion": {
+    "elements": 18,
+    "css": 18,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 2367,
+     "screens": 2.8,
+     "words": 132,
+     "img": 36,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 13,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "project-lazetrade.webp",
+      "project-mail.webp",
+      "project-lisa.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 1,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "项目",
+     "words": 1,
+     "chars": 2,
+     "lines": 1,
+     "size": 38.4,
+     "vw": 9.8,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.8,
+     "top": 161,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "项目",
+     "words": 1,
+     "lines": 1,
+     "size": 38.4,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "项目",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 38.4,
+      "vw": 9.8,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.8,
+      "top": 161,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "ui-monospace",
+       "share": 0.54,
+       "mono": false
+      },
+      {
+       "family": "Newsreader",
+       "share": 0.35,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.11,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      38
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.8,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 40,
+     "max": {
+      "size": 38.4,
+      "vw": 9.8,
+      "font": "Newsreader",
+      "text": "项目"
+     },
+     "monoShare": 0.54,
+     "monoProseShare": 0.54,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "共 3 个条目 · 按年份从新到旧",
+      "2026.05 – 至今",
+      "全栈开发",
+      "TypeScript",
+      "Nuxt 3",
+      "Vue 3"
+     ],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.08,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 379,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.4
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.21
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.2
+      },
+      {
+       "color": "#574f48",
+       "share": 0.18
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 0,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "项目"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 10,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "header.page-head → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "figure.project-card__thumb → rgba(169, 217, 204, 0.5) 0px 3px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 9,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 3,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.17
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 110,
+     "floatingPill": true,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 2367,
+    "margins": {
+     "left": 33,
+     "right": 35
+    },
+    "sections": [
+     {
+      "sel": "header.page-head",
+      "tag": "header",
+      "top": 140,
+      "height": 223,
+      "words": 9,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "项目",
+       "size": 38,
+       "tag": "h1"
+      },
+      "left": 39,
+      "right": 57,
+      "textLeft": 39,
+      "textRight": 57,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "article.project-card",
+      "tag": "article",
+      "top": 379,
+      "height": 512,
+      "words": 26,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Lazetrade · 外贸 CRM 智能客服",
+       "size": 16,
+       "tag": "h3"
+      },
+      "left": 33,
+      "right": 35,
+      "textLeft": 33,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article.project-card",
+      "tag": "article",
+      "top": 907,
+      "height": 454,
+      "words": 32,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Mail · 邮件系统全栈",
+       "size": 16,
+       "tag": "h3"
+      },
+      "left": 33,
+      "right": 35,
+      "textLeft": 33,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article.project-card.project-card--wide",
+      "tag": "article",
+      "top": 1377,
+      "height": 482,
+      "words": 30,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Lisa · AI 客服 Agent 行为评测",
+       "size": 16,
+       "tag": "h3"
+      },
+      "left": 33,
+      "right": 35,
+      "textLeft": 33,
+      "textRight": 46,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 1875,
+      "height": 349,
+      "words": 22,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "GitHub 贡献",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 51,
+      "textLeft": 33,
+      "textRight": 51,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "项目",
+      "size": 38,
+      "top": 161,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 55,
+      "n": 4
+     },
+     {
+      "x": 33,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 6,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 3 picture(s) on the page (3 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "side-scroll",
+   "width": 390,
+   "message": "1 row(s) scroll sideways with content past their edge.",
+   "fix": "Jurors and most visitors read a row cut at the edge as clipped, not as scrollable. Wrap it onto more lines, or end it inside the grid."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/f2-projects/desktop-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/f2-projects/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/f2-projects/tablet-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/f2-projects/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/f2-projects/mobile-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/f2-projects/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

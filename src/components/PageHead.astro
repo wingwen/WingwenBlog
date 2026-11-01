@@ -6,9 +6,19 @@ interface Props {
   meta?: string;
   /** 右侧的贴纸素材，传 public 下的路径。 */
   sticker?: string;
+  /** 贴纸的原始宽高，用于占位比例；默认按横向贴纸。 */
+  stickerWidth?: number;
+  stickerHeight?: number;
 }
 
-const { title, lede, meta, sticker } = Astro.props;
+const {
+  title,
+  lede,
+  meta,
+  sticker,
+  stickerWidth = 520,
+  stickerHeight = 427,
+} = Astro.props;
 ---
 
 <header class="page-head">
@@ -20,7 +30,7 @@ const { title, lede, meta, sticker } = Astro.props;
   {
     sticker && (
       <figure class="sticker page-head__sticker">
-        <img src={sticker} alt="" width="520" height="427" loading="lazy" decoding="async" />
+        <img src={sticker} alt="" width={stickerWidth} height={stickerHeight} loading="lazy" decoding="async" />
       </figure>
     )
   }

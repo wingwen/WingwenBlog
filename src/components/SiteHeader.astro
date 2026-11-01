@@ -1,4 +1,5 @@
 ---
+import ProfileSidebar from './ProfileSidebar.astro';
 import { profile } from '../data/profile';
 import { features, site } from '../data/site';
 
@@ -19,12 +20,26 @@ function isCurrentPage(href: string): boolean {
 ---
 
 <header class="blog-bar">
+
   <a class="blog-bar__brand" href="/" aria-label={`${site.name} 首页`}>
     <span class="blog-bar__mark" aria-hidden="true">W</span>
     <span class="blog-bar__name">{site.name}</span>
   </a>
 
   <nav class="blog-bar__nav" aria-label="主导航">
+    <button
+      type="button"
+      class="drawer-toggle"
+      aria-label="打开个人资料面板"
+      aria-controls="profile-drawer"
+      aria-haspopup="dialog"
+      aria-expanded="false"
+      data-drawer-open
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </svg>
+    </button>
     <ul class="blog-bar__list" role="list">
       {
         navItems.map((item) => (
@@ -80,3 +95,99 @@ function isCurrentPage(href: string): boolean {
     }
   </div>
 </header>
+
+<dialog
+  id="profile-drawer"
+  class="profile-drawer"
+  aria-labelledby="profile-drawer-title"
+>
+  <div class="profile-drawer__bar">
+    <p class="profile-drawer__title" id="profile-drawer-title">资料与联系</p>
+    <button
+      type="button"
+      class="profile-drawer__close"
+      aria-label="关闭个人资料面板"
+      data-drawer-close
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
+  </div>
+  <div class="profile-drawer__body">
+    <ProfileSidebar />
+  </div>
+</dialog>
+
+<noscript>
+  <style>
+    @media (max-width: 63.99em) {
+      .blog-side {
+        display: grid !important;
+      }
+      .drawer-toggle {
+        display: none !important;
+      }
+    }
+  </style>
+</noscript>
+
+<script>
+  const drawer = document.getElementById('profile-drawer');
+  const opener = document.querySelector('[data-drawer-open]');
+  const closer = drawer?.querySelector('[data-drawer-close]');
+
+  function closeDrawer() {
+    if (drawer instanceof HTMLDialogElement && drawer.open) {
+      drawer.close();
+    }
+  }
+
+  function openDrawer() {
+    if (!(drawer instanceof HTMLDialogElement) || drawer.open) {
+      return;
+    }
+
+    drawer.showModal();
+    opener?.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('drawer-open');
+    if (closer instanceof HTMLElement) {
+      closer.focus();
+    }
+  }
+
+  opener?.addEventListener('click', openDrawer);
+  closer?.addEventListener('click', closeDrawer);
+
+  drawer?.addEventListener('close', () => {
+    opener?.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('drawer-open');
+    if (opener instanceof HTMLElement) {
+      opener.focus();
+    }
+  });
+
+  drawer?.addEventListener('click', (event) => {
+    if (event.target === drawer) {
+      closeDrawer();
+    }
+  });
+
+  drawer?.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeDrawer();
+    }
+  });
+
+  drawer?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => closeDrawer());
+  });
+
+  const desktopQuery = window.matchMedia('(min-width: 64em)');
+  desktopQuery.addEventListener('change', (event) => {
+    if (event.matches) {
+      closeDrawer();
+    }
+  });
+</script>

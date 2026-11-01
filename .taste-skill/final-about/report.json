@@ -1,7 +1,8 @@
 {
  "url": "http://localhost:4322/about",
- "at": "2026-11-01T02:56:59.501Z",
+ "at": "2026-11-01T07:00:22.719Z",
  "allow": [
+  "emoji",
   "mono",
   "shadow",
   "hairline",
@@ -20,12 +21,12 @@
    "screens": 3,
    "filled": [
     0.81,
-    0.89,
-    0.76
+    0.75,
+    0.63
    ],
    "motion": {
-    "elements": 42,
-    "css": 42,
+    "elements": 38,
+    "css": 38,
     "transitions": 0,
     "scripted": 0,
     "videos": 0,
@@ -37,14 +38,14 @@
      "h": 900
     },
     "page": {
-     "height": 2322,
-     "screens": 2.6,
-     "words": 281,
-     "img": 24,
+     "height": 2195,
+     "screens": 2.4,
+     "words": 244,
+     "img": 34,
      "video": 0,
      "canvas": 0,
-     "svg": 0,
-     "sections": 10,
+     "svg": 2,
+     "sections": 12,
      "horizontalOverflow": 0,
      "overflowCulprits": [],
      "uiFragments": 0,
@@ -58,7 +59,17 @@
      "blendText": 0,
      "sideScrollers": 0,
      "brokenImages": [],
-     "emoji": [],
+     "emoji": [
+      "✨",
+      "🐱",
+      "🐶",
+      "🏊",
+      "👀",
+      "🎵",
+      "💦",
+      "🚶",
+      "🍚"
+     ],
      "videosNoPoster": 0
     },
     "hero": {
@@ -77,7 +88,7 @@
      "mono": false,
      "align": "left",
      "position": "center",
-     "widthRatio": 0.46,
+     "widthRatio": 0.33,
      "top": 117,
      "tag": "h1",
      "kind": "heading"
@@ -106,7 +117,7 @@
       "mono": false,
       "align": "left",
       "position": "center",
-      "widthRatio": 0.46,
+      "widthRatio": 0.33,
       "top": 117,
       "tag": "h1",
       "kind": "heading"
@@ -130,12 +141,12 @@
       },
       {
        "family": "ui-monospace",
-       "share": 0.44,
+       "share": 0.37,
        "mono": false
       },
       {
        "family": "-apple-system",
-       "share": 0.03,
+       "share": 0.1,
        "mono": false
       }
      ],
@@ -146,10 +157,9 @@
       15,
       16,
       18,
-      22,
       72
      ],
-     "sizeCount": 7,
+     "sizeCount": 6,
      "notLoaded": [],
      "body": {
       "font": "Newsreader",
@@ -166,8 +176,8 @@
       "font": "Newsreader",
       "text": "关于"
      },
-     "monoShare": 0.44,
-     "monoProseShare": 0.44,
+     "monoShare": 0.37,
+     "monoProseShare": 0.37,
      "monoFamilies": [
       "ui-monospace"
      ],
@@ -182,7 +192,7 @@
      "microLabels": 0,
      "microLabelShare": 0,
      "microSamples": [],
-     "upperShare": 0.14,
+     "upperShare": 0.11,
      "centerShare": 0,
      "smallText": 0
     },
@@ -210,23 +220,23 @@
      "textColors": [
       {
        "color": "#2b2624",
-       "share": 0.38
-      },
-      {
-       "color": "#574f48",
-       "share": 0.23
+       "share": 0.47
       },
       {
        "color": "#9c3255",
-       "share": 0.2
+       "share": 0.19
+      },
+      {
+       "color": "#574f48",
+       "share": 0.17
       },
       {
        "color": "#1e6b61",
-       "share": 0.16
+       "share": 0.14
       },
       {
        "color": "#1a1a18",
-       "share": 0.02
+       "share": 0.03
       }
      ],
      "button": {
@@ -247,7 +257,7 @@
      "height": 74,
      "withShadow": 0,
      "withGradient": 0,
-     "mono": 0,
+     "mono": 1,
      "upper": 0,
      "heroLabels": [
       "跳到正文",
@@ -255,8 +265,8 @@
      ]
     },
     "surfaces": {
-     "shadowStatic": 10,
-     "shadowOverlay": 5,
+     "shadowStatic": 14,
+     "shadowOverlay": 0,
      "shadowSamples": [
       "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
       "header.page-head → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
@@ -275,9 +285,9 @@
       "dl.profile-meta 270px"
      ],
      "outlinedBoxes": 0,
-     "dashed": 5,
+     "dashed": 4,
      "blurred": 0,
-     "roundedBoxes": 12,
+     "roundedBoxes": 10,
      "boxRadius": 16,
      "squareMedia": 0,
      "roundedMedia": 0,
@@ -291,7 +301,7 @@
        "top": 96
       },
       {
-       "count": 4,
+       "count": 3,
        "iconTopped": true,
        "rounded": true,
        "top": 96
@@ -315,9 +325,9 @@
      "w": 1440,
      "h": 900
     },
-    "pageH": 2322,
+    "pageH": 2195,
     "margins": {
-     "left": 61,
+     "left": 68,
      "right": 61
     },
     "sections": [
@@ -326,9 +336,9 @@
       "tag": "header",
       "top": 96,
       "height": 199,
-      "words": 15,
+      "words": 13,
       "media": 0,
-      "middle": 247,
+      "middle": 442,
       "heading": {
        "text": "关于",
        "size": 72,
@@ -337,7 +347,7 @@
       "left": 388,
       "right": 69,
       "textLeft": 388,
-      "textRight": 382,
+      "textRight": 577,
       "fullBleed": false,
       "footer": false,
       "hero": true,
@@ -371,10 +381,10 @@
       "sel": "section.window.window--mint",
       "tag": "section",
       "top": 580,
-      "height": 545,
+      "height": 554,
       "words": 59,
       "media": 0,
-      "middle": 123,
+      "middle": 62,
       "heading": {
        "text": "教育与经历",
        "size": 16,
@@ -393,7 +403,7 @@
      {
       "sel": "section.window.window--pink",
       "tag": "section",
-      "top": 1141,
+      "top": 1150,
       "height": 480,
       "words": 69,
       "media": 0,
@@ -416,7 +426,7 @@
      {
       "sel": "section.window.window--pink",
       "tag": "section",
-      "top": 1760,
+      "top": 1769,
       "height": 147,
       "words": 5,
       "media": 0,
@@ -439,9 +449,9 @@
      {
       "sel": "section.window.window--mint",
       "tag": "section",
-      "top": 1923,
-      "height": 287,
-      "words": 12,
+      "top": 1933,
+      "height": 150,
+      "words": 5,
       "media": 0,
       "middle": 0,
       "heading": {
@@ -449,10 +459,10 @@
        "size": 16,
        "tag": "h2"
       },
-      "left": 401,
-      "right": 505,
-      "textLeft": 401,
-      "textRight": 505,
+      "left": 398,
+      "right": 910,
+      "textLeft": 398,
+      "textRight": 910,
       "fullBleed": false,
       "footer": true,
       "hero": false,
@@ -472,16 +482,12 @@
     "edgeText": [],
     "edges": [
      {
-      "x": 401,
-      "n": 7
+      "x": 404,
+      "n": 6
      },
      {
       "x": 83,
-      "n": 4
-     },
-     {
-      "x": 61,
-      "n": 1
+      "n": 3
      },
      {
       "x": 388,
@@ -492,10 +498,10 @@
       "n": 1
      }
     ],
-    "leftBlocks": 14,
+    "leftBlocks": 11,
     "bodySize": 16,
     "stage": false,
-    "explains": true,
+    "explains": false,
     "slivers": [],
     "voidShare": 0.15,
     "voidBox": {
@@ -512,16 +518,15 @@
    "width": 768,
    "height": 1024,
    "load": "load",
-   "screens": 4,
+   "screens": 3,
    "filled": [
-    0.92,
     0.79,
-    0.92,
-    0.79
+    0.86,
+    0.86
    ],
    "motion": {
-    "elements": 42,
-    "css": 42,
+    "elements": 26,
+    "css": 26,
     "transitions": 0,
     "scripted": 0,
     "videos": 0,
@@ -533,14 +538,14 @@
      "h": 1024
     },
     "page": {
-     "height": 3527,
-     "screens": 3.4,
-     "words": 274,
-     "img": 24,
+     "height": 2258,
+     "screens": 2.2,
+     "words": 188,
+     "img": 34,
      "video": 0,
      "canvas": 0,
-     "svg": 0,
-     "sections": 10,
+     "svg": 2,
+     "sections": 12,
      "horizontalOverflow": 0,
      "overflowCulprits": [],
      "uiFragments": 0,
@@ -572,9 +577,9 @@
      "italic": false,
      "mono": false,
      "align": "left",
-     "position": "center",
-     "widthRatio": 0.78,
-     "top": 159,
+     "position": "left",
+     "widthRatio": 0.62,
+     "top": 162,
      "tag": "h1",
      "kind": "heading"
     },
@@ -601,9 +606,9 @@
       "italic": false,
       "mono": false,
       "align": "left",
-      "position": "center",
-      "widthRatio": 0.78,
-      "top": 159,
+      "position": "left",
+      "widthRatio": 0.62,
+      "top": 162,
       "tag": "h1",
       "kind": "heading"
      }
@@ -621,12 +626,12 @@
      "families": [
       {
        "family": "Newsreader",
-       "share": 0.54,
+       "share": 0.56,
        "mono": false
       },
       {
        "family": "ui-monospace",
-       "share": 0.43,
+       "share": 0.41,
        "mono": false
       },
       {
@@ -642,10 +647,9 @@
       15,
       16,
       18,
-      22,
       38
      ],
-     "sizeCount": 7,
+     "sizeCount": 6,
      "notLoaded": [],
      "body": {
       "font": "Newsreader",
@@ -662,8 +666,8 @@
       "font": "Newsreader",
       "text": "关于"
      },
-     "monoShare": 0.43,
-     "monoProseShare": 0.43,
+     "monoShare": 0.41,
+     "monoProseShare": 0.41,
      "monoFamilies": [
       "ui-monospace"
      ],
@@ -678,7 +682,7 @@
      "microLabels": 0,
      "microLabelShare": 0,
      "microSamples": [],
-     "upperShare": 0.14,
+     "upperShare": 0.13,
      "centerShare": 0,
      "smallText": 0
     },
@@ -695,7 +699,7 @@
      "sectionBgs": [
       {
        "color": "#fffdf8",
-       "top": 613,
+       "top": 585,
        "hsl": {
         "h": 43,
         "s": 1,
@@ -706,23 +710,23 @@
      "textColors": [
       {
        "color": "#2b2624",
-       "share": 0.39
-      },
-      {
-       "color": "#574f48",
-       "share": 0.22
+       "share": 0.51
       },
       {
        "color": "#9c3255",
-       "share": 0.21
+       "share": 0.2
+      },
+      {
+       "color": "#574f48",
+       "share": 0.15
       },
       {
        "color": "#1e6b61",
-       "share": 0.16
+       "share": 0.13
       },
       {
        "color": "#1a1a18",
-       "share": 0.02
+       "share": 0
       }
      ],
      "button": {
@@ -743,7 +747,7 @@
      "height": 74,
      "withShadow": 0,
      "withGradient": 0,
-     "mono": 0,
+     "mono": 1,
      "upper": 0,
      "heroLabels": [
       "跳到正文",
@@ -751,7 +755,7 @@
      ]
     },
     "surfaces": {
-     "shadowStatic": 15,
+     "shadowStatic": 10,
      "shadowOverlay": 0,
      "shadowSamples": [
       "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
@@ -763,17 +767,16 @@
      "scrims": 0,
      "gradientSamples": [],
      "gradientText": 0,
-     "hairlines": 4,
+     "hairlines": 3,
      "hairlineSamples": [
       "dl.about-facts 542px",
       "li.cv-item 695px",
-      "li.cv-item 695px",
-      "dl.profile-meta 695px"
+      "li.cv-item 695px"
      ],
      "outlinedBoxes": 0,
-     "dashed": 5,
+     "dashed": 3,
      "blurred": 0,
-     "roundedBoxes": 13,
+     "roundedBoxes": 8,
      "boxRadius": 16,
      "squareMedia": 0,
      "roundedMedia": 0,
@@ -785,7 +788,7 @@
     "nav": {
      "links": 4,
      "fixed": false,
-     "height": 107,
+     "height": 111,
      "floatingPill": false,
      "blur": false
     },
@@ -798,7 +801,7 @@
      "w": 768,
      "h": 1024
     },
-    "pageH": 3527,
+    "pageH": 2258,
     "margins": {
      "left": 36,
      "right": 36
@@ -807,11 +810,11 @@
      {
       "sel": "header.page-head",
       "tag": "header",
-      "top": 138,
-      "height": 191,
-      "words": 15,
+      "top": 141,
+      "height": 159,
+      "words": 13,
       "media": 0,
-      "middle": 20,
+      "middle": 141,
       "heading": {
        "text": "关于",
        "size": 38,
@@ -820,17 +823,17 @@
       "left": 42,
       "right": 44,
       "textLeft": 42,
-      "textRight": 130,
+      "textRight": 251,
       "fullBleed": false,
       "footer": false,
       "hero": true,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--pink",
       "tag": "section",
-      "top": 344,
+      "top": 316,
       "height": 253,
       "words": 34,
       "media": 1,
@@ -847,14 +850,14 @@
       "fullBleed": false,
       "footer": false,
       "hero": true,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--mint",
       "tag": "section",
-      "top": 613,
-      "height": 572,
+      "top": 585,
+      "height": 612,
       "words": 59,
       "media": 0,
       "middle": 0,
@@ -870,13 +873,13 @@
       "fullBleed": false,
       "footer": false,
       "hero": false,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--pink",
       "tag": "section",
-      "top": 1201,
+      "top": 1213,
       "height": 480,
       "words": 69,
       "media": 0,
@@ -893,13 +896,13 @@
       "fullBleed": false,
       "footer": false,
       "hero": false,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--pink",
       "tag": "section",
-      "top": 1820,
+      "top": 1832,
       "height": 147,
       "words": 5,
       "media": 0,
@@ -916,15 +919,15 @@
       "fullBleed": false,
       "footer": false,
       "hero": false,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--mint",
       "tag": "section",
-      "top": 1983,
-      "height": 287,
-      "words": 12,
+      "top": 1995,
+      "height": 150,
+      "words": 5,
       "media": 0,
       "middle": 0,
       "heading": {
@@ -932,33 +935,10 @@
        "size": 16,
        "tag": "h2"
       },
-      "left": 54,
-      "right": 180,
-      "textLeft": 54,
-      "textRight": 180,
-      "fullBleed": false,
-      "footer": false,
-      "hero": false,
-      "continues": true,
-      "pinned": false
-     },
-     {
-      "sel": "aside.blog-side",
-      "tag": "aside",
-      "top": 2286,
-      "height": 1129,
-      "words": 82,
-      "media": 0,
-      "middle": 30,
-      "heading": {
-       "text": "个人资料",
-       "size": 16,
-       "tag": "h2"
-      },
-      "left": 36,
-      "right": 39,
-      "textLeft": 36,
-      "textRight": 168,
+      "left": 51,
+      "right": 584,
+      "textLeft": 51,
+      "textRight": 584,
       "fullBleed": false,
       "footer": true,
       "hero": false,
@@ -971,29 +951,29 @@
      {
       "text": "关于",
       "size": 38,
-      "top": 159,
+      "top": 162,
       "firstScreen": true
      }
     ],
     "edgeText": [],
     "edges": [
      {
-      "x": 54,
-      "n": 11
+      "x": 58,
+      "n": 6
      },
      {
-      "x": 36,
-      "n": 2
+      "x": 42,
+      "n": 1
      },
      {
       "x": 190,
       "n": 1
      }
     ],
-    "leftBlocks": 14,
+    "leftBlocks": 8,
     "bodySize": 16,
     "stage": false,
-    "explains": true,
+    "explains": false,
     "slivers": [],
     "voidShare": 0,
     "voidBox": null
@@ -1005,18 +985,16 @@
    "width": 390,
    "height": 844,
    "load": "load",
-   "screens": 6,
+   "screens": 4,
    "filled": [
-    0.86,
+    0.89,
     0.91,
-    0.92,
     0.86,
-    0.91,
-    0.86
+    0.85
    ],
    "motion": {
-    "elements": 42,
-    "css": 42,
+    "elements": 26,
+    "css": 26,
     "transitions": 0,
     "scripted": 0,
     "videos": 0,
@@ -1028,14 +1006,14 @@
      "h": 844
     },
     "page": {
-     "height": 4621,
-     "screens": 5.5,
-     "words": 274,
-     "img": 24,
+     "height": 3107,
+     "screens": 3.7,
+     "words": 188,
+     "img": 34,
      "video": 0,
      "canvas": 0,
-     "svg": 0,
-     "sections": 10,
+     "svg": 2,
+     "sections": 12,
      "horizontalOverflow": 0,
      "overflowCulprits": [],
      "uiFragments": 0,
@@ -1067,7 +1045,7 @@
      "align": "left",
      "position": "center",
      "widthRatio": 0.8,
-     "top": 157,
+     "top": 161,
      "tag": "h1",
      "kind": "heading"
     },
@@ -1096,7 +1074,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.8,
-      "top": 157,
+      "top": 161,
       "tag": "h1",
       "kind": "heading"
      }
@@ -1114,12 +1092,12 @@
      "families": [
       {
        "family": "Newsreader",
-       "share": 0.54,
+       "share": 0.56,
        "mono": false
       },
       {
        "family": "ui-monospace",
-       "share": 0.43,
+       "share": 0.41,
        "mono": false
       },
       {
@@ -1135,10 +1113,9 @@
       15,
       16,
       18,
-      22,
       38
      ],
-     "sizeCount": 7,
+     "sizeCount": 6,
      "notLoaded": [],
      "body": {
       "font": "Newsreader",
@@ -1155,8 +1132,8 @@
       "font": "Newsreader",
       "text": "关于"
      },
-     "monoShare": 0.43,
-     "monoProseShare": 0.43,
+     "monoShare": 0.41,
+     "monoProseShare": 0.41,
      "monoFamilies": [
       "ui-monospace"
      ],
@@ -1171,7 +1148,7 @@
      "microLabels": 0,
      "microLabelShare": 0,
      "microSamples": [],
-     "upperShare": 0.14,
+     "upperShare": 0.13,
      "centerShare": 0,
      "smallText": 0
     },
@@ -1188,7 +1165,7 @@
      "sectionBgs": [
       {
        "color": "#fffdf8",
-       "top": 375,
+       "top": 347,
        "hsl": {
         "h": 43,
         "s": 1,
@@ -1199,23 +1176,23 @@
      "textColors": [
       {
        "color": "#2b2624",
-       "share": 0.39
-      },
-      {
-       "color": "#574f48",
-       "share": 0.22
+       "share": 0.51
       },
       {
        "color": "#9c3255",
-       "share": 0.21
+       "share": 0.2
+      },
+      {
+       "color": "#574f48",
+       "share": 0.15
       },
       {
        "color": "#1e6b61",
-       "share": 0.16
+       "share": 0.13
       },
       {
        "color": "#1a1a18",
-       "share": 0.02
+       "share": 0
       }
      ],
      "button": {
@@ -1236,7 +1213,7 @@
      "height": 74,
      "withShadow": 0,
      "withGradient": 0,
-     "mono": 0,
+     "mono": 1,
      "upper": 0,
      "heroLabels": [
       "跳到正文",
@@ -1244,7 +1221,7 @@
      ]
     },
     "surfaces": {
-     "shadowStatic": 14,
+     "shadowStatic": 9,
      "shadowOverlay": 0,
      "shadowSamples": [
       "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
@@ -1256,17 +1233,16 @@
      "scrims": 0,
      "gradientSamples": [],
      "gradientText": 0,
-     "hairlines": 4,
+     "hairlines": 3,
      "hairlineSamples": [
       "dl.about-facts 324px",
       "li.cv-item 324px",
-      "li.cv-item 324px",
-      "dl.profile-meta 324px"
+      "li.cv-item 324px"
      ],
      "outlinedBoxes": 0,
-     "dashed": 5,
+     "dashed": 3,
      "blurred": 0,
-     "roundedBoxes": 13,
+     "roundedBoxes": 8,
      "boxRadius": 16,
      "squareMedia": 0,
      "roundedMedia": 0,
@@ -1278,7 +1254,7 @@
     "nav": {
      "links": 4,
      "fixed": false,
-     "height": 106,
+     "height": 110,
      "floatingPill": true,
      "blur": false
     },
@@ -1291,18 +1267,18 @@
      "w": 390,
      "h": 844
     },
-    "pageH": 4621,
+    "pageH": 3107,
     "margins": {
      "left": 33,
-     "right": 35
+     "right": 33
     },
     "sections": [
      {
       "sel": "header.page-head",
       "tag": "header",
-      "top": 136,
-      "height": 223,
-      "words": 15,
+      "top": 140,
+      "height": 191,
+      "words": 13,
       "media": 0,
       "middle": 0,
       "heading": {
@@ -1311,19 +1287,19 @@
        "tag": "h1"
       },
       "left": 39,
-      "right": 52,
+      "right": 54,
       "textLeft": 39,
-      "textRight": 52,
+      "textRight": 54,
       "fullBleed": false,
       "footer": false,
       "hero": true,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--pink",
       "tag": "section",
-      "top": 375,
+      "top": 347,
       "height": 512,
       "words": 34,
       "media": 0,
@@ -1340,14 +1316,14 @@
       "fullBleed": false,
       "footer": false,
       "hero": true,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--mint",
       "tag": "section",
-      "top": 903,
-      "height": 703,
+      "top": 874,
+      "height": 753,
       "words": 59,
       "media": 0,
       "middle": 0,
@@ -1363,13 +1339,13 @@
       "fullBleed": false,
       "footer": false,
       "hero": false,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--pink",
       "tag": "section",
-      "top": 1622,
+      "top": 1643,
       "height": 744,
       "words": 69,
       "media": 0,
@@ -1386,13 +1362,13 @@
       "fullBleed": false,
       "footer": false,
       "hero": false,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--mint",
       "tag": "section",
-      "top": 2382,
+      "top": 2403,
       "height": 147,
       "words": 5,
       "media": 0,
@@ -1409,13 +1385,13 @@
       "fullBleed": false,
       "footer": false,
       "hero": false,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--pink",
       "tag": "section",
-      "top": 2546,
+      "top": 2567,
       "height": 231,
       "words": 5,
       "media": 0,
@@ -1432,15 +1408,15 @@
       "fullBleed": false,
       "footer": false,
       "hero": false,
-      "continues": true,
+      "continues": false,
       "pinned": false
      },
      {
       "sel": "section.window.window--mint",
       "tag": "section",
-      "top": 2793,
-      "height": 344,
-      "words": 12,
+      "top": 2814,
+      "height": 150,
+      "words": 5,
       "media": 0,
       "middle": 0,
       "heading": {
@@ -1448,33 +1424,10 @@
        "size": 16,
        "tag": "h2"
       },
-      "left": 51,
-      "right": 61,
-      "textLeft": 51,
-      "textRight": 61,
-      "fullBleed": false,
-      "footer": false,
-      "hero": false,
-      "continues": true,
-      "pinned": false
-     },
-     {
-      "sel": "aside.blog-side",
-      "tag": "aside",
-      "top": 3153,
-      "height": 1325,
-      "words": 82,
-      "media": 0,
-      "middle": 0,
-      "heading": {
-       "text": "个人资料",
-       "size": 16,
-       "tag": "h2"
-      },
-      "left": 33,
-      "right": 35,
-      "textLeft": 33,
-      "textRight": 35,
+      "left": 48,
+      "right": 209,
+      "textLeft": 48,
+      "textRight": 209,
       "fullBleed": false,
       "footer": true,
       "hero": false,
@@ -1487,25 +1440,25 @@
      {
       "text": "关于",
       "size": 38,
-      "top": 157,
+      "top": 161,
       "firstScreen": true
      }
     ],
     "edgeText": [],
     "edges": [
      {
-      "x": 51,
-      "n": 11
+      "x": 55,
+      "n": 6
      },
      {
       "x": 33,
-      "n": 3
+      "n": 2
      }
     ],
-    "leftBlocks": 14,
+    "leftBlocks": 8,
     "bodySize": 16,
     "stage": false,
-    "explains": true,
+    "explains": false,
     "slivers": [],
     "voidShare": 0,
     "voidBox": null
@@ -1521,6 +1474,17 @@
    "width": 1440,
    "message": "Only 1 picture(s) on the page (1 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
    "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "name-only-title",
+   "width": 1440,
+   "message": "The h1 is a bare name (\"关于\") and nothing else on the first screen says what this is.",
+   "fix": "Keep the name if it leads, and give the line under it (18px or more) the plain words: what it is, for whom, where or when. In the study of 97 Sites of the Day, first screens that named nothing lost usability and content points.",
+   "alsoAt": [
+    768,
+    390
+   ]
   }
  ],
  "images": [

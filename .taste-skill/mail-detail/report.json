@@ -1,0 +1,1392 @@
+{
+ "url": "http://localhost:4322/projects/mail",
+ "at": "2026-11-01T07:54:27.831Z",
+ "allow": [
+  "emoji",
+  "eyebrow",
+  "mono",
+  "shadow",
+  "hairline",
+  "dashed",
+  "palette-cream",
+  "font-count",
+  "pill-nav",
+  "no-footage",
+  "icon-cards"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.57,
+    0.58,
+    0.57
+   ],
+   "motion": {
+    "elements": 5,
+    "css": 5,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 2238,
+     "screens": 2.5,
+     "words": 93,
+     "img": 21,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "mail-app.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Mail · 邮件系统全栈",
+     "words": 3,
+     "chars": 13,
+     "lines": 1,
+     "size": 43,
+     "vw": 3,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.26,
+     "top": 200,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Mail · 邮件系统全栈",
+     "words": 3,
+     "lines": 1,
+     "size": 43,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "Mail · 邮件系统全栈",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 43,
+      "vw": 3,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.26,
+      "top": 200,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.78,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.2,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.02,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      16,
+      18,
+      24,
+      43
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 17.9,
+      "leading": 1.75,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 66,
+     "max": {
+      "size": 43,
+      "vw": 3,
+      "font": "Newsreader",
+      "text": "Mail · 邮件系统全栈"
+     },
+     "monoShare": 0.2,
+     "monoProseShare": 0.2,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "深圳",
+      "2027 届 · 在读硕士 · 求职中",
+      "← 全部项目",
+      "2026.05 – 至今",
+      "全栈开发",
+      "TypeScript"
+     ],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.32,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "← 全部项目",
+      "above": "Mail · 邮件系统全栈",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 14.4,
+      "top": 155
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 96,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 547,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.74
+      },
+      {
+       "color": "#6b675e",
+       "share": 0.1
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.07
+      },
+      {
+       "color": "#574f48",
+       "share": 0.04
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 0,
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "项目"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 3,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--mint → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "footer.site-footer → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "header.project__header 862px",
+      "header.section-header 862px",
+      "header.section-header 862px",
+      "header.section-header 862px",
+      "header.section-header 862px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.23
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 66,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 2238,
+    "margins": {
+     "left": 68,
+     "right": 107
+    },
+    "sections": [],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Mail · 邮件系统全栈",
+      "size": 43,
+      "top": 200,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 289,
+      "n": 7
+     },
+     {
+      "x": 311,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 18,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.14,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 240,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.92,
+    0.92,
+    0.86
+   ],
+   "motion": {
+    "elements": 5,
+    "css": 5,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 2152,
+     "screens": 2.1,
+     "words": 86,
+     "img": 21,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "mail-app.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Mail · 邮件系统全栈",
+     "words": 3,
+     "chars": 13,
+     "lines": 1,
+     "size": 35.8,
+     "vw": 4.7,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.4,
+     "top": 244,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Mail · 邮件系统全栈",
+     "words": 3,
+     "lines": 1,
+     "size": 35.8,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "Mail · 邮件系统全栈",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 35.8,
+      "vw": 4.7,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.4,
+      "top": 244,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.81,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.17,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.02,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      16,
+      17,
+      22,
+      36
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16.7,
+      "leading": 1.75,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 67,
+     "max": {
+      "size": 35.8,
+      "vw": 4.7,
+      "font": "Newsreader",
+      "text": "Mail · 邮件系统全栈"
+     },
+     "monoShare": 0.17,
+     "monoProseShare": 0.17,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "← 全部项目",
+      "2026.05 – 至今",
+      "全栈开发",
+      "TypeScript",
+      "NestJS",
+      "Prisma + PostgreSQL"
+     ],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.32,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "← 全部项目",
+      "above": "Mail · 邮件系统全栈",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 13.4,
+      "top": 200
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 141,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 568,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.77
+      },
+      {
+       "color": "#6b675e",
+       "share": 0.11
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.07
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.02
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 0,
+     "height": 41,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "项目"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 3,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--mint → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "footer.site-footer → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "header.project__header 695px",
+      "header.section-header 695px",
+      "header.section-header 695px",
+      "header.section-header 695px",
+      "header.section-header 695px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 2,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.35
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 111,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 2152,
+    "margins": {
+     "left": 33,
+     "right": 36
+    },
+    "sections": [
+     {
+      "sel": "header.project__header",
+      "tag": "header",
+      "top": 244,
+      "height": 219,
+      "words": 30,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Mail · 邮件系统全栈",
+       "size": 36,
+       "tag": "h1"
+      },
+      "left": 36,
+      "right": 40,
+      "textLeft": 36,
+      "textRight": 40,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project__section.project__shots",
+      "tag": "section",
+      "top": 511,
+      "height": 481,
+      "words": 4,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "系统截图",
+       "size": 22,
+       "tag": "h2"
+      },
+      "left": 36,
+      "right": 36,
+      "textLeft": 36,
+      "textRight": 636,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project__section",
+      "tag": "section",
+      "top": 1040,
+      "height": 147,
+      "words": 8,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "背景",
+       "size": 22,
+       "tag": "h2"
+      },
+      "left": 36,
+      "right": 155,
+      "textLeft": 36,
+      "textRight": 155,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project__section",
+      "tag": "section",
+      "top": 1234,
+      "height": 316,
+      "words": 24,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "我的职责",
+       "size": 22,
+       "tag": "h2"
+      },
+      "left": 36,
+      "right": 38,
+      "textLeft": 36,
+      "textRight": 38,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project__section",
+      "tag": "section",
+      "top": 1598,
+      "height": 145,
+      "words": 3,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "结果",
+       "size": 22,
+       "tag": "h2"
+      },
+      "left": 36,
+      "right": 256,
+      "textLeft": 36,
+      "textRight": 256,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Mail · 邮件系统全栈",
+      "size": 36,
+      "top": 244,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 36,
+      "n": 7
+     },
+     {
+      "x": 58,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.91,
+    0.92,
+    0.86
+   ],
+   "motion": {
+    "elements": 5,
+    "css": 5,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 2370,
+     "screens": 2.8,
+     "words": 86,
+     "img": 21,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "mail-app.png"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Mail · 邮件系统全栈",
+     "words": 3,
+     "chars": 13,
+     "lines": 1,
+     "size": 31.4,
+     "vw": 8.1,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.69,
+     "top": 241,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Mail · 邮件系统全栈",
+     "words": 3,
+     "lines": 1,
+     "size": 31.4,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "Mail · 邮件系统全栈",
+      "words": 3,
+      "chars": 13,
+      "lines": 1,
+      "size": 31.4,
+      "vw": 8.1,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.69,
+      "top": 241,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.81,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.17,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.02,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      16,
+      20,
+      31
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.75,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 40,
+     "max": {
+      "size": 31.4,
+      "vw": 8.1,
+      "font": "Newsreader",
+      "text": "Mail · 邮件系统全栈"
+     },
+     "monoShare": 0.17,
+     "monoProseShare": 0.17,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "← 全部项目",
+      "2026.05 – 至今",
+      "全栈开发",
+      "TypeScript",
+      "NestJS",
+      "Prisma + PostgreSQL"
+     ],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.32,
+     "centerShare": 0,
+     "smallText": 4
+    },
+    "eyebrows": [
+     {
+      "text": "← 全部项目",
+      "above": "Mail · 邮件系统全栈",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 12.8,
+      "top": 198
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 140,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.77
+      },
+      {
+       "color": "#6b675e",
+       "share": 0.11
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.07
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.02
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 0,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "项目"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 3,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--mint → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "footer.site-footer → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "header.project__header 324px",
+      "header.section-header 324px",
+      "header.section-header 324px",
+      "header.section-header 324px",
+      "header.section-header 324px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 2,
+     "boxRadius": 22,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 8,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.18
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 110,
+     "floatingPill": true,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 2370,
+    "margins": {
+     "left": 33,
+     "right": 34
+    },
+    "sections": [
+     {
+      "sel": "header.project__header",
+      "tag": "header",
+      "top": 241,
+      "height": 260,
+      "words": 30,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Mail · 邮件系统全栈",
+       "size": 31,
+       "tag": "h1"
+      },
+      "left": 33,
+      "right": 46,
+      "textLeft": 33,
+      "textRight": 46,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project__section.project__shots",
+      "tag": "section",
+      "top": 550,
+      "height": 268,
+      "words": 4,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "系统截图",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 33,
+      "textLeft": 33,
+      "textRight": 265,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project__section",
+      "tag": "section",
+      "top": 865,
+      "height": 169,
+      "words": 8,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "背景",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 36,
+      "textLeft": 33,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project__section",
+      "tag": "section",
+      "top": 1082,
+      "height": 512,
+      "words": 24,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "我的职责",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 34,
+      "textLeft": 33,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.project__section",
+      "tag": "section",
+      "top": 1643,
+      "height": 170,
+      "words": 3,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "结果",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 44,
+      "textLeft": 33,
+      "textRight": 44,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.prose.project__body",
+      "tag": "section",
+      "top": 1861,
+      "height": 168,
+      "words": 13,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 33,
+      "right": 36,
+      "textLeft": 33,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Mail · 邮件系统全栈",
+      "size": 31,
+      "top": 241,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 33,
+      "n": 7
+     },
+     {
+      "x": 55,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "1 box(es) drawn with a 1px outline.",
+   "fix": "Prefer a filled surface or no box.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 1 picture(s) on the page (1 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "FAIL",
+   "id": "focal-point",
+   "width": 1440,
+   "message": "The first screen has no dominant element: the largest type is 43px (3vw) and no single picture holds a third of the viewport.",
+   "fix": "Make one thing lead: the headline at display size, or one large picture. A grid of many small pictures is not one thing; in blind tests jurors marked a first screen without a headline down every time. On the strongest studied sites the largest type has a median of 8.4vw."
+  },
+  {
+   "level": "WARN",
+   "id": "off-centre",
+   "width": 1440,
+   "message": "The margins differ: 68px on the left, 107px on the right, at 1440px.",
+   "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page."
+  },
+  {
+   "level": "FAIL",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Only 5 element(s) moved while the page loaded and scrolled.",
+   "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 390,
+   "message": "4 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/mail-detail/desktop-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/mail-detail/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/mail-detail/tablet-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/mail-detail/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/mail-detail/mobile-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/mail-detail/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

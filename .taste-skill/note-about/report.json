@@ -1,0 +1,1508 @@
+{
+ "url": "http://localhost:4322/about",
+ "at": "2026-11-01T07:11:20.211Z",
+ "allow": [
+  "emoji",
+  "mono",
+  "shadow",
+  "hairline",
+  "dashed",
+  "palette-cream",
+  "font-count",
+  "pill-nav",
+  "no-footage",
+  "icon-cards"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.81,
+    0.7,
+    0.63
+   ],
+   "motion": {
+    "elements": 38,
+    "css": 38,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 2227,
+     "screens": 2.5,
+     "words": 222,
+     "img": 36,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 12,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "portrait.D9fFJhMD_1djVFT.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "✨",
+      "🐱",
+      "🐶",
+      "🏊",
+      "👀",
+      "🎵",
+      "💦",
+      "🚶",
+      "🍚"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "关于",
+     "words": 1,
+     "chars": 2,
+     "lines": 1,
+     "size": 72,
+     "vw": 5,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.47,
+     "top": 117,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "关于",
+     "words": 1,
+     "lines": 1,
+     "size": 72,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "关于",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 72,
+      "vw": 5,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.47,
+      "top": 117,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.52,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.36,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.11,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      18,
+      72
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.9,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 68,
+     "max": {
+      "size": 72,
+      "vw": 5,
+      "font": "Newsreader",
+      "text": "关于"
+     },
+     "monoShare": 0.36,
+     "monoProseShare": 0.36,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "深圳",
+      "2027 届 · 在读硕士 · 求职中",
+      "深圳 · 2027 届 · 在读硕士 · 求职中",
+      "坐标",
+      "状态",
+      "在读"
+     ],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.11,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 612,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.46
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.18
+      },
+      {
+       "color": "#574f48",
+       "share": 0.18
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.14
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#f2faf7",
+      "hsl": {
+       "h": 158,
+       "s": 0.44,
+       "l": 0.96
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 2,
+     "radius": 12,
+     "height": 74,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 1,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "关于"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 14,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "header.page-head → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "figure.sticker.page-head__sticker → rgba(214, 170, 182, 0.45) 0px 3px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 4,
+     "hairlineSamples": [
+      "dl.about-facts 842px",
+      "li.cv-item 996px",
+      "li.cv-item 996px",
+      "dl.profile-meta 270px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 4,
+     "blurred": 0,
+     "roundedBoxes": 10,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 7,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 96
+      },
+      {
+       "count": 3,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 96
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 66,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 2227,
+    "margins": {
+     "left": 68,
+     "right": 61
+    },
+    "sections": [
+     {
+      "sel": "header.page-head",
+      "tag": "header",
+      "top": 96,
+      "height": 231,
+      "words": 13,
+      "media": 0,
+      "middle": 258,
+      "heading": {
+       "text": "关于",
+       "size": 72,
+       "tag": "h1"
+      },
+      "left": 388,
+      "right": 69,
+      "textLeft": 388,
+      "textRight": 393,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 343,
+      "height": 253,
+      "words": 34,
+      "media": 1,
+      "middle": 18,
+      "heading": {
+       "text": "自我介绍",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 383,
+      "right": 360,
+      "textLeft": 404,
+      "textRight": 360,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 612,
+      "height": 554,
+      "words": 59,
+      "media": 0,
+      "middle": 62,
+      "heading": {
+       "text": "教育与经历",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 383,
+      "right": 61,
+      "textLeft": 383,
+      "textRight": 61,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 1182,
+      "height": 480,
+      "words": 69,
+      "media": 0,
+      "middle": 21,
+      "heading": {
+       "text": "技能与研究",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 383,
+      "right": 181,
+      "textLeft": 383,
+      "textRight": 181,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 1802,
+      "height": 147,
+      "words": 5,
+      "media": 0,
+      "middle": 56,
+      "heading": {
+       "text": "联系方式",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 398,
+      "right": 704,
+      "textLeft": 398,
+      "textRight": 704,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 1965,
+      "height": 150,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "简历",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 398,
+      "right": 910,
+      "textLeft": 398,
+      "textRight": 910,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "关于",
+      "size": 72,
+      "top": 117,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 404,
+      "n": 6
+     },
+     {
+      "x": 83,
+      "n": 3
+     },
+     {
+      "x": 388,
+      "n": 1
+     },
+     {
+      "x": 536,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.13,
+    "voidBox": {
+     "x": 660,
+     "y": 600,
+     "w": 540,
+     "h": 300
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.92,
+    0.86,
+    0.86
+   ],
+   "motion": {
+    "elements": 26,
+    "css": 26,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 2290,
+     "screens": 2.2,
+     "words": 188,
+     "img": 36,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 12,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "portrait.D9fFJhMD_1djVFT.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "关于",
+     "words": 1,
+     "chars": 2,
+     "lines": 1,
+     "size": 38.4,
+     "vw": 5,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.78,
+     "top": 162,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "关于",
+     "words": 1,
+     "lines": 1,
+     "size": 38.4,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "关于",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 38.4,
+      "vw": 5,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 162,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.56,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.41,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.03,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      18,
+      38
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.9,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 68,
+     "max": {
+      "size": 38.4,
+      "vw": 5,
+      "font": "Newsreader",
+      "text": "关于"
+     },
+     "monoShare": 0.41,
+     "monoProseShare": 0.41,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "深圳 · 2027 届 · 在读硕士 · 求职中",
+      "坐标",
+      "状态",
+      "在读",
+      "教育",
+      "2024.09 – 2027.06"
+     ],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.12,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 617,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.5
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.2
+      },
+      {
+       "color": "#574f48",
+       "share": 0.17
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.13
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#f2faf7",
+      "hsl": {
+       "h": 158,
+       "s": 0.44,
+       "l": 0.96
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 2,
+     "radius": 12,
+     "height": 74,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 1,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "关于"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 10,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "header.page-head → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "figure.sticker.page-head__sticker → rgba(214, 170, 182, 0.45) 0px 3px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "dl.about-facts 542px",
+      "li.cv-item 695px",
+      "li.cv-item 695px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 3,
+     "blurred": 0,
+     "roundedBoxes": 8,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 111,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 2290,
+    "margins": {
+     "left": 36,
+     "right": 36
+    },
+    "sections": [
+     {
+      "sel": "header.page-head",
+      "tag": "header",
+      "top": 141,
+      "height": 191,
+      "words": 13,
+      "media": 0,
+      "middle": 49,
+      "heading": {
+       "text": "关于",
+       "size": 38,
+       "tag": "h1"
+      },
+      "left": 42,
+      "right": 44,
+      "textLeft": 42,
+      "textRight": 159,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 348,
+      "height": 253,
+      "words": 34,
+      "media": 1,
+      "middle": 18,
+      "heading": {
+       "text": "自我介绍",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 36,
+      "right": 37,
+      "textLeft": 58,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 617,
+      "height": 612,
+      "words": 59,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "教育与经历",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 36,
+      "right": 36,
+      "textLeft": 36,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 1245,
+      "height": 480,
+      "words": 69,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "技能与研究",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 36,
+      "right": 115,
+      "textLeft": 36,
+      "textRight": 115,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 1864,
+      "height": 147,
+      "words": 5,
+      "media": 0,
+      "middle": 56,
+      "heading": {
+       "text": "联系方式",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 51,
+      "right": 379,
+      "textLeft": 51,
+      "textRight": 379,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 2027,
+      "height": 150,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "简历",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 51,
+      "right": 584,
+      "textLeft": 51,
+      "textRight": 584,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "关于",
+      "size": 38,
+      "top": 162,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 58,
+      "n": 6
+     },
+     {
+      "x": 42,
+      "n": 1
+     },
+     {
+      "x": 190,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.82,
+    0.86,
+    0.92,
+    0.84
+   ],
+   "motion": {
+    "elements": 26,
+    "css": 26,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 3139,
+     "screens": 3.7,
+     "words": 188,
+     "img": 36,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 12,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "关于",
+     "words": 1,
+     "chars": 2,
+     "lines": 1,
+     "size": 38.4,
+     "vw": 9.8,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.8,
+     "top": 161,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "关于",
+     "words": 1,
+     "lines": 1,
+     "size": 38.4,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "关于",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 38.4,
+      "vw": 9.8,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.8,
+      "top": 161,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.56,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.41,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.03,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      13,
+      14,
+      15,
+      16,
+      18,
+      38
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 16,
+      "leading": 1.9,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 14.7
+     },
+     "measureChars": 40,
+     "max": {
+      "size": 38.4,
+      "vw": 9.8,
+      "font": "Newsreader",
+      "text": "关于"
+     },
+     "monoShare": 0.41,
+     "monoProseShare": 0.41,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "深圳 · 2027 届 · 在读硕士 · 求职中",
+      "坐标",
+      "状态",
+      "在读",
+      "教育",
+      "2024.09 – 2027.06"
+     ],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.12,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 379,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.5
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.2
+      },
+      {
+       "color": "#574f48",
+       "share": 0.17
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.13
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#f2faf7",
+      "hsl": {
+       "h": 158,
+       "s": 0.44,
+       "l": 0.96
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 2,
+     "radius": 12,
+     "height": 74,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 1,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "关于"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 9,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "header.page-head → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--mint → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "dl.about-facts 324px",
+      "li.cv-item 324px",
+      "li.cv-item 324px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 3,
+     "blurred": 0,
+     "roundedBoxes": 8,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 110,
+     "floatingPill": true,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 3139,
+    "margins": {
+     "left": 33,
+     "right": 33
+    },
+    "sections": [
+     {
+      "sel": "header.page-head",
+      "tag": "header",
+      "top": 140,
+      "height": 223,
+      "words": 13,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "关于",
+       "size": 38,
+       "tag": "h1"
+      },
+      "left": 39,
+      "right": 44,
+      "textLeft": 39,
+      "textRight": 44,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 379,
+      "height": 512,
+      "words": 34,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "自我介绍",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 35,
+      "textLeft": 33,
+      "textRight": 35,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 907,
+      "height": 753,
+      "words": 59,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "教育与经历",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 33,
+      "textLeft": 33,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 1675,
+      "height": 744,
+      "words": 69,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "技能与研究",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 49,
+      "textLeft": 33,
+      "textRight": 49,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 2435,
+      "height": 147,
+      "words": 5,
+      "media": 0,
+      "middle": 42,
+      "heading": {
+       "text": "个人兴趣",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 55,
+      "right": 117,
+      "textLeft": 55,
+      "textRight": 117,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 2599,
+      "height": 231,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "联系方式",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 48,
+      "right": 197,
+      "textLeft": 48,
+      "textRight": 197,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 2846,
+      "height": 150,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "简历",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 48,
+      "right": 209,
+      "textLeft": 48,
+      "textRight": 209,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "关于",
+      "size": 38,
+      "top": 161,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 55,
+      "n": 6
+     },
+     {
+      "x": 33,
+      "n": 2
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 1 picture(s) on the page (1 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/note-about/desktop-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/note-about/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/note-about/tablet-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/note-about/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/note-about/mobile-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/note-about/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

@@ -429,3 +429,300 @@
 
 **你的反馈**
 - 待填写
+
+---
+
+### v4.1：真实 GitHub 贡献、简历下载与手机抽屉
+
+**目标**：把项目页的贡献占位区接成真实公开数据，启用附件里的简历 PDF，并把手机端的资料栏改成汉堡菜单抽屉。
+
+**GitHub 数据**
+- 公开来源：`https://github.com/users/wingwen/contributions`，个人主页 `https://github.com/wingwen`
+- GitHub 的日历接口按自然年返回，忽略 `from` / `to` 的跨年请求。脚本抓取 2025 与 2026 两个自然年，再裁成截止日向前 365 天
+- 快照范围：`2025-11-02` 至 `2026-11-01`。2025 年公开贡献为 0，2026 年页面显示 355 次，逐日求和与页面总数一致
+- 核对结果：355 次贡献，58 天有记录，单日最高 20 次。未来日期没有非零记录
+- 数据文件：`src/data/contributions.json`；刷新命令：`npm run contributions`
+- 构建时会再校验一次总数与活跃天数，逐日数据对不上就拒绝构建
+- 页面展示：粉色深浅五级、总次数、活跃天数、数据截至日期、范围、GitHub 主页链接。没有渲染任何伪造格子
+
+**简历**
+- 文件：`public/profile.resume.pdf`（781,287 字节），构建后同源提供
+- `profile.resume` 指向 `/profile.resume.pdf`，关于页显示「PDF 简历 / 下载简历（PDF）↓」按钮
+- 原来的待补充与邮件索取分支保留，只有 `profile.resume` 为空时才会出现
+
+**手机抽屉**
+- 顶栏左上角新增汉堡按钮，仅在 `< 64em` 显示
+- 使用原生 `<dialog>` + `showModal()`：焦点被困在面板内，Escape 关闭，关闭后焦点回到按钮
+- 抽屉内容复用 `ProfileSidebar`，因此资料栏只有一套组件；桌面端仍固定在左栏，手机端 `.blog-side` 隐藏，不再追加在主内容之后
+- 遮罩点击关闭，抽屉内链接点击后关闭，打开时锁定页面滚动，屏幕变宽到桌面断点时自动关闭
+- 没有 JS 时通过 `<noscript>` 恢复主内容下方的资料栏，并隐藏汉堡按钮
+
+**遇到的问题**
+1. GitHub 接口按自然年返回，`from` / `to` 没有跨年效果。改为抓两年再裁滚动窗口，并在脚本里校验页面总数与逐日求和不一致就失败
+2. 抽屉最初用 grid，四张卡被压成等高，正文被卡片裁掉。改为 flex column + `flex: 0 0 auto`，内容按自身高度排列，整块滚动
+3. 贡献图在 390px 放不下 53 周。保留横向滚动并在手机上提示「左右滑动查看完整日历」；768px 把格子降到 9px 后可完整放下
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm test`：15 通过；`npm run build`：16 页
+- 构建产物 0 空文件，内部链接缺失 0 个；简历 PDF 以 200 返回
+- 浏览器检查：首页 0 FAIL / 2 WARN；项目页 1 FAIL（few-pictures）1 WARN（贡献图在 390 横向滚动）；关于页 1 FAIL（few-pictures）0 WARN
+- 抽屉手动检查：打开、关闭按钮、Escape、焦点归还、滚动锁定、桌面断点自动关闭均通过
+
+**截图**
+- `docs/screenshots/{home,projects,about}-{desktop,mobile}.png`
+- `docs/screenshots/profile-drawer-mobile.png`
+- `docs/screenshots/projects-contributions.png`
+- `docs/screenshots/about-resume.png`
+
+---
+
+### v4.2：GitHub 仓库自动同步
+
+**目标**：在项目页增加自动同步的 GitHub 公开仓库区，展示仓库名、简介和技术标签，不手写仓库数据。
+
+**数据来源**
+- `https://api.github.com/users/wingwen/repos` 拉取公开仓库
+- 每个仓库再请求 `/languages` 取语言字节占比，取前 4 个作为标签；GitHub Topics 有值时一并合并
+- 抓取时共有 3 个公开仓库
+
+| 仓库 | 简介 | 标签 | 备注 |
+|---|---|---|---|
+| WingwenBlog | 站点本身的公开仓库 | Astro / CSS / TypeScript / JavaScript | 非 fork |
+| Mem-RAG | 仓库未填写简介 | Python / HTML | 页面显示「仓库未填写简介。」，没有补写 |
+| CoreCoder-Agent | 扩展 Fork，基于 he-yufeng/CoreCoder | Python | 标记 Fork |
+
+- 所有 Topics 都是空的，所以技术标签实际来自语言统计
+- 快照：`src/data/repositories.json`；刷新命令：`npm run repositories`，两个 GitHub 快照一起刷新用 `npm run github`
+- 页面构建时校验仓库数量与链接归属，避免把别的账号的链接渲染进来
+
+**展示**
+- 项目页顺序为页面标题、GitHub 贡献、精选项目卡片、GitHub 仓库
+- 桌面 3 列、平板 2 列、手机 1 列；卡片含名称、简介、标签、更新时间与「查看仓库」入口
+- 仓库名和「查看仓库」都链接到仓库主页，窗口标题栏另有「GitHub 主页」
+- 数据截至抓取日，页面标注 `数据截至 2026.11.01`
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm test`：15 通过；`npm run build`：16 页
+- 构建产物 0 空文件，内部链接缺失 0 个
+- 项目页浏览器检查：1 FAIL（few-pictures，仍是 3 张项目图）1 WARN（贡献图在 390 横向滚动）
+- 仓库区没有新增失败项，正文大小回到 16px
+
+**截图**
+- `docs/screenshots/projects-repositories.png`
+- `docs/screenshots/projects-desktop.png` 与 `projects-mobile.png` 已更新
+
+---
+
+### v4.3：侧栏「个人标签」
+
+**目标**：把侧栏的「喜欢的东西」改成「个人标签」，换成用户给定的 24 个标签，并删掉侧栏的「技能」卡片。
+
+**做法**
+- `profile` 新增独立的 `tags` 字段，保留原有 `interests`，关于页的「个人兴趣」不受影响
+- 侧栏标题改为「个人标签」，内容改为 flex 标签云，粉绿交替的圆角 chip，保留猫猫贴纸
+- 侧栏删除「技能」窗口，关于页的「技能与研究」仍在
+- 标签里的 emoji 按用户原文保留，没有替换成文字
+- 标签变多后侧栏高度到 1034px，原 sticky 侧栏在 900px 屏幕上会永久裁掉底部。改为普通屏幕随页面滚动，只有视口高度 ≥1080px 时才 sticky
+
+**验收**
+- `npm run check`：0 错误 0 警告；`npm run build`：16 页；内部链接缺失 0 个
+- 侧栏截图 320×1034，24 个标签全部渲染；侧栏不再出现「喜欢的东西」和「技能」
+- 浏览器检查：首页因标签中的 emoji 报 1 FAIL，按用户明确要求放行；项目页 1 FAIL（few-pictures）1 WARN（贡献图在 390 滚动）；关于页 1 FAIL（few-pictures）
+- 关于页的「个人兴趣」仍是原来的四项，等待用户决定是否同步
+
+**截图**
+- `docs/screenshots/profile-sidebar-tags.png`
+- `docs/screenshots/profile-drawer-mobile.png`
+- `docs/screenshots/{home,projects,about}-desktop.png` 已更新
+
+---
+
+### v4.4：侧栏身份调整与首页精简
+
+**改动**
+- 侧栏个人资料删除真实姓名，只保留 Wingwen
+- 职位从「计算机技术硕士在读 · 做全栈开发与 LLM 应用落地」改为「数据定价 · 全栈开发实习生」，这是共享 tagline，首页、关于页、OG 图一起更新
+- 侧栏简介改为独立的 `siteIntro`：「这里是我的个人网站，记录热爱与成长。喜欢动漫编程，乐享生活，期待相遇✨」，关于页长简介不变
+- 侧栏「个人标签」里的贴纸从黑猫换成史莱姆
+- 页脚删除 `sticker--footer` 史莱姆贴纸
+- 首页删除「近期文章」卡片，欢迎横幅的入口从「近期文章」改为「文章」，仍指向 `/posts`
+- 清理不再使用的 `.profile-name`、`.post-item*`、`.sticker--post`、`.sticker--footer` 样式
+
+**需要确认**
+- 真实姓名仍出现在首页欢迎语、关于页标题简介、页脚、OG 图和证件照 alt 中。这次只按选中节点删了侧栏姓名，是否全站统一改用 Wingwen，等用户决定。
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm test`：15 通过；`npm run build`：16 页
+- 构建产物 0 空文件，内部链接缺失 0 个
+- 首页不再包含「近期文章」和页脚贴纸；侧栏不再包含 `profile-name`
+- 浏览器检查：首页 0 FAIL / 2 WARN（emoji 按用户要求放行）；项目页 1 FAIL（few-pictures）1 WARN（贡献图在 390 滚动）；关于页 1 FAIL（few-pictures）0 WARN
+- 侧栏高度 994px，普通屏幕随页面滚动，高屏才 sticky
+
+**截图**
+- `docs/screenshots/profile-sidebar-tags.png`
+- `docs/screenshots/profile-drawer-mobile.png`
+- `docs/screenshots/{home,projects,about}-{desktop,mobile}.png` 已更新
+
+---
+
+### v4.5：标签贴纸并排与资料说明便签
+
+**改动**
+- 史莱姆贴纸改为浮动在标签右侧，落在标签区右下角，不再单独占一行
+- 标签列表改为行内标签，文字围绕贴纸换行
+- 标签下方新增撕边便签：浅黄卡纸、细横纹、轻微旋转与投影，左上角淡粉胶带
+- 便签文案：「本网站图片素材均来源于网络，有任何问题请联系我删除」，「联系我」是 mailto 链接
+- 便签右下角放缩小版 `sticker-miku.webp`，比例约 2.9rem
+- 侧栏高度增至 1026px，移除了 sticky，普通屏幕随页面滚动，保证便签完整可见
+
+**样式入口**
+- 便签颜色由 `.notice-note` 的 `--notice-bg` 与 `--notice-ink` 控制，当前浅黄；换奶蓝或淡粉只改这两个变量
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm run build`：16 页；内部链接缺失 0 个
+- 浏览器检查：首页 0 FAIL / 2 WARN（emoji 放行）；项目页 1 FAIL（few-pictures）1 WARN（贡献图在 390 滚动）；关于页 1 FAIL（few-pictures）0 WARN
+- 侧栏截图 320×1026，标签、贴纸、便签与 miku 完整显示，便签文字没有截断
+
+**截图**
+- `docs/screenshots/profile-sidebar-tags.png`
+- `docs/screenshots/profile-drawer-mobile.png`
+- `docs/screenshots/{home,projects,about}-desktop.png` 已更新
+
+---
+
+### v4.6：关于页精简与职位补全
+
+**改动**
+- 关于页删除「自我介绍」「个人兴趣」「联系方式」三个窗口，只保留「教育与经历」「技能与研究」「简历」
+- 关于页标题简介改为「你好👋，我是Wingwen，广州大学计算机专业硕士在读。」
+- 侧栏职位补全为「计算机技术专业 · 数据定价 · 全栈开发实习生」
+- 职位按 ` · ` 拆成不可断行的片段，行尾带分隔点，避免第二行以孤立的「·」开头
+- 关于页正文的证件照随「自我介绍」卡片一起移除；侧栏头像仍在
+- 清理关于页不再使用的自介、事实、兴趣、联系方式样式与 Image 引用
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm test`：15 通过；`npm run build`：16 页
+- 构建产物 0 空文件，内部链接缺失 0 个
+- 关于页检查 1 FAIL / 1 WARN。FAIL 是 `few-pictures`，因为正文照片随卡片移除，页面只剩装饰图；WARN 是 `name-only-title`，因为新简介长度不到检查器的解释阈值，按用户给定文案保留
+- 关于页正文不再出现真实姓名；首页欢迎语、页脚、OG 图与证件照 alt 仍保留，等待用户决定是否统一改用 Wingwen
+
+**截图**
+- `docs/screenshots/about-desktop.png` 与 `about-mobile.png`
+- `docs/screenshots/profile-sidebar-tags.png` 与 `profile-drawer-mobile.png`
+
+---
+
+### v4.7：毕设内容、页脚统一与 About 标题
+
+**改动**
+- 侧栏职位删除「数据定价」，改为「计算机技术专业 · 全栈开发实习生」
+- 关于页「教育与经历」窗口新增「毕设 / 论文：数据定价」：研究简介、主要工作三点（TDS 方法族、SUCV 估值框架、统一评估协议）
+- 英文缩写之间补齐空格，保持与页面其他技术文本一致
+- 关于页 h1 从「关于」改为「About」，导航仍保留中文「关于」
+- 页脚装饰（花、樱花、星）从首页插槽移入 `SiteFooter`，首页、项目页、关于页及其他页面现在共用同一份页脚
+- 关于页删除自我介绍、个人兴趣、联系方式后，正文只剩教育与经历、技能与研究、简历
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm test`：15 通过；`npm run build`：16 页
+- 构建产物 0 空文件，内部链接缺失 0 个
+- 关于页 1 FAIL / 1 WARN。FAIL 是 `few-pictures`，因为正文没有照片；WARN 是 `name-only-title`，新简介长度不到检查器阈值，文案按用户给定保留
+- 页脚装饰在首页、项目页、关于页均存在
+
+**截图**
+- `docs/screenshots/about-thesis.png`
+- `docs/screenshots/footer-shared.png`
+- `docs/screenshots/about-desktop.png` 与 `about-mobile.png`
+- `docs/screenshots/profile-sidebar-tags.png` 与 `profile-drawer-mobile.png`
+
+---
+
+### v4.8：项目标题在线入口
+
+**改动**
+- `projects` 内容 schema 增加可选 `liveUrl`，只接受合法 URL
+- `mail.md` 配置 `liveUrl: 'https://wachater.com/email'`
+- 项目详情页标题在存在 `liveUrl` 时渲染为链接，悬停或键盘聚焦时显示粉色高亮与深玫瑰文字
+- 没有 `liveUrl` 的项目（Lazetrade、Lisa）标题保持纯文本，不出现空链接
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm run build`：16 页
+- Mail 详情页标题链接为 `https://wachater.com/email`，其他项目没有该链接
+- 悬停截图确认粉色高亮生效
+
+**截图**
+- `docs/screenshots/project-mail-title-hover.png`
+
+---
+
+### v4.9：全站 Wingwen、关于页头像与项目新标签页
+
+**改动**
+- `profile.name` 从真实姓名改为 Wingwen，`alias` 保持 Wingwen
+- 首页欢迎语、页脚、页面描述、OG 图说明、OG 图片标题、关于页 meta、简历索取主题、证件照 alt 全部改用 Wingwen
+- 页脚不再出现「Wingwen · Wingwen」重复，只保留一个 Wingwen
+- 关于页页头右侧贴纸换成指定的 `3a7a6391394a68bf88f44d7baa0087a5aa57c20c.jpg@240w_240h_1c_1s_!web-avatar-nav.webp`，PageHead 增加方形贴纸的宽高参数
+- Lazetrade 详情页标题配置 `https://wachater.com/products`，Mail 详情页标题保持 `https://wachater.com/email`
+- 两个项目标题链接都改为新标签页打开，并加 `aria-label` 说明
+- 项目详情页原本已有「系统截图」区块，Lazetrade 使用 `lazetrade-app.jpg`，Mail 使用 `mail-app.png`；清理了重复的 `liveUrl` 与临时 `detailImage` 字段
+- 共享页脚继续覆盖首页、项目页、关于页
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm test`：15 通过；`npm run build`：16 页
+- 全站 16 个 HTML 中真实姓名出现 0 次
+- 内部链接缺失 0 个；两张项目截图均存在
+- 首页 0 FAIL / 2 WARN；项目页 1 FAIL / 1 WARN；关于页 1 FAIL / 1 WARN，均为既有的图片数量与短标题提示
+
+**说明**
+- 简历 PDF 的内容没有改，文件本身仍包含真实姓名
+- 项目截图里的姓名、邮箱属于图片内容，没有做图像修改
+
+**截图**
+- `docs/screenshots/home-desktop.png`、`about-desktop.png` 与手机版
+- `docs/screenshots/footer-shared.png`
+- `docs/screenshots/project-mail-screenshot.png`
+- `docs/screenshots/project-lazetrade-screenshot.png`
+- `docs/screenshots/project-mail-title-hover.png`
+
+---
+
+### v4.10：汉堡按钮移入导航栏左侧
+
+**改动**
+- `.drawer-toggle` 从品牌之前移到 `.blog-bar__nav` 内部，位于导航链接左侧
+- `.blog-bar__nav` 改为 flex 行，按钮与导航胶囊之间留 0.5rem
+- 手机端布局变为：第一行品牌与星星贴纸，第二行汉堡按钮 + 三个导航入口
+- 桌面端按钮仍隐藏，导航位置不变
+- 抽屉脚本、焦点归还与滚动锁逻辑不变
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm run build`：16 页
+- 390px 下按钮在导航内，按钮左边与导航左边同为 28px
+- 点击按钮后 `dialog.open = true`，`aria-expanded = true`
+- 首页 0 FAIL / 2 WARN
+
+**截图**
+- `docs/screenshots/header-mobile.png`
+- `docs/screenshots/home-mobile.png` 已更新
+
+---
+
+### v4.11：职位去掉分隔点与项目页罗小黑
+
+**改动**
+- 侧栏职位不再渲染 ` · ` 分隔点，按空格拆成「计算机技术专业」与「全栈开发实习生」两行
+- 首页欢迎横幅里可见的职位也去掉分隔点
+- `profile.tagline` 本身仍保留 ` · `，只用于 meta 与 OG 文案，不影响页面可见文本
+- 项目页 PageHead 右侧贴纸从 `sticker-star.webp` 换成 `sticker-cat-black.webp`（罗小黑），按 300×274 的真实比例传参
+- 关于页页头仍使用指定的方形头像
+
+**验证**
+- `npm run check`：0 错误 0 警告；`npm test`：15 通过；`npm run build`：16 页
+- 内部链接缺失 0 个
+- 首页 0 FAIL / 2 WARN；项目页 1 FAIL / 1 WARN；关于页 1 FAIL / 1 WARN
+- 项目页头部贴纸 `src` 为 `/images/home/sticker-cat-black.webp`
+
+**截图**
+- `docs/screenshots/profile-sidebar-tags.png` 与 `profile-drawer-mobile.png`
+- `docs/screenshots/projects-header-black-cat.png`
+- `docs/screenshots/projects-desktop.png` 与 `projects-mobile.png`
+- `docs/screenshots/home-desktop.png`、`about-desktop.png` 与手机版已更新
