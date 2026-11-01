@@ -55,6 +55,8 @@ export interface Profile {
   experience: ExperienceItem[];
   skills: SkillGroup[];
   publications: Publication[];
+  /** 个人喜好，只以文字形式出现，不使用任何角色形象。 */
+  interests: string[];
   isPlaceholder: boolean;
 }
 
@@ -146,5 +148,6 @@ export const profile: Profile = {
       venue: 'CCF-B',
     },
   ],
+  interests: ['初音未来', '猫猫', '罗小黑', '利姆鲁'],
   isPlaceholder: false,
 };

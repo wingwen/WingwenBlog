@@ -14,9 +14,13 @@ interface Props {
   /** 每页自己组装的摘要；缺省时退回由 profile.tagline 组成的站点级兜底。 */
   description?: string;
   ogType?: 'website' | 'article';
+  /** 可选：给 body 加类名，让个别页面可以有自己的整体底色而不影响其他页面。 */
+  bodyClass?: string;
+  /** 可选：切换顶部导航样式，首页使用胶囊导航条。 */
+  headerVariant?: 'default' | 'blog';
 }
 
-const { title, description, ogType = 'website' } = Astro.props;
+const { title, description, ogType = 'website', bodyClass, headerVariant = 'default' } = Astro.props;
 
 // 兜底只描述站点本身，不引入任何新的个人信息。
 const siteDescription = `${profile.name} · ${profile.tagline}`;
@@ -59,12 +63,14 @@ const shareImageUrl = new URL('/og-default.png', Astro.site);
       crossorigin
     />
   </head>
-  <body>
+  <body class={bodyClass}>
     <a class="skip-link" href="#main">跳到正文</a>
-    <SiteHeader />
+    <SiteHeader variant={headerVariant} />
     <main id="main" class="wrap page-main" tabindex="-1">
       <slot />
     </main>
-    <SiteFooter />
+    <SiteFooter>
+      <slot name="footer-decoration" />
+    </SiteFooter>
   </body>
 </html>

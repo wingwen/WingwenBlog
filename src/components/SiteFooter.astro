@@ -10,5 +10,6 @@ const currentYear = new Date().getFullYear();
     <p>{site.name}</p>
     <p>© {currentYear}</p>
     <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+    <slot />
   </div>
 </footer>
