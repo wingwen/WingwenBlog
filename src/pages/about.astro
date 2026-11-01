@@ -1,14 +1,15 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PlaceholderBadge from '../components/PlaceholderBadge.astro';
-import SectionHeader from '../components/SectionHeader.astro';
-import TimelineEntry from '../components/TimelineEntry.astro';
+import BlogShell from '../components/BlogShell.astro';
+import PageHead from '../components/PageHead.astro';
+import Window from '../components/Window.astro';
 import { profile } from '../data/profile';
 import type { EducationItem } from '../data/profile';
 
-const resumeDownload = profile.resume;
 const portrait = profile.portrait;
+const resumeDownload = profile.resume;
+const primaryEducation = profile.education[0];
 
 function educationMeta(item: EducationItem): string[] {
   const parts = [item.major, item.degree];
@@ -18,204 +19,370 @@ function educationMeta(item: EducationItem): string[] {
   return parts;
 }
 
+const resumeRequestHref = `mailto:${profile.email}?subject=${encodeURIComponent('简历索取：庞楚雯')}`;
+
 // 与首页摘要区分开：首页用简介首句，关于页用所在地与状态。
-const aboutDescription = `关于${profile.name}：${profile.tagline}。现居${profile.location}，${profile.status}。`;
+const aboutDescription = `关于${profile.name}（${profile.alias}）：${profile.tagline}。现居${profile.location}，${profile.status}。`;
+
+const profileFacts = [
+  { label: '坐标', value: profile.location },
+  { label: '状态', value: profile.status },
+  {
+    label: '在读',
+    value: primaryEducation ? `${primaryEducation.school} · ${primaryEducation.major}` : '',
+  },
+].filter((fact) => fact.value);
 ---
 
 <BaseLayout title="关于" description={aboutDescription}>
-  <header class="about-intro">
-    {
-      portrait && (
-        <Image
-          class="about-intro__portrait"
-          src={portrait.src}
-          alt={portrait.alt}
-          width={360}
-          loading="eager"
-        />
-      )
-    }
-    <div class="about-intro__text">
-      <h1 class="about-intro__title">关于</h1>
-      <p class="about-intro__tagline">{profile.tagline}</p>
-      <p class="about-intro__body">{profile.intro}</p>
-      <PlaceholderBadge isPlaceholder={profile.isPlaceholder} />
-    </div>
-  </header>
+  <BlogShell>
+    <PageHead
+      title="关于"
+      lede={`${profile.name}，网上常用 ${profile.alias}。${profile.tagline}。`}
+      meta={`${profile.location} · ${profile.status}`}
+      sticker="/images/home/sticker-sakura.webp"
+    />
 
-  <section class="about-section">
-    <SectionHeader title="教育经历" />
-    <ol class="about-list" role="list">
-      {
-        profile.education.map((item) => (
-          <TimelineEntry heading={item.school} subheading={educationMeta(item)} period={item.period} />
-        ))
-      }
-    </ol>
-  </section>
+    <Window title="自我介绍" icon="/images/home/icon-user.webp" tone="pink">
+      <div class="about-intro">
+        {
+          portrait && (
+            <Image
+              class="about-portrait"
+              src={portrait.src}
+              alt={portrait.alt}
+              width={320}
+              loading="eager"
+            />
+          )
+        }
+        <div class="about-intro__text">
+          <p class="about-intro__body">{profile.intro}</p>
+          <dl class="about-facts">
+            {
+              profileFacts.map((fact) => (
+                <div>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+      </div>
+    </Window>
 
-  <section class="about-section">
-    <SectionHeader title="实习与工作" />
-    <ol class="about-list" role="list">
-      {
-        profile.experience.map((item) => (
-          <TimelineEntry
-            heading={item.org}
-            subheading={item.role}
-            period={item.period}
-            points={item.points}
-          />
-        ))
-      }
-    </ol>
-  </section>
-
-  <section class="about-section">
-    <SectionHeader title="技能" />
-    <dl class="about-skills">
-      {
-        profile.skills.map((group) => (
-          <div class="about-skills__group">
-            <dt class="about-skills__label">{group.group}</dt>
-            <dd class="about-skills__items">
-              {group.items.map((item) => (
-                <span>{item}</span>
-              ))}
-            </dd>
-          </div>
-        ))
-      }
-    </dl>
-  </section>
-
-  {
-    profile.publications.length > 0 && (
-      <section class="about-section">
-        <SectionHeader title="论文" />
-        <ul class="about-publications" role="list">
-          {profile.publications.map((publication) => (
-            <li class="about-publication">
-              <cite class="about-publication__title">{publication.title}</cite>
-              <span class="about-publication__venue">{publication.venue}</span>
+    <Window title="教育与经历" icon="/images/home/icon-cap.webp" tone="mint">
+      <h3 class="about-subtitle">教育</h3>
+      <ol class="cv-list" role="list">
+        {
+          profile.education.map((item) => (
+            <li class="cv-item">
+              <div class="cv-item__row">
+                <h4 class="cv-item__heading">{item.school}</h4>
+                <span class="cv-item__period">{item.period}</span>
+              </div>
+              <p class="cv-item__sub">
+                {educationMeta(item).map((part) => <span>{part}</span>)}
+              </p>
             </li>
-          ))}
-        </ul>
-      </section>
-    )
-  }
+          ))
+        }
+      </ol>
 
-  <section class="about-section">
-    <SectionHeader title="联系方式" />
-    <div class="about-contact">
-      <p>
-        <a href={`mailto:${profile.email}`}>{profile.email}</a>
-      </p>
+      <h3 class="about-subtitle">实习与工作</h3>
+      <ol class="cv-list" role="list">
+        {
+          profile.experience.map((item) => (
+            <li class="cv-item">
+              <div class="cv-item__row">
+                <h4 class="cv-item__heading">{item.org}</h4>
+                <span class="cv-item__period">{item.period}</span>
+              </div>
+              <p class="cv-item__sub">
+                <span>{item.role}</span>
+              </p>
+              <ul class="cv-item__points" role="list">
+                {item.points.map((point) => <li>{point}</li>)}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+    </Window>
+
+    <Window title="技能与研究" icon="/images/home/icon-book.webp" tone="pink">
+      <dl class="about-skills">
+        {
+          profile.skills.map((group) => (
+            <div class="about-skills__group">
+              <dt class="about-skills__label">{group.group}</dt>
+              <dd class="about-skills__items">
+                {group.items.map((item) => (
+                  <span>{item}</span>
+                ))}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+
       {
-        profile.links.length > 0 && (
-          <ul class="about-contact__links" role="list">
-            {profile.links.map((link) => (
-              <li>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))}
-          </ul>
+        profile.publications.length > 0 && (
+          <>
+            <h3 class="about-subtitle">论文</h3>
+            <ul class="about-publications" role="list">
+              {profile.publications.map((publication) => (
+                <li class="about-publication">
+                  <cite class="about-publication__title">{publication.title}</cite>
+                  <span class="about-publication__venue">{publication.venue}</span>
+                </li>
+              ))}
+            </ul>
+          </>
         )
       }
-    </div>
-  </section>
+    </Window>
 
-  {
-    resumeDownload && (
-      <section class="about-section">
-        <SectionHeader title="简历下载" />
-        <p class="about-resume">
-          <a href={resumeDownload.href} download>
-            {resumeDownload.label}
-          </a>
-        </p>
-      </section>
-    )
-  }
+    <Window title="个人兴趣" icon="/images/home/icon-sparkle.webp" tone="mint">
+      <ul class="about-interests" role="list">
+        {profile.interests.map((interest) => <li>{interest}</li>)}
+      </ul>
+    </Window>
+
+    <Window title="联系方式" icon="/images/home/icon-heart.webp" tone="pink">
+      <div class="about-contact">
+        <a class="about-action" href={`mailto:${profile.email}`}>
+          <span class="about-action__label">邮箱</span>
+          <span class="about-action__value">{profile.email}</span>
+        </a>
+        {
+          profile.links.map((link) => (
+            <a class="about-action" href={link.href}>
+              <span class="about-action__label">{link.label}</span>
+              <span class="about-action__value">{link.href.replace(/^https?:\/\//, '')}</span>
+            </a>
+          ))
+        }
+      </div>
+    </Window>
+
+    <Window title="简历" icon="/images/home/icon-doc.webp" tone="mint">
+      {
+        resumeDownload ? (
+          <p class="about-resume">
+            <a href={resumeDownload.href} download>
+              {resumeDownload.label}
+            </a>
+          </p>
+        ) : (
+          <div class="resume-slot">
+            <p class="resume-slot__tag">PDF 待补充</p>
+            <p class="resume-slot__text">
+              公开版简历 PDF 还没有上传，所以这里先不放下载按钮，也不指向空文件。
+              需要完整版时可以直接邮件索取，我会回复最新的一版。
+            </p>
+            <a class="about-action about-action--inline" href={resumeRequestHref}>
+              <span class="about-action__label">邮件索取简历</span>
+              <span class="about-action__value">{profile.email} →</span>
+            </a>
+          </div>
+        )
+      }
+    </Window>
+  </BlogShell>
 </BaseLayout>
 
 <style>
   .about-intro {
     display: grid;
-    gap: var(--space-3);
-    max-width: var(--measure);
+    gap: 1rem;
+  }
+
+  .about-portrait {
+    width: 7.5rem;
+    height: auto;
+    border: 2px solid var(--blog-pink-line);
+    border-radius: 12px;
+    background-color: var(--blog-pink);
+    object-fit: cover;
   }
 
   .about-intro__text {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .about-intro__body {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--blog-ink);
+  }
+
+  .about-facts {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
+    flex-wrap: wrap;
+    gap: 0.4rem 1.4rem;
+    margin: 0;
+    padding-block-start: 0.7rem;
+    border-block-start: 1px dashed var(--blog-pink-line);
   }
 
-  .about-intro__portrait {
-    width: 8rem;
-    height: auto;
-    /* 证件照是蓝底，在纸色底上是一块偏冷的色块。
-       如需弱化，可在此加 filter: grayscale(1) sepia(0.12)（暖调单色）
-       或 filter: saturate(0.65)（保留色彩、降低饱和度）。当前用原色。 */
+  .about-facts > div {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
   }
 
-  .about-intro__title {
-    font-size: var(--step-3);
-    font-weight: 400;
+  .about-facts dt {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    color: var(--blog-pink-text);
   }
 
-  .about-intro__tagline {
-    color: var(--ink-muted);
+  .about-facts dd {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--blog-ink);
   }
 
-  .about-section {
-    max-width: var(--measure);
-    margin-block-start: var(--space-5);
+  .about-subtitle {
+    margin: 1.1rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--blog-pink-text);
   }
 
-  .about-list {
+  .about-subtitle:first-child {
+    margin-block-start: 0;
+  }
+
+  .cv-list {
     display: grid;
     padding: 0;
-    margin-block-start: var(--space-3);
+    margin: 0.6rem 0 0;
     list-style: none;
+  }
+
+  .cv-item {
+    padding-block: 0.7rem;
+    border-block-end: 1px dashed var(--blog-pink-line);
+  }
+
+  .cv-item:last-child {
+    padding-block-end: 0;
+    border-block-end: 0;
+  }
+
+  .cv-item__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.2rem 0.8rem;
+  }
+
+  .cv-item__heading {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .cv-item__period {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--blog-ink-soft);
+  }
+
+  .cv-item__sub {
+    margin: 0.2rem 0 0;
+    font-size: 0.86rem;
+    color: var(--blog-ink-soft);
+  }
+
+  .cv-item__sub > span:not(:last-child)::after {
+    content: '·';
+    margin-inline: 0.4rem;
+  }
+
+  .cv-item__points {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  .cv-item__points > li {
+    position: relative;
+    padding-inline-start: 1rem;
+  }
+
+  .cv-item__points > li::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0.7em;
+    inset-inline-start: 0;
+    width: 0.34rem;
+    height: 0.34rem;
+    border-radius: 50%;
+    background-color: var(--blog-mint-line);
   }
 
   .about-skills {
     display: grid;
-    gap: var(--space-2);
-    margin-block-start: var(--space-3);
+    gap: 0.7rem;
+    margin: 0;
   }
 
   .about-skills__group {
     display: grid;
-    gap: var(--space-1);
+    gap: 0.3rem;
   }
 
   .about-skills__label {
     font-family: var(--font-mono);
-    font-size: var(--step--1);
-    letter-spacing: 0.08em;
-    color: var(--ink-muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    color: var(--blog-pink-text);
   }
 
   .about-skills__items {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
+    gap: 0.3rem;
+    margin: 0;
   }
 
-  .about-skills__items > span:not(:last-child)::after {
-    content: '·';
-    margin-inline: var(--space-1);
-    color: var(--ink-muted);
+  .about-skills__items > span {
+    padding: 0.06rem 0.5rem;
+    border-radius: 999px;
+    background-color: var(--blog-mint);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--blog-mint-text);
+  }
+
+  .about-skills__group:nth-child(even) .about-skills__items > span {
+    background-color: var(--blog-pink);
+    color: var(--blog-pink-text);
   }
 
   .about-publications {
     display: grid;
-    gap: var(--space-2);
-    margin-block-start: var(--space-3);
+    gap: 0.5rem;
     padding: 0;
+    margin: 0.6rem 0 0;
     list-style: none;
   }
 
@@ -223,58 +390,133 @@ const aboutDescription = `关于${profile.name}：${profile.tagline}。现居${p
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: var(--space-1) var(--space-2);
+    gap: 0.3rem 0.7rem;
   }
 
   .about-publication__title {
     font-style: italic;
+    font-size: 0.95rem;
   }
 
   .about-publication__venue {
-    padding-block: 0.05em;
-    padding-inline: 0.5em;
-    border: 1px solid var(--rule);
+    padding: 0.05rem 0.5rem;
+    border-radius: 999px;
+    background-color: var(--blog-mint);
     font-family: var(--font-mono);
-    font-size: var(--step--1);
-    letter-spacing: 0.06em;
-    color: var(--ink-muted);
+    font-size: 0.82rem;
+    color: var(--blog-mint-text);
+  }
+
+  .about-interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .about-interests li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 999px;
+    background-color: var(--blog-cream);
+    border: 1px solid var(--blog-mint-line);
+    font-size: 0.92rem;
+  }
+
+  .about-interests li::before {
+    content: '';
+    width: 0.36rem;
+    height: 0.36rem;
+    border-radius: 50%;
+    background-color: var(--blog-pink-line);
   }
 
   .about-contact {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: var(--space-1) var(--space-3);
-    margin-block-start: var(--space-3);
+    gap: 0.6rem;
   }
 
-  .about-contact__links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    padding: 0;
-    list-style: none;
+  .about-action {
+    display: grid;
+    gap: 0.15rem;
+    min-width: 12rem;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid var(--blog-mint-line);
+    border-radius: 12px;
+    background-color: #f2faf7;
+    text-decoration: none;
   }
 
-  .about-resume {
-    margin-block-start: var(--space-3);
+  .about-action:hover {
+    background-color: var(--blog-mint);
+  }
+
+  .about-action__label {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    color: var(--blog-mint-text);
+  }
+
+  .about-action__value {
+    font-size: 0.92rem;
+    color: var(--blog-ink);
+    overflow-wrap: anywhere;
+  }
+
+  .about-action--inline {
+    margin-block-start: 0.2rem;
+    min-width: 0;
+  }
+
+  .resume-slot {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: start;
+    padding: 1rem;
+    border: 2px dashed var(--blog-mint-line);
+    border-radius: 12px;
+    background-color: #f2faf7;
+  }
+
+  .resume-slot__tag {
+    margin: 0;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--blog-mint);
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    letter-spacing: 0.04em;
+    color: var(--blog-mint-text);
+  }
+
+  .resume-slot__text {
+    margin: 0;
+    max-width: 60ch;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--blog-ink-soft);
+  }
+
+  .about-resume a {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
   }
 
   @media (min-width: 40em) {
     .about-intro {
-      grid-template-columns: 9rem minmax(0, 1fr);
+      grid-template-columns: 8.5rem minmax(0, 1fr);
       align-items: start;
-      gap: var(--space-4);
+      gap: 1.1rem;
     }
 
-    .about-intro__portrait {
+    .about-portrait {
       width: 100%;
-    }
-
-    .about-skills__group {
-      grid-template-columns: 7rem minmax(0, 1fr);
-      gap: var(--space-2);
-      align-items: baseline;
     }
   }
 </style>

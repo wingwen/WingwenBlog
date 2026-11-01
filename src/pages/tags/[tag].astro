@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import Window from '../../components/Window.astro';
 import PostEntry from '../../components/PostEntry.astro';
 import { formatEntryIndex } from '../../lib/format';
 import {
@@ -30,85 +32,64 @@ const tagDescription = `标签「${tag}」下共有 ${posts.length} 篇文章，
 ---
 
 <BaseLayout title={`标签：${tag}`} description={tagDescription}>
-  <section class="tag-page">
+  <div class="solo-shell">
     <p class="tag-page__back">
       <a href="/posts">← 全部文章</a>
     </p>
 
-    <header class="tag-page__header">
-      <h1 class="tag-page__title">标签：{tag}</h1>
-      <p class="tag-page__lede">共 {posts.length} 篇，按发布时间从新到旧排列。</p>
-    </header>
+    <PageHead
+      title={`标签：${tag}`}
+      lede={`共 ${posts.length} 篇，按发布时间从新到旧排列。`}
+      meta="全部标签见文章归档"
+      sticker="/images/home/sticker-sakura.webp"
+    />
 
-    {
-      posts.length > 0 ? (
-        <ol class="entry-list" role="list">
-          {posts.map((post, position) => (
-            <PostEntry
-              index={formatEntryIndex(position)}
-              href={postHref(post.id)}
-              pubDate={post.data.pubDate}
-              title={post.data.title}
-              description={post.data.description}
-              tags={post.data.tags}
-              isPlaceholder={post.data.isPlaceholder}
-              headingLevel={2}
-            />
-          ))}
-        </ol>
-      ) : (
-        <p class="tag-page__empty">这个标签下暂时没有文章。</p>
-      )
-    }
-  </section>
+    <Window title="该标签下的文章" icon="/images/home/icon-doc.webp" tone="pink">
+      {
+        posts.length > 0 ? (
+          <ol class="entry-list" role="list">
+            {posts.map((post, position) => (
+              <PostEntry
+                index={formatEntryIndex(position)}
+                href={postHref(post.id)}
+                pubDate={post.data.pubDate}
+                title={post.data.title}
+                description={post.data.description}
+                tags={post.data.tags}
+                isPlaceholder={post.data.isPlaceholder}
+                headingLevel={2}
+              />
+            ))}
+          </ol>
+        ) : (
+          <p class="tag-page__empty">这个标签下暂时没有文章。</p>
+        )
+      }
+    </Window>
+  </div>
 </BaseLayout>
 
 <style>
-  .tag-page {
-    max-width: var(--measure);
-  }
-
   .tag-page__back {
+    margin: 0;
     font-family: var(--font-mono);
-    font-size: var(--step--1);
-    letter-spacing: 0.04em;
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
   }
 
   .tag-page__back a {
-    color: var(--ink-muted);
+    color: var(--blog-ink-soft);
     text-decoration: none;
   }
 
   .tag-page__back a:hover {
-    color: var(--ink);
+    color: var(--blog-pink-text);
     text-decoration: underline;
     text-decoration-thickness: 2px;
   }
 
-  .tag-page__header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-    margin-block-start: var(--space-3);
-    padding-block-end: var(--space-3);
-    border-block-end: 1px solid var(--rule);
-  }
-
-  .tag-page__title {
-    font-size: var(--step-3);
-    font-weight: 400;
-  }
-
-  .tag-page__lede {
-    font-family: var(--font-mono);
-    font-size: var(--step--1);
-    letter-spacing: 0.04em;
-    color: var(--ink-muted);
-  }
-
   .tag-page__empty {
-    margin-block-start: var(--space-3);
-    color: var(--ink-muted);
+    margin: 0;
+    color: var(--blog-ink-soft);
   }
 </style>

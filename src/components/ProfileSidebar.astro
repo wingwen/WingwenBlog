@@ -1,0 +1,137 @@
+---
+import { Image } from 'astro:assets';
+import Window from './Window.astro';
+import { profile } from '../data/profile';
+
+const portrait = profile.portrait;
+const primaryEducation = profile.education[0];
+
+// 侧栏正文取简介的前两句，避免把整段塞进窄栏。
+const sidebarIntro = `${profile.intro.split('。').slice(0, 2).join('。')}。`;
+
+const profileFacts = [
+  { label: '坐标', value: profile.location, icon: 'icon-house' },
+  {
+    label: '专业',
+    value: primaryEducation ? `${primaryEducation.major}（${primaryEducation.degree}）` : '',
+    icon: 'icon-cap',
+  },
+  { label: '学校', value: primaryEducation?.school ?? '', icon: 'icon-book' },
+  { label: '状态', value: profile.status, icon: 'icon-sparkle' },
+].filter((fact) => fact.value);
+---
+
+<Window title="个人资料" icon="/images/home/icon-user.webp" tone="pink">
+  <div class="profile-head">
+    {
+      portrait && (
+        <Image
+          class="profile-avatar"
+          src={portrait.src}
+          alt={portrait.alt}
+          width={200}
+          loading="eager"
+        />
+      )
+    }
+    <div>
+      <p class="profile-name">{profile.name}</p>
+      <span class="profile-alias">{profile.alias}</span>
+      <span class="profile-role">{profile.tagline}</span>
+    </div>
+  </div>
+
+  <p class="profile-intro">{sidebarIntro}</p>
+
+  <dl class="profile-meta">
+    {
+      profileFacts.map((fact) => (
+        <div>
+          <dt>
+            <img
+              src={`/images/home/${fact.icon}.webp`}
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+              decoding="async"
+            />
+            {fact.label}
+          </dt>
+          <dd>{fact.value}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</Window>
+
+<Window title="联系我" icon="/images/home/icon-heart.webp" tone="mint">
+  <dl class="contact-list">
+    <div>
+      <dt>
+        <img
+          src="/images/home/sticker-envelope.webp"
+          alt=""
+          width="24"
+          height="24"
+          loading="lazy"
+          decoding="async"
+        />邮箱
+      </dt>
+      <dd><a href={`mailto:${profile.email}`}>{profile.email}</a></dd>
+    </div>
+    {
+      profile.links.map((link) => (
+        <div>
+          <dt>
+            <img
+              src="/images/home/icon-doc.webp"
+              alt=""
+              width="24"
+              height="24"
+              loading="lazy"
+              decoding="async"
+            />
+            {link.label}
+          </dt>
+          <dd>
+            <a href={link.href}>{link.href.replace(/^https?:\/\//, '')}</a>
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</Window>
+
+<Window title="喜欢的东西" icon="/images/home/icon-sparkle.webp" tone="pink">
+  <ul class="interests" role="list">
+    {profile.interests.map((interest) => <li>{interest}</li>)}
+  </ul>
+  <figure class="sticker sticker--side">
+    <img
+      src="/images/home/sticker-black-cat.webp"
+      alt=""
+      width="520"
+      height="438"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
+</Window>
+
+<Window title="技能" icon="/images/home/icon-book.webp" tone="mint">
+  <dl class="skill-groups">
+    {
+      profile.skills.slice(0, 3).map((group) => (
+        <div>
+          <dt>{group.group}</dt>
+          <dd>
+            {group.items.map((item) => (
+              <span>{item}</span>
+            ))}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</Window>

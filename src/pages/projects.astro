@@ -1,73 +1,266 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectEntry from '../components/ProjectEntry.astro';
-import { formatEntryIndex } from '../lib/format';
+import BlogShell from '../components/BlogShell.astro';
+import PageHead from '../components/PageHead.astro';
+import Window from '../components/Window.astro';
+import { profile } from '../data/profile';
 import { displayPeriod, projectHref, sortProjectsNewestFirst } from '../lib/projects';
 
 const projects = sortProjectsNewestFirst(await getCollection('projects'));
+const githubProfile = profile.links.find((link) => link.label === 'GitHub');
 
 // 摘要只引用条目数量，不拼接各项目的 summary：拼接结果会随项目增加无限变长，
 // 三个项目时已经 169 字，超过搜索结果约 160 字的截断长度，且每加一个项目就改写一次本页摘要。
 const projectsDescription = `项目：共 ${projects.length} 个条目，记录背景、职责与结果，按年份从新到旧排列。`;
+
+const projectsLede = `共 ${projects.length} 个真实项目，按年份从新到旧排列。卡片展示技术栈与简述，详情页是背景、职责与结果。`;
+
+// 奇数个项目时最后一张跨两列，避免两列栅格末尾留一个空格。
+const hasWideLastCard = projects.length % 2 === 1;
 ---
 
 <BaseLayout title="项目" description={projectsDescription}>
-  <section class="projects-index">
-    <header class="projects-index__header">
-      <h1 class="projects-index__title">项目</h1>
-      <p class="projects-index__lede">每个条目记录背景、职责与结果，按年份从新到旧排列。</p>
-    </header>
+  <BlogShell>
+    <PageHead
+      title="项目"
+      lede={projectsLede}
+      meta={`共 ${projects.length} 个条目 · 按年份从新到旧`}
+      sticker="/images/home/sticker-star.webp"
+    />
 
-    {
-      projects.length > 0 ? (
-        <ol class="entry-list" role="list">
-          {projects.map((project, position) => (
-            <ProjectEntry
-              index={formatEntryIndex(position)}
-              href={projectHref(project.id)}
+    <section class="project-grid" aria-label="项目列表">
+      {
+        projects.map((project, position) => (
+          <article
+            class:list={[
+              'project-card',
+              hasWideLastCard && position === projects.length - 1 && 'project-card--wide',
+            ]}
+          >
+            <Window
               title={project.data.title}
-              period={displayPeriod(project)}
-              role={project.data.role}
-              summary={project.data.summary}
-              stack={project.data.stack}
-              isPlaceholder={project.data.isPlaceholder}
-              headingLevel={2}
-            />
-          ))}
-        </ol>
-      ) : (
-        <p class="projects-index__empty">暂时还没有整理好的项目。</p>
-      )
-    }
-  </section>
+              icon="/images/home/icon-folder.webp"
+              tone={position % 2 === 0 ? 'pink' : 'mint'}
+              headingLevel={3}
+            >
+              <div class="project-card__layout">
+                <figure class="project-card__thumb">
+                  <img
+                    src={`/images/home/project-${project.id}.webp`}
+                    alt=""
+                    width="900"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+
+                <div class="project-card__body">
+                  <p class="project-card__meta">
+                    <span>{displayPeriod(project)}</span>
+                    <span>{project.data.role}</span>
+                  </p>
+                  <p class="project-card__summary">{project.data.summary}</p>
+                  <ul class="project-card__tags" role="list" aria-label="技术栈">
+                    {project.data.stack.map((item) => <li>{item}</li>)}
+                  </ul>
+                  <a class="project-card__more" href={projectHref(project.id)}>
+                    查看详情 →
+                  </a>
+                </div>
+              </div>
+            </Window>
+          </article>
+        ))
+      }
+    </section>
+
+    <Window title="GitHub 贡献" icon="/images/home/icon-sparkle.webp" tone="mint">
+      <div class="github-slot">
+        <p class="github-slot__tag">待接入真实数据</p>
+        <p class="github-slot__text">
+          贡献日历还没有接上 GitHub 数据。接入之后，这里会显示{githubProfile ? ` ${githubProfile.href.replace(/^https?:\/\//, '')} ` : ' GitHub '}的真实提交记录。
+          数据到位之前，这一块保持为空状态，不渲染占位格子，也不编造提交。
+        </p>
+        {
+          githubProfile && (
+            <a class="github-slot__link" href={githubProfile.href}>
+              查看 {githubProfile.label} 主页 →
+            </a>
+          )
+        }
+      </div>
+    </Window>
+  </BlogShell>
 </BaseLayout>
 
 <style>
-  .projects-index {
-    max-width: var(--measure);
+  .project-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
   }
 
-  .projects-index__header {
+  .project-card {
+    min-width: 0;
+  }
+
+  .project-card :global(.window) {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-    padding-block-end: var(--space-3);
-    border-block-end: 1px solid var(--rule);
+    height: 100%;
   }
 
-  .projects-index__title {
-    font-size: var(--step-3);
-    font-weight: 400;
+  .project-card :global(.window__body) {
+    flex: 1;
   }
 
-  .projects-index__lede {
-    color: var(--ink-muted);
+  .project-card__layout {
+    display: grid;
+    gap: 0.75rem;
   }
 
-  .projects-index__empty {
-    margin-block-start: var(--space-3);
-    color: var(--ink-muted);
+  .project-card__thumb {
+    margin: 0;
+    overflow: hidden;
+    border: 2px solid var(--blog-mint-line);
+    border-radius: 12px;
+    background-color: #eaf7f1;
+    box-shadow: 0 3px 0 rgba(169, 217, 204, 0.5);
+  }
+
+  .project-card__thumb img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .project-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .project-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.8rem;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--blog-ink-soft);
+  }
+
+  .project-card__meta span:first-child {
+    color: var(--blog-mint-text);
+  }
+
+  .project-card__summary {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--blog-ink);
+  }
+
+  .project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .project-card__tags li {
+    padding: 0.06rem 0.5rem;
+    border-radius: 999px;
+    background-color: var(--blog-mint);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    color: var(--blog-mint-text);
+  }
+
+  .project-card__tags li:nth-child(even) {
+    background-color: var(--blog-pink);
+    color: var(--blog-pink-text);
+  }
+
+  .project-card__more {
+    margin-block-start: auto;
+    padding-block-start: 0.15rem;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    letter-spacing: 0.03em;
+    color: var(--blog-pink-text);
+    text-decoration: none;
+    align-self: flex-start;
+  }
+
+  .project-card__more:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .github-slot {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: start;
+    padding: 1.1rem 1rem;
+    border: 2px dashed var(--blog-mint-line);
+    border-radius: 12px;
+    background-color: #f2faf7;
+  }
+
+  .github-slot__tag {
+    margin: 0;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--blog-mint);
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    letter-spacing: 0.04em;
+    color: var(--blog-mint-text);
+  }
+
+  .github-slot__text {
+    margin: 0;
+    max-width: 60ch;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--blog-ink-soft);
+  }
+
+  .github-slot__link {
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    letter-spacing: 0.03em;
+    color: var(--blog-pink-text);
+    text-decoration: none;
+  }
+
+  .github-slot__link:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  @media (min-width: 48em) {
+    .project-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .project-card--wide {
+      grid-column: 1 / -1;
+    }
+
+    .project-card--wide .project-card__layout {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      gap: 1rem;
+      align-items: start;
+    }
   }
 </style>

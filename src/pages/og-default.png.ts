@@ -21,14 +21,14 @@ const monoStack = 'Menlo, Consolas, monospace';
 export const GET: APIRoute = async () => {
   const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}" viewBox="0 0 ${CANVAS_WIDTH} ${CANVAS_HEIGHT}">
-  <rect width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}" fill="#FAF8F4"/>
-  <rect x="64" y="64" width="1072" height="1" fill="#DED8CC"/>
-  <rect x="64" y="565" width="1072" height="1" fill="#DED8CC"/>
-  <text x="64" y="110" font-family="${monoStack}" font-size="22" letter-spacing="4" fill="#6B675E">ZHIYU · FOLIO</text>
-  <text x="64" y="292" font-family="${serifStack}" font-size="120" fill="#1A1A18">${escapeXml(profile.name)}</text>
-  <text x="64" y="356" font-family="${serifStack}" font-size="34" fill="#6B675E">${escapeXml(profile.tagline)}</text>
-  <rect x="64" y="398" width="72" height="2" fill="#9B3D2E"/>
-  <text x="64" y="500" font-family="${monoStack}" font-size="22" letter-spacing="2" fill="#6B675E">${escapeXml(profile.status)}</text>
+  <rect width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}" fill="#FDF7F9"/>
+  <rect x="64" y="64" width="1072" height="6" fill="#EFC3D1"/>
+  <rect x="64" y="565" width="1072" height="2" fill="#A9D9CC"/>
+  <text x="64" y="118" font-family="${monoStack}" font-size="22" letter-spacing="4" fill="#9C3255">WINGWEN’S BLOG</text>
+  <text x="64" y="292" font-family="${serifStack}" font-size="120" fill="#2B2624">${escapeXml(profile.name)}</text>
+  <text x="64" y="356" font-family="${serifStack}" font-size="34" fill="#6B6159">${escapeXml(profile.tagline)}</text>
+  <rect x="64" y="398" width="72" height="2" fill="#9C3255"/>
+  <text x="64" y="500" font-family="${monoStack}" font-size="22" letter-spacing="2" fill="#1E6B61">${escapeXml(profile.alias)} · ${escapeXml(profile.location)} · ${escapeXml(profile.status)}</text>
 </svg>`;
 
   const png = await sharp(Buffer.from(svg)).png({ compressionLevel: 9 }).toBuffer();

@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Window from '../../components/Window.astro';
 import PlaceholderBadge from '../../components/PlaceholderBadge.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import { displayPeriod, projectHref, sortProjectsNewestFirst } from '../../lib/projects';
@@ -24,7 +25,9 @@ const hasLinks = Boolean(data.links && data.links.length > 0);
 ---
 
 <BaseLayout title={data.title} description={data.summary} ogType="article">
-  <article class="project">
+  <div class="solo-shell">
+    <Window title="项目详情" icon="/images/home/icon-folder.webp" tone="mint">
+      <article class="project">
     <p class="project__back">
       <a href="/projects">← 全部项目</a>
     </p>
@@ -101,11 +104,13 @@ const hasLinks = Boolean(data.links && data.links.length > 0);
       }
     </footer>
   </article>
+    </Window>
+  </div>
 </BaseLayout>
 
 <style>
   .project {
-    max-width: var(--measure);
+    max-width: none;
   }
 
   .project__back {

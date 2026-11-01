@@ -1,11 +1,11 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogShell from '../components/BlogShell.astro';
+import Window from '../components/Window.astro';
 import { profile } from '../data/profile';
 import { postHref } from '../lib/posts';
 import { displayPeriod, projectHref, sortProjectsNewestFirst } from '../lib/projects';
-import '../styles/home.css';
 
 const featuredProjects = sortProjectsNewestFirst(await getCollection('projects')).slice(0, 3);
 
@@ -14,21 +14,8 @@ const recentPosts = (await getCollection('posts'))
   .sort((left, right) => right.data.pubDate.getTime() - left.data.pubDate.getTime())
   .slice(0, 3);
 
-const portrait = profile.portrait;
-const primaryEducation = profile.education[0];
-
-// 侧栏正文取简介的前两句，避免把整段塞进窄栏。
-const sidebarIntro = `${profile.intro.split('。').slice(0, 2).join('。')}。`;
-
-const profileFacts = [
-  { label: '坐标', value: profile.location, icon: 'icon-house' },
-  { label: '专业', value: primaryEducation ? `${primaryEducation.major}（${primaryEducation.degree}）` : '', icon: 'icon-cap' },
-  { label: '学校', value: primaryEducation?.school ?? '', icon: 'icon-book' },
-  { label: '状态', value: profile.status, icon: 'icon-sparkle' },
-].filter((fact) => fact.value);
-
 const introOpeningSentence = profile.intro.split('。')[0];
-const homeDescription = `${profile.name} · ${profile.tagline}。${introOpeningSentence}。`;
+const homeDescription = `${profile.name}（${profile.alias}）· ${profile.tagline}。${introOpeningSentence}。`;
 
 function formatPostDate(pubDate: Date): string {
   const year = String(pubDate.getUTCFullYear());
@@ -38,227 +25,110 @@ function formatPostDate(pubDate: Date): string {
 }
 ---
 
-<BaseLayout description={homeDescription} bodyClass="home-page" headerVariant="blog">
-  <div class="home-shell">
-    <aside class="home-side">
-      <section class="window window--pink">
-        <div class="window__bar">
-          <h2 class="window__title"><img class="bar-icon" src="/images/home/icon-user.webp" alt="" width="131" height="154" loading="eager" decoding="async" />个人资料</h2>
-          <span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        </div>
-        <div class="window__body">
-          <div class="profile-head">
-            {
-              portrait && (
-                <Image
-                  class="profile-avatar"
-                  src={portrait.src}
-                  alt={portrait.alt}
-                  width={200}
-                  loading="eager"
-                />
-              )
-            }
-            <div>
-              <h1 class="profile-name">{profile.name}</h1>
-              <span class="profile-role">{profile.tagline}</span>
-            </div>
-          </div>
+<BaseLayout description={homeDescription}>
+  <BlogShell>
+    <section class="welcome">
+      <div class="welcome__body">
+        <p class="welcome__eyebrow">WELCOME</p>
+        <h1 class="welcome__title">欢迎来到 <em>Wingwen’s Blog</em></h1>
+        <p class="welcome__lead">这里是{profile.name}（{profile.alias}）的个人博客，记录项目、文章和最近在做的事，欢迎随便看看。</p>
+        <p class="welcome__alias">{profile.tagline}</p>
+        <ul class="welcome__chips" role="list">
+          <li><a href="/projects">项目</a></li>
+          <li><a href="/about">关于</a></li>
+          <li><a href="#recent-posts">近期文章</a></li>
+        </ul>
+      </div>
+      <figure class="welcome__art">
+        <img
+          src="/images/home/welcome-miku.webp"
+          alt=""
+          width="1000"
+          height="547"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      <div class="welcome__deco" aria-hidden="true">
+        <img class="welcome__deco-sparkle" src="/images/home/icon-sparkle.webp" alt="" width="201" height="199" loading="eager" decoding="async" />
+        <img class="welcome__deco-star" src="/images/home/sticker-star.webp" alt="" width="258" height="205" loading="eager" decoding="async" />
+        <img class="welcome__deco-flower" src="/images/home/icon-flower.webp" alt="" width="131" height="136" loading="eager" decoding="async" />
+      </div>
+    </section>
 
-          <p class="profile-intro">{sidebarIntro}</p>
-
-          <dl class="profile-meta">
-            {
-              profileFacts.map((fact) => (
-                <div>
-                  <dt>
-                    <img src={`/images/home/${fact.icon}.webp`} alt="" width="24" height="24" loading="eager" decoding="async" />
-                    {fact.label}
-                  </dt>
-                  <dd>{fact.value}</dd>
-                </div>
-              ))
-            }
-          </dl>
-        </div>
-      </section>
-
-      <section class="window window--mint">
-        <div class="window__bar">
-          <h2 class="window__title"><img class="bar-icon" src="/images/home/icon-heart.webp" alt="" width="209" height="184" loading="eager" decoding="async" />联系我</h2>
-          <span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        </div>
-        <div class="window__body">
-          <dl class="contact-list">
-            <div>
-              <dt><img src="/images/home/sticker-envelope.webp" alt="" width="24" height="24" loading="eager" decoding="async" />邮箱</dt>
-              <dd><a href={`mailto:${profile.email}`}>{profile.email}</a></dd>
-            </div>
-            {
-              profile.links.map((link) => (
-                <div>
-                  <dt><img src="/images/home/icon-doc.webp" alt="" width="24" height="24" loading="eager" decoding="async" />{link.label}</dt>
-                  <dd>
-                    <a href={link.href}>{link.href.replace(/^https?:\/\//, '')}</a>
-                  </dd>
-                </div>
-              ))
-            }
-          </dl>
-        </div>
-      </section>
-
-      <section class="window window--pink">
-        <div class="window__bar">
-          <h2 class="window__title"><img class="bar-icon" src="/images/home/icon-sparkle.webp" alt="" width="201" height="199" loading="eager" decoding="async" />喜欢的东西</h2>
-          <span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        </div>
-        <div class="window__body">
-          <ul class="interests" role="list">
-            {profile.interests.map((interest) => <li>{interest}</li>)}
-          </ul>
-          <figure class="sticker sticker--side">
-            <img
-              src="/images/home/sticker-black-cat.webp"
-              alt=""
-              width="520"
-              height="438"
-              loading="eager"
-              decoding="async"
-            />
-          </figure>
-        </div>
-      </section>
-
-      <section class="window window--mint">
-        <div class="window__bar">
-          <h2 class="window__title"><img class="bar-icon" src="/images/home/icon-book.webp" alt="" width="205" height="150" loading="eager" decoding="async" />技能</h2>
-          <span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        </div>
-        <div class="window__body">
-          <dl class="skill-groups">
-            {profile.skills.slice(0, 3).map((group) => (
-              <div>
-                <dt>{group.group}</dt>
-                <dd>{group.items.map((item) => <span>{item}</span>)}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-    </aside>
-
-    <div class="home-main">
-      <section class="welcome">
-        <div class="welcome__body">
-          <p class="welcome__eyebrow">WELCOME</p>
-          <h2 class="welcome__title">欢迎来到 <em>知屿 · Folio</em></h2>
-          <p class="welcome__lead">{profile.tagline}</p>
-          <ul class="welcome__chips" role="list">
-            <li><a href="/projects">项目</a></li>
-            <li><a href="/posts">文章</a></li>
-            <li><a href="/about">关于</a></li>
-          </ul>
-        </div>
-        <figure class="welcome__art">
-          <img
-            src="/images/home/welcome-miku.webp"
-            alt=""
-            width="1000"
-            height="547"
-            loading="eager"
-            decoding="async"
-          />
-        </figure>
-        <div class="welcome__deco" aria-hidden="true">
-          <img class="welcome__deco-sparkle" src="/images/home/icon-sparkle.webp" alt="" width="201" height="199" loading="eager" decoding="async" />
-          <img class="welcome__deco-star" src="/images/home/sticker-star.webp" alt="" width="258" height="205" loading="eager" decoding="async" />
-          <img class="welcome__deco-flower" src="/images/home/icon-flower.webp" alt="" width="131" height="136" loading="eager" decoding="async" />
-        </div>
-      </section>
-
-      {
-        featuredProjects.length > 0 && (
-          <section class="window window--pink">
-            <div class="window__bar">
-              <h2 class="window__title"><img class="bar-icon" src="/images/home/icon-folder.webp" alt="" width="299" height="278" loading="eager" decoding="async" />项目更新</h2>
-              <a class="window__more" href="/projects">
-                查看全部 →
-              </a>
-            </div>
-            <div class="window__body">
-              {featuredProjects.map((project) => (
-                <article class="project-item">
-                  <figure class="project-item__thumb">
-                    <img
-                      src={`/images/home/project-${project.id}.webp`}
-                      alt=""
-                      width="900"
-                      height="675"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </figure>
-                  <div class="project-item__body">
-                    <p class="project-item__date">{displayPeriod(project)}</p>
-                    <h3 class="project-item__title">
-                      <a href={projectHref(project.id)}>{project.data.title}</a>
-                    </h3>
-                    <p class="project-item__role">{project.data.role}</p>
-                    <p class="project-item__text">{project.data.summary}</p>
-                    <ul class="project-item__tags" role="list">
-                      {project.data.stack.map((item) => <li>{item}</li>)}
-                    </ul>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )
-      }
-
-      {
-        recentPosts.length > 0 && (
-          <section class="window window--mint">
-            <div class="window__bar">
-              <h2 class="window__title"><img class="bar-icon" src="/images/home/sticker-cat-calico.webp" alt="" width="261" height="197" loading="eager" decoding="async" />近期文章</h2>
-              <a class="window__more" href="/posts">
-                查看全部 →
-              </a>
-            </div>
-            <div class="window__body">
-              {recentPosts.map((post) => (
-                <article class="post-item">
-                  <span class="post-item__mark" aria-hidden="true">✎</span>
-                  <h3 class="post-item__title">
-                    <a href={postHref(post.id)}>{post.data.title}</a>
-                  </h3>
-                  <p class="post-item__date">{formatPostDate(post.data.pubDate)}</p>
-                  <p class="post-item__text">{post.data.description}</p>
-                </article>
-              ))}
-              <figure class="sticker sticker--post">
+    {
+      featuredProjects.length > 0 && (
+        <Window title="项目更新" icon="/images/home/icon-folder.webp" tone="pink">
+          <a class="window__more" slot="action" href="/projects">
+            查看全部 →
+          </a>
+          {featuredProjects.map((project) => (
+            <article class="project-item">
+              <figure class="project-item__thumb">
                 <img
-                  src="/images/home/sticker-icecream-cat.webp"
+                  src={`/images/home/project-${project.id}.webp`}
                   alt=""
-                  width="520"
-                  height="533"
+                  width="900"
+                  height="675"
                   loading="eager"
                   decoding="async"
                 />
               </figure>
-            </div>
-          </section>
-        )
-      }
-    </div>
-  </div>
+              <div class="project-item__body">
+                <p class="project-item__date">{displayPeriod(project)}</p>
+                <h3 class="project-item__title">
+                  <a href={projectHref(project.id)}>{project.data.title}</a>
+                </h3>
+                <p class="project-item__role">{project.data.role}</p>
+                <p class="project-item__text">{project.data.summary}</p>
+                <ul class="project-item__tags" role="list">
+                  {project.data.stack.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </Window>
+      )
+    }
+
+    {
+      recentPosts.length > 0 && (
+        <Window title="近期文章" icon="/images/home/sticker-cat-calico.webp" tone="mint">
+          <a class="window__more" slot="action" href="/posts">
+            查看全部 →
+          </a>
+          <div id="recent-posts">
+            {recentPosts.map((post) => (
+              <article class="post-item">
+                <span class="post-item__mark" aria-hidden="true"><img src="/images/home/icon-doc.webp" alt="" width="24" height="24" loading="lazy" decoding="async" /></span>
+                <h3 class="post-item__title">
+                  <a href={postHref(post.id)}>{post.data.title}</a>
+                </h3>
+                <p class="post-item__date">{formatPostDate(post.data.pubDate)}</p>
+                <p class="post-item__text">{post.data.description}</p>
+              </article>
+            ))}
+          </div>
+          <figure class="sticker sticker--post">
+            <img
+              src="/images/home/sticker-icecream-cat.webp"
+              alt=""
+              width="520"
+              height="533"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </Window>
+      )
+    }
+  </BlogShell>
 
   <Fragment slot="footer-decoration">
     <div class="footer-deco" aria-hidden="true">
-      <img src="/images/home/icon-flower.webp" alt="" width="131" height="136" loading="eager" decoding="async" />
-      <img src="/images/home/sticker-sakura.webp" alt="" width="186" height="199" loading="eager" decoding="async" />
-      <img src="/images/home/sticker-star.webp" alt="" width="258" height="205" loading="eager" decoding="async" />
+      <img src="/images/home/icon-flower.webp" alt="" width="131" height="136" loading="lazy" decoding="async" />
+      <img src="/images/home/sticker-sakura.webp" alt="" width="186" height="199" loading="lazy" decoding="async" />
+      <img src="/images/home/sticker-star.webp" alt="" width="258" height="205" loading="lazy" decoding="async" />
     </div>
     <figure class="sticker sticker--footer">
       <img
@@ -266,7 +136,7 @@ function formatPostDate(pubDate: Date): string {
         alt=""
         width="520"
         height="520"
-        loading="eager"
+        loading="lazy"
         decoding="async"
       />
     </figure>

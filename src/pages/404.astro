@@ -1,23 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Window from '../components/Window.astro';
 
-const description = '没有找到这个页面。可以从首页、关于、项目或文章重新进入。';
+const description = '没有找到这个页面。可以从博客首页、关于、项目或文章归档重新进入。';
 ---
 
 <BaseLayout title="页面未找到" description={description}>
-  <section class="not-found">
-    <p class="not-found__code">404</p>
-    <h1 class="not-found__title">页面未找到</h1>
-    <p class="not-found__text">你要找的页面不存在，或者地址已经变了。可以从下面几个入口重新进入。</p>
-    <nav class="not-found__nav" aria-label="站点入口">
-      <ul class="not-found__list" role="list">
-        <li><a class="not-found__link" href="/">首页</a></li>
-        <li><a class="not-found__link" href="/about">关于</a></li>
-        <li><a class="not-found__link" href="/projects">项目</a></li>
-        <li><a class="not-found__link" href="/posts">文章</a></li>
-      </ul>
-    </nav>
-  </section>
+  <div class="solo-shell">
+    <Window title="页面未找到" icon="/images/home/sticker-star.webp" tone="pink">
+      <section class="not-found">
+        <p class="not-found__code">404</p>
+        <h1 class="not-found__title">页面未找到</h1>
+        <p class="not-found__text">
+          你要找的页面不存在，或者地址已经变了。可以从下面几个入口重新进入。
+        </p>
+        <nav class="not-found__nav" aria-label="站点入口">
+          <ul class="not-found__list" role="list">
+            <li><a class="not-found__link" href="/">博客首页</a></li>
+            <li><a class="not-found__link" href="/projects">项目</a></li>
+            <li><a class="not-found__link" href="/about">关于</a></li>
+            <li><a class="not-found__link" href="/posts">文章归档</a></li>
+          </ul>
+        </nav>
+      </section>
+    </Window>
+  </div>
 </BaseLayout>
 
 <style>
@@ -25,49 +32,64 @@ const description = '没有找到这个页面。可以从首页、关于、项�
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-2);
-    max-width: var(--measure);
+    gap: 0.6rem;
   }
 
   .not-found__code {
+    margin: 0;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background-color: var(--blog-pink);
     font-family: var(--font-mono);
-    font-size: var(--step--1);
-    letter-spacing: 0.12em;
-    color: var(--ink-muted);
+    font-size: 0.84rem;
+    letter-spacing: 0.08em;
+    color: var(--blog-pink-text);
   }
 
   .not-found__title {
-    font-size: var(--step-3);
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
     font-weight: 400;
+    line-height: 1.2;
   }
 
   .not-found__text {
-    max-width: var(--measure);
+    max-width: 42rem;
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--blog-ink-soft);
   }
 
   .not-found__nav {
     width: 100%;
-    margin-block-start: var(--space-2);
-    padding-block-start: var(--space-3);
-    border-block-start: 1px solid var(--rule);
+    margin-block-start: 0.5rem;
+    padding-block-start: 0.9rem;
+    border-block-start: 1px dashed var(--blog-pink-line);
   }
 
   .not-found__list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-1) var(--space-3);
+    gap: 0.4rem;
     padding: 0;
+    margin: 0;
     list-style: none;
-    font-family: var(--font-sans);
-    font-size: var(--step--1);
-    letter-spacing: 0.04em;
   }
 
   .not-found__link {
-    text-decoration-thickness: 1px;
+    display: inline-flex;
+    padding: 0.26rem 0.72rem;
+    border: 1px solid var(--blog-mint-line);
+    border-radius: 999px;
+    background-color: #f2faf7;
+    font-size: 0.9rem;
+    color: var(--blog-mint-text);
+    text-decoration: none;
   }
 
   .not-found__link:hover {
-    text-decoration-thickness: 2px;
+    background-color: var(--blog-mint);
   }
 </style>

@@ -43,6 +43,8 @@ export interface Portrait {
 
 export interface Profile {
   name: string;
+  /** 对外使用的英文昵称，与站名一起出现，不替代正式姓名。 */
+  alias: string;
   tagline: string;
   intro: string;
   location: string;
@@ -62,6 +64,7 @@ export interface Profile {
 
 export const profile: Profile = {
   name: '庞楚雯',
+  alias: 'Wingwen',
   tagline: '计算机技术硕士在读 · 做全栈开发与 LLM 应用落地',
   intro:
     '2027 届计算机技术硕士，求职方向是开发与 AI Agent。做过外贸 B2B 客服系统的邮件全链路、Agent 行为评测体系，以及基于 pgvector 的产品检索。我关心的不是模型能不能答出来，而是把模型能力接进真实业务之后，怎么让它可控、可验证、能兜底。',

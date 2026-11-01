@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Window from '../../components/Window.astro';
 import PlaceholderBadge from '../../components/PlaceholderBadge.astro';
 import { formatPostDate, sortPostsNewestFirst, tagHref, visiblePosts } from '../../lib/posts';
 
@@ -21,7 +22,9 @@ const publishedAt = data.pubDate.toISOString().slice(0, 10);
 ---
 
 <BaseLayout title={data.title} description={data.description} ogType="article">
-  <article class="post">
+  <div class="solo-shell">
+    <Window title="文章" icon="/images/home/icon-doc.webp" tone="pink">
+      <article class="post">
     <p class="post__back">
       <a href="/posts">← 全部文章</a>
     </p>
@@ -73,11 +76,13 @@ const publishedAt = data.pubDate.toISOString().slice(0, 10);
       </div>
     </div>
   </article>
+    </Window>
+  </div>
 </BaseLayout>
 
 <style>
   .post {
-    max-width: var(--measure);
+    max-width: none;
   }
 
   .post__back {
@@ -192,11 +197,11 @@ const publishedAt = data.pubDate.toISOString().slice(0, 10);
   /* 宽屏下目录进入第二列，正文与目录各占一格，长标题也不会互相压住。 */
   @media (min-width: 64rem) {
     .post {
-      max-width: calc(var(--measure) + 15rem);
+      max-width: none;
     }
 
     .post__layout {
-      grid-template-columns: minmax(0, var(--measure)) minmax(0, 13rem);
+      grid-template-columns: minmax(0, 1fr) minmax(0, 10.5rem);
       column-gap: var(--space-5);
       align-items: start;
     }

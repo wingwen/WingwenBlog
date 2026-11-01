@@ -1,0 +1,44 @@
+---
+interface Props {
+  /** 窗口标题栏上的文字，三页共用同一套标题栏。 */
+  title: string;
+  /** 标题左侧的小图标，传 public 下的路径；纯装饰，不带 alt。 */
+  icon?: string;
+  tone?: 'pink' | 'mint';
+  /** 项目卡片位于「项目」h1 之下时传 3，其余情况保持 2。 */
+  headingLevel?: 2 | 3;
+}
+
+const { title, icon, tone = 'pink', headingLevel = 2 } = Astro.props;
+
+const HeadingTag = `h${headingLevel}` as 'h2' | 'h3';
+const hasAction = Astro.slots.has('action');
+---
+
+<section class:list={['window', `window--${tone}`]}>
+  <div class="window__bar">
+    <HeadingTag class="window__title">
+      {
+        icon && (
+          <img
+            class="bar-icon"
+            src={icon}
+            alt=""
+            width="24"
+            height="24"
+            loading="lazy"
+            decoding="async"
+          />
+        )
+      }
+      {title}
+    </HeadingTag>
+    <div class="window__bar-end">
+      {hasAction && <slot name="action" />}
+      <span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    </div>
+  </div>
+  <div class="window__body">
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,85 @@
+---
+interface Props {
+  title: string;
+  lede: string;
+  /** 标题旁的补充说明，例如条目数量或当前状态；没有就不渲染。 */
+  meta?: string;
+  /** 右侧的贴纸素材，传 public 下的路径。 */
+  sticker?: string;
+}
+
+const { title, lede, meta, sticker } = Astro.props;
+---
+
+<header class="page-head">
+  <div class="page-head__body">
+    <h1 class="page-head__title">{title}</h1>
+    <p class="page-head__lede">{lede}</p>
+    {meta && <p class="page-head__meta">{meta}</p>}
+  </div>
+  {
+    sticker && (
+      <figure class="sticker page-head__sticker">
+        <img src={sticker} alt="" width="520" height="427" loading="lazy" decoding="async" />
+      </figure>
+    )
+  }
+</header>
+
+<style>
+  .page-head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    overflow: hidden;
+    padding: 1.2rem 1.3rem;
+    border: 2px solid var(--blog-pink-line);
+    border-radius: var(--blog-radius);
+    background-color: var(--blog-cream);
+    box-shadow: var(--blog-shadow);
+  }
+
+  .page-head__body {
+    display: grid;
+    gap: 0.45rem;
+    max-width: 42rem;
+  }
+
+  .page-head__title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  .page-head__lede {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--blog-ink-soft);
+  }
+
+  .page-head__meta {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    letter-spacing: 0.05em;
+    color: var(--blog-pink-text);
+  }
+
+  .page-head__sticker {
+    flex: 0 0 auto;
+    width: 4.4rem;
+    transform: rotate(-5deg);
+  }
+
+  @media (max-width: 40em) {
+    .page-head__sticker {
+      display: none;
+    }
+  }
+</style>

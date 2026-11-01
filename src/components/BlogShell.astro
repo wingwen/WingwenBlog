@@ -1,0 +1,12 @@
+---
+import ProfileSidebar from './ProfileSidebar.astro';
+---
+
+<div class="blog-shell">
+  <div class="blog-main">
+    <slot />
+  </div>
+  <aside class="blog-side" aria-label="个人资料栏">
+    <ProfileSidebar />
+  </aside>
+</div>

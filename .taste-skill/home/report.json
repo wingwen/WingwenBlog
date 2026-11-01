@@ -1,0 +1,1513 @@
+{
+ "url": "http://localhost:4322/",
+ "at": "2026-11-01T02:48:47.081Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.8,
+    0.88
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 1448,
+     "screens": 1.6,
+     "words": 218,
+     "img": 30,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 7,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "welcome-miku.webp",
+      "project-lazetrade.webp",
+      "project-mail.webp",
+      "project-lisa.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "✎"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "chars": 19,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Newsreader",
+     "weight": 400,
+     "tracking": 0.01,
+     "leading": 1.25,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.29,
+     "top": 145,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "lines": 1,
+     "size": 32,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.29,
+      "top": 145,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.49,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.48,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.03,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      19,
+      22,
+      32
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 13.1,
+      "leading": 1.8,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.9
+     },
+     "measureChars": 41,
+     "max": {
+      "size": 32,
+      "vw": 2.2,
+      "font": "Newsreader",
+      "text": "欢迎来到"
+     },
+     "monoShare": 0.48,
+     "monoProseShare": 0.48,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "深圳",
+      "2027 届 · 在读硕士 · 求职中",
+      "Wingwen",
+      "计算机技术硕士在读 · 做全栈开发与 LLM 应用落地",
+      "坐标",
+      "专业"
+     ],
+     "microLabels": 1,
+     "microLabelShare": 0.006,
+     "microSamples": [
+      "WELCOME"
+     ],
+     "upperShare": 0.11,
+     "centerShare": 0,
+     "smallText": 23
+    },
+    "eyebrows": [
+     {
+      "text": "WELCOME",
+      "above": "欢迎来到 Wingwen’s Blog",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.9,
+      "top": 118
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 351,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.31
+      },
+      {
+       "color": "#6b6159",
+       "share": 0.28
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.2
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.18
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 43,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "博客",
+      "近期文章"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 10,
+     "shadowOverlay": 5,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.welcome → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "figure.project-item__thumb → rgba(169, 217, 204, 0.5) 0px 3px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 5,
+     "hairlineSamples": [
+      "dl.profile-meta 270px",
+      "article.project-item 996px",
+      "article.project-item 996px",
+      "article.post-item 996px",
+      "article.post-item 996px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 5,
+     "blurred": 0,
+     "roundedBoxes": 10,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": true,
+       "rounded": true,
+       "top": 95
+      },
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 95
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.12
+     }
+    ],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 65,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 1448,
+    "margins": {
+     "left": 61,
+     "right": 95
+    },
+    "sections": [
+     {
+      "sel": "section.welcome",
+      "tag": "section",
+      "top": 95,
+      "height": 240,
+      "words": 14,
+      "media": 1,
+      "middle": 15,
+      "heading": {
+       "text": "欢迎来到",
+       "size": 32,
+       "tag": "h1"
+      },
+      "left": 387,
+      "right": 46,
+      "textLeft": 387,
+      "textRight": 697,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 351,
+      "height": 514,
+      "words": 85,
+      "media": 3,
+      "middle": 18,
+      "heading": {
+       "text": "Lazetrade · 外贸 CRM 智能客服",
+       "size": 19,
+       "tag": "h3"
+      },
+      "left": 385,
+      "right": 95,
+      "textLeft": 404,
+      "textRight": 95,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 882,
+      "height": 431,
+      "words": 18,
+      "media": 0,
+      "middle": 289,
+      "heading": {
+       "text": "示例文章 · 排版与代码块演示",
+       "size": 15,
+       "tag": "h3"
+      },
+      "left": 404,
+      "right": 64,
+      "textLeft": 404,
+      "textRight": 99,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "size": 32,
+      "top": 145,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 404,
+      "n": 5
+     },
+     {
+      "x": 83,
+      "n": 4
+     },
+     {
+      "x": 671,
+      "n": 3
+     },
+     {
+      "x": 387,
+      "n": 1
+     },
+     {
+      "x": 524,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 14,
+    "bodySize": 13,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.04,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 60,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.92,
+    0.79,
+    0.79
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3016,
+     "screens": 2.9,
+     "words": 211,
+     "img": 30,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 7,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "welcome-miku.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "✎"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": null,
+    "h1": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "lines": 1,
+     "size": 22.4,
+     "font": "Newsreader"
+    },
+    "headings": [],
+    "headingSummary": {
+     "count": 0,
+     "maxLines": 0,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.49,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.47,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.03,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      19,
+      22
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 13.1,
+      "leading": 1.8,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.9
+     },
+     "measureChars": 106,
+     "max": {
+      "size": 22.4,
+      "vw": 2.9,
+      "font": "Newsreader",
+      "text": "欢迎来到"
+     },
+     "monoShare": 0.47,
+     "monoProseShare": 0.47,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "Wingwen",
+      "计算机技术硕士在读 · 做全栈开发与 LLM 应用落地",
+      "坐标",
+      "专业",
+      "学校",
+      "状态"
+     ],
+     "microLabels": 1,
+     "microLabelShare": 0.006,
+     "microSamples": [
+      "WELCOME"
+     ],
+     "upperShare": 0.11,
+     "centerShare": 0,
+     "smallText": 22
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 137,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.31
+      },
+      {
+       "color": "#6b6159",
+       "share": 0.27
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.2
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.19
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 41,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "博客"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 15,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--mint → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 5,
+     "hairlineSamples": [
+      "dl.profile-meta 695px",
+      "article.project-item 695px",
+      "article.project-item 695px",
+      "article.post-item 695px",
+      "article.post-item 695px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 5,
+     "blurred": 0,
+     "roundedBoxes": 11,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 1,
+     "mediaRadius": 16,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 107,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 3016,
+    "margins": {
+     "left": 36,
+     "right": 39
+    },
+    "sections": [
+     {
+      "sel": "aside.blog-side",
+      "tag": "aside",
+      "top": 137,
+      "height": 1048,
+      "words": 82,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "个人资料",
+       "size": 14,
+       "tag": "h2"
+      },
+      "left": 36,
+      "right": 39,
+      "textLeft": 36,
+      "textRight": 46,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.welcome",
+      "tag": "section",
+      "top": 1201,
+      "height": 604,
+      "words": 14,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "欢迎来到",
+       "size": 22,
+       "tag": "h1"
+      },
+      "left": 21,
+      "right": 21,
+      "textLeft": 40,
+      "textRight": 419,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 1821,
+      "height": 613,
+      "words": 85,
+      "media": 0,
+      "middle": 18,
+      "heading": {
+       "text": "Lazetrade · 外贸 CRM 智能客服",
+       "size": 19,
+       "tag": "h3"
+      },
+      "left": 38,
+      "right": 37,
+      "textLeft": 58,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 2449,
+      "height": 431,
+      "words": 18,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "示例文章 · 排版与代码块演示",
+       "size": 15,
+       "tag": "h3"
+      },
+      "left": 58,
+      "right": 39,
+      "textLeft": 58,
+      "textRight": 74,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "size": 22,
+      "top": 1251,
+      "firstScreen": false
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 58,
+      "n": 9
+     },
+     {
+      "x": 252,
+      "n": 3
+     },
+     {
+      "x": 40,
+      "n": 1
+     },
+     {
+      "x": 136,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 14,
+    "bodySize": 13,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.91,
+    0.86,
+    0.92,
+    0.92,
+    0.86
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 3622,
+     "screens": 4.3,
+     "words": 211,
+     "img": 30,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 7,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "welcome-miku.webp",
+      "project-lazetrade.webp",
+      "project-mail.webp",
+      "project-lisa.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [
+      "✎"
+     ],
+     "videosNoPoster": 0
+    },
+    "hero": null,
+    "h1": {
+     "text": "欢迎来到 Wingwen’s Blog",
+     "words": 3,
+     "lines": 1,
+     "size": 22.4,
+     "font": "Newsreader"
+    },
+    "headings": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "words": 3,
+      "chars": 19,
+      "lines": 1,
+      "size": 22.4,
+      "vw": 5.7,
+      "font": "Newsreader",
+      "weight": 400,
+      "tracking": 0.01,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.81,
+      "top": 1386,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Newsreader",
+       "share": 0.49,
+       "mono": false
+      },
+      {
+       "family": "ui-monospace",
+       "share": 0.47,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.03,
+       "mono": false
+      }
+     ],
+     "familyCount": 3,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      19,
+      22
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": {
+      "font": "Newsreader",
+      "size": 13.1,
+      "leading": 1.8,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.9
+     },
+     "measureChars": 49,
+     "max": {
+      "size": 22.4,
+      "vw": 5.7,
+      "font": "Newsreader",
+      "text": "欢迎来到"
+     },
+     "monoShare": 0.47,
+     "monoProseShare": 0.47,
+     "monoFamilies": [
+      "ui-monospace"
+     ],
+     "monoSamples": [
+      "Wingwen",
+      "计算机技术硕士在读 · 做全栈开发与 LLM 应用落地",
+      "坐标",
+      "专业",
+      "学校",
+      "状态"
+     ],
+     "microLabels": 1,
+     "microLabelShare": 0.006,
+     "microSamples": [
+      "WELCOME"
+     ],
+     "upperShare": 0.11,
+     "centerShare": 0,
+     "smallText": 22
+    },
+    "eyebrows": [
+     {
+      "text": "WELCOME",
+      "above": "欢迎来到 Wingwen’s Blog",
+      "upper": true,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.9,
+      "top": 1359
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#fdf7f9",
+     "bodyBgHsl": {
+      "h": 340,
+      "s": 0.6,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#fffdf8",
+       "top": 136,
+       "hsl": {
+        "h": 43,
+        "s": 1,
+        "l": 0.99
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#2b2624",
+       "share": 0.31
+      },
+      {
+       "color": "#6b6159",
+       "share": 0.27
+      },
+      {
+       "color": "#1e6b61",
+       "share": 0.2
+      },
+      {
+       "color": "#9c3255",
+       "share": 0.19
+      },
+      {
+       "color": "#1a1a18",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#faf8f4",
+      "hsl": {
+       "h": 40,
+       "s": 0.37,
+       "l": 0.97
+      },
+      "fg": "#1a1a18"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": "pill",
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到正文",
+      "博客"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 15,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--mint → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+      "section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 5,
+     "hairlineSamples": [
+      "dl.profile-meta 324px",
+      "article.project-item 324px",
+      "article.project-item 324px",
+      "article.post-item 324px",
+      "article.post-item 324px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 5,
+     "blurred": 0,
+     "roundedBoxes": 12,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 4,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 4,
+     "fixed": false,
+     "height": 105,
+     "floatingPill": true,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "newsreader"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 3622,
+    "margins": {
+     "left": 33,
+     "right": 35
+    },
+    "sections": [
+     {
+      "sel": "aside.blog-side",
+      "tag": "aside",
+      "top": 136,
+      "height": 1184,
+      "words": 82,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "个人资料",
+       "size": 14,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 36,
+      "textLeft": 33,
+      "textRight": 42,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.welcome",
+      "tag": "section",
+      "top": 1336,
+      "height": 400,
+      "words": 14,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "欢迎来到",
+       "size": 22,
+       "tag": "h1"
+      },
+      "left": 18,
+      "right": 18,
+      "textLeft": 37,
+      "textRight": 44,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--pink",
+      "tag": "section",
+      "top": 1752,
+      "height": 1170,
+      "words": 85,
+      "media": 3,
+      "middle": 0,
+      "heading": {
+       "text": "Lazetrade · 外贸 CRM 智能客服",
+       "size": 19,
+       "tag": "h3"
+      },
+      "left": 33,
+      "right": 34,
+      "textLeft": 33,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.window.window--mint",
+      "tag": "section",
+      "top": 2938,
+      "height": 521,
+      "words": 18,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "示例文章 · 排版与代码块演示",
+       "size": 15,
+       "tag": "h3"
+      },
+      "left": 55,
+      "right": 36,
+      "textLeft": 55,
+      "textRight": 44,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "欢迎来到 Wingwen’s Blog",
+      "size": 22,
+      "top": 1386,
+      "firstScreen": false
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 55,
+      "n": 9
+     },
+     {
+      "x": 33,
+      "n": 4
+     },
+     {
+      "x": 133,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 14,
+    "bodySize": 13,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 1440,
+   "message": "1 eyebrow/kicker label(s) above headings: \"WELCOME\" above \"欢迎来到 Wingwen’s Blog\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "mono",
+   "width": 1440,
+   "message": "Monospace type outside code: ui-monospace — e.g. \"深圳\", \"2027 届 · 在读硕士 · 求职中\", \"Wingwen\", \"计算机技术硕士在读 · 做全栈开发与 LLM 应用落地\"",
+   "fix": "Set it in the text face. Monospace is for literal code inside <pre>/<code> only.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "1 tiny uppercase letter-spaced label(s): \"WELCOME\"",
+   "fix": "Prefer sentence case at body size.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "emoji",
+   "width": 1440,
+   "message": "Emoji in the page: ✎",
+   "fix": "Remove. Use words or real imagery.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "shadow",
+   "width": 1440,
+   "message": "10 box-shadow(s) on elements at rest: header.blog-bar → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px | section.welcome → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px | section.window.window--pink → rgba(214, 170, 182, 0.45) 0px 4px 0px 0px",
+   "fix": "Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "5 thin rule(s)/divider line(s): dl.profile-meta 270px | article.project-item 996px | article.project-item 996px | article.post-item 996px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "dashed",
+   "width": 1440,
+   "message": "5 dashed/dotted border(s).",
+   "fix": "Remove unless it is a real drop zone.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "icon-cards",
+   "width": 1440,
+   "message": "1 row(s) of identical cards each topped with a small icon (4 cards).",
+   "fix": "Replace with one composed section from the direction: a narrative split, a list set in large type, or real imagery per item."
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (section #fffdf8, button #faf8f4).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-count",
+   "width": 1440,
+   "message": "3 typefaces in use (Newsreader, ui-monospace, -apple-system).",
+   "fix": "Two at most.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "body-size",
+   "width": 1440,
+   "message": "Body text is 13.1px (the size most of the running text is set in).",
+   "fix": "Body copy 16–20px. Map small sizes from blueprints onto your body step.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "grey-body",
+   "width": 1440,
+   "message": "The running text is a soft grey on its ground (5.9:1).",
+   "fix": "Set body copy in the full ink (7:1 or more). Keep the muted ink for secondary notes; pages read thin and unfinished when everything is grey.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "23 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "focal-point",
+   "width": 1440,
+   "message": "The first screen has no dominant element: the largest type is 32px (2.2vw) and no single picture holds a third of the viewport.",
+   "fix": "Make one thing lead: the headline at display size, or one large picture. A grid of many small pictures is not one thing; in blind tests jurors marked a first screen without a headline down every time. On the strongest studied sites the largest type has a median of 8.4vw."
+  },
+  {
+   "level": "WARN",
+   "id": "off-centre",
+   "width": 1440,
+   "message": "The margins differ: 61px on the left, 95px on the right, at 1440px.",
+   "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page."
+  },
+  {
+   "level": "WARN",
+   "id": "name-only-title",
+   "width": 1440,
+   "message": "The h1 is a bare name (\"欢迎来到 Wingwen’s Blog\") and nothing else on the first screen says what this is.",
+   "fix": "Keep the name if it leads, and give the line under it (18px or more) the plain words: what it is, for whom, where or when. In the study of 97 Sites of the Day, first screens that named nothing lost usability and content points."
+  },
+  {
+   "level": "FAIL",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Only 0 element(s) moved while the page loaded and scrolled.",
+   "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback."
+  },
+  {
+   "level": "WARN",
+   "id": "measure",
+   "width": 768,
+   "message": "Longest paragraph runs about 106 characters per line.",
+   "fix": "Cap paragraphs at 45–75 characters (max-width: 60ch)."
+  },
+  {
+   "level": "WARN",
+   "id": "no-hero",
+   "width": 768,
+   "message": "No headline found in the first viewport.",
+   "fix": "The first screen needs a clear focal statement or image.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "no-title",
+   "width": 768,
+   "message": "The h1 (\"欢迎来到 Wingwen’s Blog\") is not on the first screen (it starts 1251px down).",
+   "fix": "The title belongs on the first screen, where a visitor decides whether to stay.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "pill-nav",
+   "width": 390,
+   "message": "Floating rounded pill navigation.",
+   "fix": "Use a plain bar: wordmark left, a few links, one action."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/home/desktop-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/home/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/home/tablet-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/home/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/Admin/Documents/zhiyu-folio/.taste-skill/home/mobile-fold.jpg",
+   "pages": [
+    "/Users/Admin/Documents/zhiyu-folio/.taste-skill/home/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

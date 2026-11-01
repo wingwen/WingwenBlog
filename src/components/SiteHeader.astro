@@ -2,18 +2,10 @@
 import { profile } from '../data/profile';
 import { features, site } from '../data/site';
 
-interface Props {
-  /** default 用于其余页面；blog 是首页专用的胶囊导航条。 */
-  variant?: 'default' | 'blog';
-}
-
-const { variant = 'default' } = Astro.props;
-
 const navItems = [
-  { label: '首页', href: '/', img: 'icon-house' },
-  { label: '关于', href: '/about', img: 'icon-user' },
+  { label: '博客', href: '/', img: 'icon-house' },
   { label: '项目', href: '/projects', img: 'icon-folder' },
-  { label: '文章', href: '/posts', img: 'icon-doc' },
+  { label: '关于', href: '/about', img: 'icon-user' },
 ] as const;
 
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
@@ -26,82 +18,65 @@ function isCurrentPage(href: string): boolean {
 }
 ---
 
-{
-  variant === 'blog' ? (
-    <header class="blog-bar">
-      <a class="blog-bar__brand" href="/">
-        <span class="blog-bar__mark" aria-hidden="true">知</span>
-        <span class="blog-bar__name">{site.name}</span>
-      </a>
+<header class="blog-bar">
+  <a class="blog-bar__brand" href="/" aria-label={`${site.name} 首页`}>
+    <span class="blog-bar__mark" aria-hidden="true">W</span>
+    <span class="blog-bar__name">{site.name}</span>
+  </a>
 
-      <nav class="blog-bar__nav" aria-label="主导航">
-        <ul class="blog-bar__list" role="list">
-          {navItems.map((item) => (
-            <li>
-              <a
-                class="blog-bar__link"
-                href={item.href}
-                aria-current={isCurrentPage(item.href) ? 'page' : undefined}
-              >
-                <img class="blog-bar__icon" src={`/images/home/${item.img}.webp`} alt="" width="32" height="32" loading="eager" decoding="async" />
-                <span>{item.label}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <div class="blog-bar__aside">
-        <p class="blog-bar__meta">
-          <span>{profile.location}</span>
-          <span>{profile.status}</span>
-        </p>
-
-        <figure class="sticker sticker--nav">
-          <img
-            src="/images/home/sticker-star.webp"
-            alt=""
-            width="520"
-            height="427"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-
-        {
-          features.aiAssistant && (
-            <a class="blog-bar__ai" href="/assistant" aria-label="问问知屿：用自然语言提问">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9Z" />
-              </svg>
-              <span>问问知屿</span>
+  <nav class="blog-bar__nav" aria-label="主导航">
+    <ul class="blog-bar__list" role="list">
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              class="blog-bar__link"
+              href={item.href}
+              aria-current={isCurrentPage(item.href) ? 'page' : undefined}
+            >
+              <img
+                class="blog-bar__icon"
+                src={`/images/home/${item.img}.webp`}
+                alt=""
+                width="32"
+                height="32"
+                loading="eager"
+                decoding="async"
+              />
+              <span>{item.label}</span>
             </a>
-          )
-        }
-      </div>
-    </header>
-  ) : (
-    <header class="site-header">
-      <p class="wrap info-bar">
-        <span class="info-bar__item">{profile.name}</span>
-        <span class="info-bar__item">{profile.location}</span>
-        <span class="info-bar__item">{profile.status}</span>
-      </p>
-      <nav class="site-nav wrap" aria-label="主导航">
-        <ul class="site-nav__list" role="list">
-          {navItems.map((item) => (
-            <li>
-              <a
-                class="site-nav__link"
-                href={item.href}
-                aria-current={isCurrentPage(item.href) ? 'page' : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
-  )
-}
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div class="blog-bar__aside">
+    <p class="blog-bar__meta">
+      <span>{profile.location}</span>
+      <span>{profile.status}</span>
+    </p>
+
+    <figure class="sticker sticker--nav">
+      <img
+        src="/images/home/sticker-star.webp"
+        alt=""
+        width="520"
+        height="427"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    {
+      features.aiAssistant && (
+        <a class="blog-bar__ai" href="/assistant" aria-label="AI 助手：用自然语言提问">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9Z" />
+          </svg>
+          <span>问问 {profile.alias}</span>
+        </a>
+      )
+    }
+  </div>
+</header>
