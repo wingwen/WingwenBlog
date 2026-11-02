@@ -1,6 +1,7 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import AssistantChat from '../components/AssistantChat.astro';
 import { site } from '../data/site';
 import { profile } from '../data/profile';
 import '../styles/fonts.css';
@@ -63,6 +64,7 @@ const shareImageUrl = new URL('/og-default.png', Astro.site);
   <body>
     <a class="skip-link" href="#main">跳到正文</a>
     <SiteHeader />
+    <AssistantChat />
     <main id="main" class="page-main" tabindex="-1">
       <slot />
     </main>

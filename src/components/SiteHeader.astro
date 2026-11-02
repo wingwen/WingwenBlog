@@ -85,12 +85,18 @@ function isCurrentPage(href: string): boolean {
 
     {
       features.aiAssistant && (
-        <a class="blog-bar__ai" href="/assistant" aria-label="AI 助手：用自然语言提问">
+        <button
+          type="button"
+          class="blog-bar__ai"
+          data-chat-open
+          aria-haspopup="dialog"
+          aria-label="打开 AI 助手对话面板"
+        >
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9Z" />
           </svg>
           <span>问问 {profile.alias}</span>
-        </a>
+        </button>
       )
     }
   </div>

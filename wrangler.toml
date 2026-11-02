@@ -1,0 +1,27 @@
+# Cloudflare Pages 配置。
+# 线上 Secret（DEEPSEEK_API_KEY、ALLOWED_ORIGINS）在 Pages 项目创建后到控制台配置，
+# 不写进这个文件，也不写进仓库。本地开发用 .dev.vars（已被 .gitignore 忽略）。
+
+name = "wingwen-blog"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-01-01"
+# 函数只用到 fetch / Response / TextEncoder，不依赖 Node 内置模块；
+# 保留该 flag 只是给以后可能的依赖留余地，删掉也不影响当前功能。
+compatibility_flags = ["nodejs_compat"]
+
+# D1 绑定：卡每天的总调用额度。
+# 账号侧执行 `npx wrangler d1 create wingwen-chat-budget` 后，把返回的 database_id 填进来再取消注释。
+# 本地开发：`npx wrangler pages dev --d1 CHAT_BUDGET_DB=local-budget`。
+# [[d1_databases]]
+# binding = "CHAT_BUDGET_DB"
+# database_name = "wingwen-chat-budget"
+# database_id = "<创建后填入>"
+
+# 单 IP 限流绑定（本地 wrangler 已实测生效：第 9 次起拒绝）。
+[[ratelimits]]
+name = "CHAT_RATE_LIMITER"
+namespace_id = "1001"
+
+[ratelimits.simple]
+limit = 8
+period = 60

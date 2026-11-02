@@ -4,13 +4,15 @@ import { profile } from '../data/profile';
 
 const entryName = `问问 ${profile.alias}`;
 const isReady = features.aiAssistant;
-const CardTag = isReady ? 'a' : 'div';
+const CardTag = isReady ? 'button' : 'div';
 ---
 
 <CardTag
   class:list={['assistant-card', isReady ? 'assistant-card--ready' : 'assistant-card--pending']}
-  href={isReady ? assistant.href : undefined}
-  aria-label={isReady ? `${entryName}：用自然语言提问` : undefined}
+  type={isReady ? 'button' : undefined}
+  data-chat-open={isReady ? true : undefined}
+  aria-haspopup={isReady ? 'dialog' : undefined}
+  aria-label={isReady ? `${entryName}：打开对话面板` : undefined}
 >
   <figure class="assistant-card__mascot">
     <img

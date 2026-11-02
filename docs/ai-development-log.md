@@ -798,5 +798,103 @@
 - `npm run build`：7 页
 - `README.md`、`docs/`、`.trellis/tasks/10-29-portfolio-site/` 中剩余的「文章」字样全部出现在「已移除」的说明或变更记录里，不再是当前功能描述
 
+### v4.15：P6a · 助手的语料与核心函数
+
+**目标**：把 AI 助手的服务端核心写完并测透，不部署、不接真实 Key、页面无变化。
+
+**改动**
+- `scripts/build-ai-corpus.mjs`：只读 `profile.ts` 与三个项目 md，生成 `src/server/corpus.generated.ts`（派生文件，已 gitignore）；语料里出现 `/posts`、`/tags`、「文章」时构建失败
+- `src/server/prompt.ts`：系统指令、材料拼接、历史拼装、输入清洗（去尖括号、压空白、限 300 字）
+- `src/server/chat.ts`：`handleChat(request, env, deps)`，纯 Web 标准；网络与限流从参数注入
+- `src/server/chat.test.ts`：19 条测试
+- `package.json` 增加 `corpus` 脚本并挂到 `prebuild` / `pretest`
+
+**关键决策**
+- **语料生成 TS 而不是 JSON**。Node 原生导入 JSON 需要 import attributes，本地脚本与单测都会被绊一下；生成 `.ts` 后可以直接当普通模块导入
+- **模型回调与限流器都注入**。单测不触网、不花钱，也不依赖任何平台绑定
+- **拒答用短标记判定**（`不在我的公开资料里`），不比对整句，容忍模型在固定话术外多说几个字
+
+**遇到的问题**
+1. **profile.ts 里有图片导入，Node 跑不起来** —— 生成脚本先把头像那行替换成占位常量，写进临时目录再 import，临时目录用完即删。若哪天导入行变了，脚本会显式报错而不是静默生成空资料
+2. **项目 frontmatter 里有嵌套对象**（`screenshots` 的每一项是对象） —— 手写解析器遇到缩进的 `key:` 就整块跳过，语料本来也不需要截图；其它无法识别的写法仍然直接报错
+3. **冒烟脚本一开始直接 import 源码失败** —— Node 的 ESM 不会给无扩展名的相对导入补 `.ts`。改用 Vite 的 SSR 加载器跑真实 `handleChat`，与单测同一条解析链
+
+**验证**
+- `npm test`：27 通过（8 + 19）；`astro check`：0 错误 0 警告；`npm run build`：7 页
+- 语料：5 个来源、3516 字符、约 2200 tokens；system prompt 实测 4025 字符
+- 本地假上游冒烟 8 个场景：200（带来源）/ 拒答清空来源 / 越界来源被过滤 / 400 / 403 / 429 / 502 / 503 全部符合预期
+- 部署与密钥：均未触碰
+
+### v4.16：P6b · 本地函数适配与 Cloudflare 能力验证
+
+**目标**：把 Pages Functions 适配器与限流接上，用 `wrangler pages dev` 在本机验证平台能力；不部署、不配线上 Secret。
+
+**改动**
+- `functions/api/chat.ts`：薄适配器，读绑定、注入额度检查、转调 `handleChat`
+- `src/server/budget.ts` + `budget.test.ts`：D1 日额度（北京时间切天，`ON CONFLICT ... RETURNING` 自增）
+- `wrangler.toml`：`pages_build_output_dir`、`[[ratelimits]]` 绑定；D1 绑定留占位注释
+- `.gitignore`：`.dev.vars` → `.dev.vars*`
+- `.env.example`：只列变量名
+- `wrangler` 装为 devDependency
+
+**关键决策**
+- **预算从 DO 改成 D1**。Cloudflare 文档明确写「不能在 Pages 项目内部署 Durable Object」，必须另建 Worker 绑定，与统一部署冲突。D1 是 Pages 原生单主库，够承担日额度。
+- **额度只在真正调模型前扣**。第一版放在适配器最前面，实测发现 403/400/405 也会扣额度，等于让攻击者用空请求烧掉预算；改成通过注入的 `consumeBudget` 在校验与限流之后执行。
+
+**实测（本地 `wrangler pages dev`，假上游，无真实 Key）**
+
+| 验证点 | 结果 |
+|---|---|
+| Pages Functions 能否 import `src/server/*` | 通过，`Compiled Worker successfully` |
+| `ratelimits` 绑定能否在 Pages 声明 | 通过，启动信息 `Rate Limit 8 requests/60s` |
+| 限流是否真的生效 | 通过，探针第 9 次起 `success:false`；`/api/chat` 超限返回 429 |
+| D1 绑定与建表 | 通过，`chat_budget` 自动建表并自增 |
+| 额度只在实际调用时扣 | 通过，403/400/405 后计数不变，仅两次 200 使 count = 2 |
+| `.dev.vars` 是否被忽略 | 通过，`git check-ignore` 命中 `.dev.vars*` |
+| WAF 速率规则 | 未验证，需真实账号与自定义域名 |
+
+**遇到的问题**
+1. **项目 frontmatter 里的嵌套字段**：`screenshots` 每项是对象，简易解析器原先直接报错，改为整块跳过。
+2. **额度扣在错误的层级**：见上，已重构到模型调用前。
+3. **本地后台进程被回收**：`(npx wrangler pages dev &)` 这种方式起的服务在 shell 调用结束后会消失，改用工具托管的后台任务。
+
+**产物**
+- `functions/api/chat.ts`、`src/server/budget.ts`、`src/server/budget.test.ts`、`wrangler.toml`、`.env.example`
+- `npm test` 35 通过；`astro check` 0 错误；`npm run build` 7 页
+- 页面仍然没有任何变化，入口留到 P6c
+
+### v4.17：P6c · 对话面板与入口
+
+**目标**：把「问问 Wingwen」从一张说明卡变成可用的对话面板，用假上游把交互跑通；不接真实 Key、不部署。
+
+**改动**
+- `src/components/AssistantChat.astro`：`<dialog>` 面板（标题栏 / 消息区 / 快捷问题 / 输入区 / 字数与清空提示）
+- `src/scripts/assistant-chat.ts`：会话状态与请求逻辑单独成模块，严格类型
+- `AssistantEntry.astro` 改成 `<button data-chat-open>`；顶部导航的「问问 Wingwen」同步改成按钮
+- `blog.css`：面板、气泡、快捷问题、输入区、错误气泡与重试按钮
+- `features.aiAssistant` 打开
+
+**关键决策**
+- **会话只在内存里**。不写 localStorage / sessionStorage / cookie，刷新即清空；关闭面板再打开保留当前会话
+- **每次只带最近 3 轮**，且强制以用户发言开头；服务端仍会再裁一次，前端裁剪只是减少传输
+- **失败也是消息**。错误以琥珀色气泡出现在会话里，带重试按钮，点一下原问题重发，不清空输入
+
+**遇到的问题**
+1. **内联 `<script>` 触发 28 个类型错误**。Astro 会对 `<script>` 做类型检查，隐式 any 全部报错；把逻辑抽到 `src/scripts/assistant-chat.ts` 后归零
+2. **快捷问题隐藏不掉**。`hidden` 属性被 `.chat__quick { display: flex }` 覆盖，补 `.chat__quick[hidden] { display: none }`
+3. **开场白会被 render() 清掉**。改为首次从 DOM 读一次文案，之后每次渲染都把它放在最前面，且不进会话数组、不发模型
+4. **导航里的胶囊指向不存在的 `/assistant`**。开关打开后它变成死链，改成按钮，与卡片共用同一个面板
+
+**验证（1440×900 与 390×844，`wrangler pages dev` + 假上游）**
+- 打开面板、快捷问题、多轮追问、来源链接、上游 500、错误气泡、重试成功，全部按预期
+- 刷新后气泡数回到 1，`localStorage + sessionStorage + cookie` 长度为 0
+- `npm test` 35 通过；`astro check` 0 错误；`npm run build` 7 页
+
+**截图**
+- `docs/screenshots/chat-desktop-{open,multiturn,error,retry}.png`
+- `docs/screenshots/chat-mobile-{open,multiturn,error}.png`
+
+**费用口径修正**：之前的「日额度 200 次 ≈ 2 元/天」是估算，未用真实 Key 核对。已把 §5.3 改成「费用控制（待核实）」，写明单价、单次 token 用量、拒答率都需接入真实 Key 后复测；预充余额与关闭自动续费是当前唯一不依赖估算的兜底。
+
 
 

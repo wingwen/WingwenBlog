@@ -20,3 +20,10 @@ dist/
 # 对外展示的过程记录统一整理到 docs/。
 .cursor
 .trellis
+
+# 本地函数密钥：wrangler 约定文件名，可能带环境后缀（.dev.vars.local 等）
+.dev.vars*
+
+# AI 语料（构建期生成）
+src/server/corpus.generated.ts
+docs/screenshots
