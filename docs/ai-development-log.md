@@ -896,5 +896,25 @@
 
 **费用口径修正**：之前的「日额度 200 次 ≈ 2 元/天」是估算，未用真实 Key 核对。已把 §5.3 改成「费用控制（待核实）」，写明单价、单次 token 用量、拒答率都需接入真实 Key 后复测；预充余额与关闭自动续费是当前唯一不依赖估算的兜底。
 
+### v4.18：P7 首次部署 · 两次失败与修正
+
+**第一次失败**：部署命令填了 `npx wrangler deploy`（Workers 的命令）。构建本身成功，wrangler 提示应改用 `wrangler pages deploy`，随后报 `Missing entry-point to Worker script`。
+
+**第二次失败**：改成 `npx wrangler pages deploy dist` 后，配置校验拒绝：
+
+```
+Configuration file for Pages projects does not support "ratelimits"
+```
+
+**这是一条必须记下来的判断错误**：P6b 时我看到本地 `wrangler pages dev` 接受 `[[ratelimits]]` 并能生效，就写成了「Pages 支持限流绑定」。实际上本地开发用的 miniflare 会模拟这个绑定，而 `wrangler pages deploy` 在推送到 Pages 时做配置校验，直接判定不支持。**本地能跑 ≠ 平台支持**，验证时要跑到真实部署的那一步。
+
+**修正**
+- `wrangler.toml` 去掉 `[[ratelimits]]`，加注释说明原因
+- 单 IP 限流改由 D1 的分钟桶承担（`chat_rate` 表，key = `分钟:IP`），与每日额度共用一套计数逻辑
+- `handleChat` 的额度依赖改为可回传拒绝原因（`rate_limited` / `daily_budget_exhausted`）
+- 测试从 35 条增到 42 条，覆盖分钟分桶、跨分钟重置、不同 IP 独立计数、拒绝原因映射
+
+**本地实测**（`wrangler pages dev` + D1，连续 10 次请求）：前 8 次 200，第 9、10 次 429 `rate_limited`。
+
 
 
