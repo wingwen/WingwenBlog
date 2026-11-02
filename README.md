@@ -84,26 +84,36 @@ wrangler.toml            # Worker 配置：入口、静态资源、D1 绑定
 
 ## 部署
 
-Cloudflare Worker（不是 Pages）：`wrangler.toml` 里 `main` 指向 `src/worker.ts`，`[assets]` 指向 `./dist`。
+Cloudflare Worker（不是 Pages）：`wrangler.toml` 里 `main` 指向 `src/worker.ts`，`[assets]` 指向 `./dist`，
+静态站点与 `/api/chat` 由同一个 Worker 承担。
 
 ```bash
 npm run build
 npx wrangler deploy
 ```
 
-构建时设置环境变量 `SITE_URL=https://<域名>`；Worker 侧需要在控制台配置
-`DEEPSEEK_API_KEY`（Secret）与 `ALLOWED_ORIGINS`，并绑定 D1 的 `CHAT_BUDGET_DB`。
-缺这些时静态站点照常工作，助手返回明确的「未接通」。
+配置分三处，容易混：
+
+| 名称 | 放哪 | 生效时机 |
+|---|---|---|
+| `SITE_URL` | 控制台「构建变量」 | 构建期，决定 canonical / sitemap；改了要重新构建 |
+| `ALLOWED_ORIGINS` | `wrangler.toml` 的 `[vars]` | 运行期，改了要重新部署 |
+| `DEEPSEEK_API_KEY` | `npx wrangler secret put DEEPSEEK_API_KEY` | 运行期机密，不进仓库 |
+
+完整步骤、自查命令与已知限制见 `docs/deployment.md`。
 
 ## 已知限制
 
 - 助手只在配置了密钥后可用；未配置时面板会提示「助手还没接通」，不静默失败。
 - 对话记录只存在页面内存里，刷新即清空；没有账号，也没有跨设备同步。
 - 每日 200 次额度与单 IP 每分钟 8 次都由 D1 计数；D1 未绑定时这两层都不生效。
+- 单 IP 限流是全局共享的，同一 NAT 后的访客共用额度。
+- `workers.dev` 域名在国内访问不稳定，演示前建议绑自定义域名。
 - 图片素材来源于网络，页面底部有署名说明；正式对外前请确认可用性，详见 `docs/credits.md`。
 
 ## 文档
 
+- `docs/deployment.md` — 线上架构、配置项、部署步骤与自查清单
 - `docs/ai-development-log.md` — 分阶段开发过程摘要
 - `docs/decisions.md` — 技术选型与取舍，含「什么情况下应该重新考虑」
 - `docs/credits.md` — 字体与素材来源、许可证
