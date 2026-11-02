@@ -26,4 +26,7 @@ dist/
 
 # AI 语料（构建期生成）
 src/server/corpus.generated.ts
+
+# 素材备份：原始设计稿与被移出 public 的未引用图片，不参与构建，也不进仓库
+assets-source/
 docs/screenshots
