@@ -21,12 +21,13 @@ binding = "ASSETS"
 not_found_handling = "404-page"
 
 # D1 绑定：卡每天的总调用额度与单 IP 每分钟的突发。
-# 账号侧执行 `npx wrangler d1 create wingwen-chat-budget` 后，把返回的 database_id 填进来再取消注释。
-# 本地开发：`npx wrangler dev --d1 CHAT_BUDGET_DB=local-budget`。
-# [[d1_databases]]
-# binding = "CHAT_BUDGET_DB"
-# database_name = "wingwen-chat-budget"
-# database_id = "<创建后填入>"
+# 数据库已创建（region APAC，name：wingwen-chat-budget）。
+# 绑定名用 CHAT_BUDGET_DB，与 src/worker.ts 里的 env 字段一致。
+# 本地开发：`npx wrangler dev --local`，Wrangler 会在 .wrangler/state 下起一份本地 SQLite。
+[[d1_databases]]
+binding = "CHAT_BUDGET_DB"
+database_name = "wingwen-chat-budget"
+database_id = "605da921-8de8-46f0-9419-05f29ae5273d"
 
 # 限流绑定只有 Workers 才支持（Pages 配置里会被拒绝），
 # 这里不启用：单 IP 限流已由 D1 分钟桶承担，见 src/server/budget.ts。
