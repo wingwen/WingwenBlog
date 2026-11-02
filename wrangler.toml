@@ -5,7 +5,7 @@
 #
 # 构建命令：npm run build
 # 部署命令：npx wrangler deploy
-# 线上 Secret（DEEPSEEK_API_KEY、ALLOWED_ORIGINS）在控制台配置，不写进仓库。
+# DEEPSEEK_API_KEY 是机密，不进仓库：用 `npx wrangler secret put DEEPSEEK_API_KEY` 写入。
 # 本地开发用 .dev.vars（已被 .gitignore 忽略）。
 
 # 必须与云控制台里的项目名一致，否则 wrangler deploy 找不到项目。
@@ -19,6 +19,12 @@ compatibility_flags = ["nodejs_compat"]
 directory = "./dist"
 binding = "ASSETS"
 not_found_handling = "404-page"
+
+# 运行期变量（非机密）：允许调用 /api/chat 的来源。
+# 换了域名（例如绑定自定义域名）时改这里再部署。
+# DEEPSEEK_API_KEY 不进配置文件，用 `npx wrangler secret put DEEPSEEK_API_KEY` 写入。
+[vars]
+ALLOWED_ORIGINS = "https://wingwenblog.2592959544.workers.dev"
 
 # D1 绑定：卡每天的总调用额度与单 IP 每分钟的突发。
 # 数据库已创建（region APAC，name：wingwen-chat-budget）。
