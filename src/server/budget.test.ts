@@ -1,9 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { consumeDailyBudget, dayKey, type BudgetDatabase } from './budget';
+import {
+  consumeDailyBudget,
+  consumeIpBudget,
+  dayKey,
+  minuteKey,
+  type BudgetDatabase,
+} from './budget';
 
 /**
- * 够用的 D1 替身：只需要支持建表、自增取回这两个语句。
- * 真实 D1 由 Cloudflare 的本地运行时验证，这里只测计数与切天逻辑。
+ * 够用的 D1 替身：只需要支持建表与「自增并取回」这两类语句。
+ * 真正的 D1 运行时在本地 wrangler 与线上验证，这里只测计数与切桶逻辑。
  */
 function fakeDatabase(): { database: BudgetDatabase; counters: Map<string, number>; queries: string[] } {
   const counters = new Map<string, number>();
@@ -38,12 +44,15 @@ function fakeDatabase(): { database: BudgetDatabase; counters: Map<string, numbe
   return { database, counters, queries };
 }
 
-describe('dayKey', () => {
+describe('时间分桶', () => {
   it('按北京时间切天', () => {
-    // UTC 15:59 = 北京 23:59，仍算当天
     expect(dayKey(new Date('2026-11-01T15:59:00Z'))).toBe('2026-11-01');
-    // UTC 16:01 = 北京次日 00:01
     expect(dayKey(new Date('2026-11-01T16:01:00Z'))).toBe('2026-11-02');
+  });
+
+  it('按北京时间切分钟', () => {
+    expect(minuteKey(new Date('2026-11-01T02:00:20Z'))).toBe('2026-11-01T10:00');
+    expect(minuteKey(new Date('2026-11-01T02:01:59Z'))).toBe('2026-11-01T10:01');
   });
 });
 
@@ -86,6 +95,60 @@ describe('consumeDailyBudget', () => {
     await consumeDailyBudget(database, new Date('2026-11-01T02:00:00Z'), 10);
 
     expect(queries[0]).toContain('CREATE TABLE IF NOT EXISTS chat_budget');
-    expect(queries[1]).toContain('ON CONFLICT(day) DO UPDATE');
+    expect(queries[queries.length - 1]).toContain('ON CONFLICT(day) DO UPDATE');
+  });
+});
+
+describe('consumeIpBudget', () => {
+  it('按「分钟 + IP」分桶自增', async () => {
+    const { database, counters } = fakeDatabase();
+    const now = new Date('2026-11-01T02:00:20Z');
+
+    await consumeIpBudget(database, now, '1.2.3.4', 5);
+    await consumeIpBudget(database, now, '1.2.3.4', 5);
+
+    expect([...counters.keys()]).toEqual(['2026-11-01T10:00:1.2.3.4']);
+    expect(counters.get('2026-11-01T10:00:1.2.3.4')).toBe(2);
+  });
+
+  it('超过每分钟上限后拒绝', async () => {
+    const { database } = fakeDatabase();
+    const now = new Date('2026-11-01T02:00:20Z');
+
+    const results = [];
+    for (let index = 0; index < 4; index += 1) {
+      results.push(await consumeIpBudget(database, now, '1.2.3.4', 3));
+    }
+
+    expect(results.map((result) => result.allowed)).toEqual([true, true, true, false]);
+  });
+
+  it('不同 IP 各自计数', async () => {
+    const { database } = fakeDatabase();
+    const now = new Date('2026-11-01T02:00:20Z');
+
+    await consumeIpBudget(database, now, '1.1.1.1', 3);
+    const other = await consumeIpBudget(database, now, '2.2.2.2', 3);
+
+    expect(other.used).toBe(1);
+  });
+
+  it('跨分钟重新计数', async () => {
+    const { database } = fakeDatabase();
+
+    await consumeIpBudget(database, new Date('2026-11-01T02:00:59Z'), '1.1.1.1', 3);
+    const nextMinute = await consumeIpBudget(database, new Date('2026-11-01T02:01:01Z'), '1.1.1.1', 3);
+
+    expect(nextMinute.used).toBe(1);
+  });
+
+  it('两个限制共用一套建表逻辑，不会重复建表', async () => {
+    const { database, queries } = fakeDatabase();
+    const now = new Date('2026-11-01T02:00:20Z');
+
+    await consumeIpBudget(database, now, '1.1.1.1', 3);
+    await consumeDailyBudget(database, now, 3);
+
+    expect(queries.filter((query) => query.includes('CREATE TABLE')).length).toBe(2);
   });
 });

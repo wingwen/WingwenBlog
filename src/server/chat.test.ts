@@ -235,6 +235,19 @@ describe('handleChat 依赖与上游失败', () => {
     expect(calls).toHaveLength(0);
   });
 
+  it('单 IP 突发被拦时返回 429 rate_limited', async () => {
+    const { fetchImpl, calls } = fakeUpstream({ answer: '好的。', sources: [] });
+
+    const response = await handleChat(makeRequest(questionPayload('你好')), baseEnv, {
+      fetch: fetchImpl,
+      consumeBudget: async () => ({ allowed: false, reason: 'rate_limited' }),
+    });
+
+    expect(response.status).toBe(429);
+    expect(await response.json()).toEqual({ error: 'rate_limited' });
+    expect(calls).toHaveLength(0);
+  });
+
   it('额度库异常时返回 503，不放行', async () => {
     const { fetchImpl, calls } = fakeUpstream({ answer: '好的。', sources: [] });
 

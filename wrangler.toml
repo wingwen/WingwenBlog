@@ -9,7 +9,7 @@ compatibility_date = "2026-01-01"
 # 保留该 flag 只是给以后可能的依赖留余地，删掉也不影响当前功能。
 compatibility_flags = ["nodejs_compat"]
 
-# D1 绑定：卡每天的总调用额度。
+# D1 绑定：卡每天的总调用额度，以及单 IP 每分钟的突发。
 # 账号侧执行 `npx wrangler d1 create wingwen-chat-budget` 后，把返回的 database_id 填进来再取消注释。
 # 本地开发：`npx wrangler pages dev --d1 CHAT_BUDGET_DB=local-budget`。
 # [[d1_databases]]
@@ -17,11 +17,8 @@ compatibility_flags = ["nodejs_compat"]
 # database_name = "wingwen-chat-budget"
 # database_id = "<创建后填入>"
 
-# 单 IP 限流绑定（本地 wrangler 已实测生效：第 9 次起拒绝）。
-[[ratelimits]]
-name = "CHAT_RATE_LIMITER"
-namespace_id = "1001"
-
-[ratelimits.simple]
-limit = 8
-period = 60
+# 注意：Pages 的配置文件不支持 [[ratelimits]]。
+# 本地 `wrangler pages dev` 会接受它，但 `wrangler pages deploy` 会直接报
+#   Configuration file for Pages projects does not support "ratelimits"
+# 所以这里不声明限流绑定，单 IP 限流改由 D1 计数器承担（见 src/server/budget.ts）。
+# 若以后绑定自定义域名，可以再叠加 Cloudflare WAF 速率限制规则。

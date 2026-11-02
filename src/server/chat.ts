@@ -39,7 +39,10 @@ export interface ChatDependencies {
    * 调用模型之前的额度检查。只有走到这一步才扣额度，
    * 参数校验失败与跨源请求不会消耗当日预算。
    */
-  consumeBudget?: () => Promise<{ allowed: boolean }>;
+  consumeBudget?: () => Promise<{
+    allowed: boolean;
+    reason?: 'rate_limited' | 'daily_budget_exhausted';
+  }>;
 }
 
 type ErrorCode =
@@ -145,14 +148,17 @@ export async function handleChat(
   }
 
   if (deps.consumeBudget) {
-    let verdict: { allowed: boolean };
+    let verdict: { allowed: boolean; reason?: 'rate_limited' | 'daily_budget_exhausted' };
     try {
       verdict = await deps.consumeBudget();
     } catch {
       return errorResponse('budget_unavailable', 503);
     }
     if (!verdict.allowed) {
-      return errorResponse('daily_budget_exhausted', 429);
+      return errorResponse(
+        verdict.reason === 'rate_limited' ? 'rate_limited' : 'daily_budget_exhausted',
+        429,
+      );
     }
   }
 

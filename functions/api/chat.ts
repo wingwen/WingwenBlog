@@ -5,7 +5,11 @@
  * 业务逻辑一律留在 src/server/，换宿主只需要重写这个文件。
  */
 import { handleChat, type ChatEnvironment, type RateLimiterBinding } from '../../src/server/chat';
-import { consumeDailyBudget, type BudgetDatabase } from '../../src/server/budget';
+import {
+  consumeDailyBudget,
+  consumeIpBudget,
+  type BudgetDatabase,
+} from '../../src/server/budget';
 
 interface PagesEnvironment {
   DEEPSEEK_API_KEY?: string;
@@ -34,6 +38,7 @@ function jsonError(code: string, status: number): Response {
 
 export const onRequestPost = async (context: PagesContext): Promise<Response> => {
   const env = context.env ?? {};
+  const database = env.CHAT_BUDGET_DB;
 
   const chatEnv: ChatEnvironment = {
     DEEPSEEK_API_KEY: env.DEEPSEEK_API_KEY,
@@ -44,9 +49,19 @@ export const onRequestPost = async (context: PagesContext): Promise<Response> =>
   };
 
   return handleChat(context.request, chatEnv, {
-    // 只有通过全部校验、真的要调模型时才扣当日额度。
-    consumeBudget: env.CHAT_BUDGET_DB
-      ? () => consumeDailyBudget(env.CHAT_BUDGET_DB as BudgetDatabase, new Date())
+    // 只有通过全部校验、真要调模型时才扣额度：
+    // 先按 IP 挡突发，再扣当天总量。两条都落在 D1 上，写入串行、计数可信。
+    consumeBudget: database
+      ? async () => {
+          const now = new Date();
+          const ip = context.request.headers.get('cf-connecting-ip') ?? 'unknown';
+
+          const burst = await consumeIpBudget(database, now, ip);
+          if (!burst.allowed) return { allowed: false, reason: 'rate_limited' as const };
+
+          const daily = await consumeDailyBudget(database, now);
+          return { allowed: daily.allowed, reason: 'daily_budget_exhausted' as const };
+        }
       : undefined,
   });
 };
