@@ -1,26 +1,32 @@
-# Cloudflare Pages 配置。
-# 线上 Secret（DEEPSEEK_API_KEY、ALLOWED_ORIGINS）在 Pages 项目创建后到控制台配置，
-# 不写进这个文件，也不写进仓库。本地开发用 .dev.vars（已被 .gitignore 忽略）。
+# Cloudflare Worker 配置。
+#
+# 控制台里的项目是 Worker（不是 Pages），所以这里不用 pages_build_output_dir，
+# 而是用 Worker 入口 + 静态资源目录：同一个 Worker 既发静态站点，也提供 /api/chat。
+#
+# 构建命令：npm run build
+# 部署命令：npx wrangler deploy
+# 线上 Secret（DEEPSEEK_API_KEY、ALLOWED_ORIGINS）在控制台配置，不写进仓库。
+# 本地开发用 .dev.vars（已被 .gitignore 忽略）。
 
-# 项目名必须与 Cloudflare 上的项目一致，否则 `wrangler pages deploy` 会报 project not found。
-# 控制台里的项目名是 wingwenblog（不是带横线的 wingwen-blog）。
+# 必须与云控制台里的项目名一致，否则 wrangler deploy 找不到项目。
 name = "wingwenblog"
-pages_build_output_dir = "./dist"
+main = "src/worker.ts"
 compatibility_date = "2026-01-01"
-# 函数只用到 fetch / Response / TextEncoder，不依赖 Node 内置模块；
-# 保留该 flag 只是给以后可能的依赖留余地，删掉也不影响当前功能。
 compatibility_flags = ["nodejs_compat"]
 
-# D1 绑定：卡每天的总调用额度，以及单 IP 每分钟的突发。
+# 静态资源：Astro 的构建产物直接由 Worker 托管。
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "404-page"
+
+# D1 绑定：卡每天的总调用额度与单 IP 每分钟的突发。
 # 账号侧执行 `npx wrangler d1 create wingwen-chat-budget` 后，把返回的 database_id 填进来再取消注释。
-# 本地开发：`npx wrangler pages dev --d1 CHAT_BUDGET_DB=local-budget`。
+# 本地开发：`npx wrangler dev --d1 CHAT_BUDGET_DB=local-budget`。
 # [[d1_databases]]
 # binding = "CHAT_BUDGET_DB"
 # database_name = "wingwen-chat-budget"
 # database_id = "<创建后填入>"
 
-# 注意：Pages 的配置文件不支持 [[ratelimits]]。
-# 本地 `wrangler pages dev` 会接受它，但 `wrangler pages deploy` 会直接报
-#   Configuration file for Pages projects does not support "ratelimits"
-# 所以这里不声明限流绑定，单 IP 限流改由 D1 计数器承担（见 src/server/budget.ts）。
-# 若以后绑定自定义域名，可以再叠加 Cloudflare WAF 速率限制规则。
+# 限流绑定只有 Workers 才支持（Pages 配置里会被拒绝），
+# 这里不启用：单 IP 限流已由 D1 分钟桶承担，见 src/server/budget.ts。

@@ -4,6 +4,8 @@
 
 静态构建，没有账号、没有评论、没有后台。内容写在数据文件和 Markdown 里，改内容不需要改模板。
 
+站点跑在 Cloudflare Worker 上：同一个 Worker 既发静态资源，也提供 `/api/chat`（站内问答助手）。
+
 ## 现在有什么
 
 7 个 HTML 页面：
@@ -45,7 +47,7 @@ npm test           # vitest run
 npm run build
 ```
 
-当前状态：`check` 0 错误 0 警告；`test` 8 条通过；`build` 7 个页面。
+当前状态：`check` 0 错误 0 警告；`test` 42 条通过；`build` 7 个页面。
 
 ## 改内容
 
@@ -56,6 +58,7 @@ npm run build
 | 项目 | `src/content/projects/*.md` |
 | 简历 PDF | 替换 `public/profile.resume.pdf` |
 | 颜色与圆角 | `src/styles/blog.css` 顶部的 CSS 变量 |
+| AI 助手的语料范围 | `scripts/build-ai-corpus.mjs` |
 
 新增一个项目 = 新增一个 `.md` 文件，字段由 `src/content.config.ts` 的 schema 约束。
 
@@ -66,30 +69,38 @@ src/
 ├── content.config.ts    # 集合 schema
 ├── content/projects/    # 项目 Markdown
 ├── data/                # profile.ts、site.ts、GitHub 快照
-├── components/          # 导航、页脚、窗口、资料栏、AI 入口卡
+├── components/          # 导航、页脚、窗口、资料栏、AI 入口卡与对话面板
 ├── layouts/             # 页面骨架：SEO / OG / canonical
 ├── lib/                 # 纯函数：项目排序、格式化（含测试）
 ├── pages/               # 路由
-└── styles/              # tokens → base → layout → components → blog
+├── scripts/             # 对话面板的客户端逻辑
+├── server/              # 问答助手：prompt、chat、budget（含测试）
+├── styles/              # tokens → base → layout → components → blog
+└── worker.ts            # Worker 入口：/api/chat + 静态资源
+scripts/                 # 语料生成
 public/                  # 图片、字体、简历、favicon
-assets-source/           # 设计原图备份，已加入 .gitignore
+wrangler.toml            # Worker 配置：入口、静态资源、D1 绑定
 ```
 
 ## 部署
 
-静态托管即可（Cloudflare Pages / Vercel 都行）。构建时设置环境变量：
+Cloudflare Worker（不是 Pages）：`wrangler.toml` 里 `main` 指向 `src/worker.ts`，`[assets]` 指向 `./dist`。
 
 ```bash
-SITE_URL=https://your-domain.example npm run build
+npm run build
+npx wrangler deploy
 ```
 
-`canonical`、`og:url`、`sitemap`、`robots.txt` 四处都从它推导；不设置时会回退到 `example.com` 占位。
+构建时设置环境变量 `SITE_URL=https://<域名>`；Worker 侧需要在控制台配置
+`DEEPSEEK_API_KEY`（Secret）与 `ALLOWED_ORIGINS`，并绑定 D1 的 `CHAT_BUDGET_DB`。
+缺这些时静态站点照常工作，助手返回明确的「未接通」。
 
 ## 已知限制
 
-- AI 助手尚未接通模型。资料栏有一张静态说明卡，写明「未接通」，不产生任何指向 `/assistant` 的链接；`src/data/site.ts` 的 `features.aiAssistant` 改成 `true` 后才会变成入口。
+- 助手只在配置了密钥后可用；未配置时面板会提示「助手还没接通」，不静默失败。
+- 对话记录只存在页面内存里，刷新即清空；没有账号，也没有跨设备同步。
+- 每日 200 次额度与单 IP 每分钟 8 次都由 D1 计数；D1 未绑定时这两层都不生效。
 - 图片素材来源于网络，页面底部有署名说明；正式对外前请确认可用性，详见 `docs/credits.md`。
-- 单元测试只覆盖 `src/lib/projects.ts`，页面渲染靠人工验收。
 
 ## 文档
 
