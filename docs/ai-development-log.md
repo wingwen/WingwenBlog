@@ -916,5 +916,34 @@ Configuration file for Pages projects does not support "ratelimits"
 
 **本地实测**（`wrangler pages dev` + D1，连续 10 次请求）：前 8 次 200，第 9、10 次 429 `rate_limited`。
 
+### v4.19：P7 上线与真实联调
+
+**线上地址**：`https://wingwenblog.2592959544.workers.dev`
+
+**过程中的两次路线错误**
+1. 部署命令填 `npx wrangler deploy`，但仓库当时是 Pages 形态（`functions/` + `pages_build_output_dir`），报 `Missing entry-point`。
+2. 换成 `wrangler pages deploy dist` 后，配置校验拒绝 `[[ratelimits]]`（Pages 不支持）；去掉后仍失败，因为账号里只有 Worker，没有同名 Pages 项目。
+
+根因是项目类型判断错了：控制台里 `wingwenblog` 是 Worker。最终把仓库改成 Worker 形态——`src/worker.ts` 作为入口，`[assets]` 托管 `dist`，`/api/chat` 走同一入口，`functions/` 删除。改完一次部署成功。
+
+**真实联调结果**
+
+| 场景 | 结果 |
+|---|---|
+| 正常提问「你实习做了什么」 | 200，答案与 profile 一致，来源 `/about`，1.9s |
+| 项目提问「Lisa 的评测怎么做」 | 200，引用 `/projects/lisa`，细节与 lisa.md 一致 |
+| 站外提问「今天深圳天气」 | 200，固定拒答话术，`sources: []`，1.2s |
+| 连续请求 | 第 9 次起 429 `rate_limited`（D1 分钟桶） |
+| 来源链接 | `/about/`、`/projects/lisa/` 均 200 |
+| 静态页 / 资源 / 404 | 全部正常，404 命中自定义页 |
+
+**配置要点**
+- `SITE_URL` 是构建期变量，配完要重新部署；canonical / robots / sitemap 已随之更新
+- `ALLOWED_ORIGINS` 放在 `wrangler.toml` 的 `[vars]`，跟着代码走
+- `DEEPSEEK_API_KEY` 用 `npx wrangler secret put DEEPSEEK_API_KEY` 写入，只在 Worker 运行时可见
+- 控制台的「构建变量」只在 build 阶段可见，不会进入 Worker 运行时——这一点踩过一次
+
+**清理**：`public/` 下的 `.DS_Store` 会在构建时被复制进 `dist` 并上传，已删除。
+
 
 
